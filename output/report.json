@@ -1,0 +1,53 @@
+{
+  "total_rows": 869771,
+  "unique_vuln_ids": 616237,
+  "unique_canonical_vulns": 608463,
+  "multi_id_canonical_clusters": 345568,
+  "source_coverage": {
+    "ghsa-unreviewed": 297076,
+    "osv-npm": 217161,
+    "osv-Debian": 54412,
+    "ghsa-reviewed": 28419,
+    "osv-PyPI": 15920,
+    "osv-Maven": 6369,
+    "osv-Packagist": 5980,
+    "osv-Alpine": 4035,
+    "osv-Go": 3627,
+    "go-vulndb": 3073,
+    "pypa": 2599,
+    "osv-RubyGems": 1988,
+    "osv-NuGet": 1653,
+    "osv-crates.io": 1396,
+    "rustsec": 985
+  },
+  "dependabot_gap": {
+    "ghsa_reviewed_clusters": 28419,
+    "ghsa_unreviewed_clusters": 297076,
+    "osv_any_clusters": 312098,
+    "full_oss_universe": 312250,
+    "reviewed_coverage_pct": 9.1,
+    "reviewed_missed_pct": 90.9
+  },
+  "ecosystem_coverage": {
+    "npm": 217162,
+    "Debian:13": 40606,
+    "Debian:14": 40250,
+    "Debian:12": 39517,
+    "Debian:11": 38867,
+    "PyPI": 15920,
+    "Maven": 6370,
+    "Packagist": 5571,
+    "Go": 3627,
+    "Alpine:v3.23": 2807,
+    "Alpine:v3.22": 2762,
+    "Alpine:v3.21": 2723,
+    "Alpine:v3.20": 2720,
+    "Alpine:v3.19": 2646,
+    "Alpine:v3.18": 2510,
+    "Alpine:v3.17": 2398,
+    "Alpine:v3.16": 2191,
+    "Alpine:v3.15": 2098,
+    "RubyGems": 1988,
+    "Alpine:v3.14": 1974
+  }
+}

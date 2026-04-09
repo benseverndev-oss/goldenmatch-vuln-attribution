@@ -1,0 +1,4 @@
+goldenmatch==1.4.4
+polars==1.39.3
+pyarrow==23.0.1
+pyyaml==6.0.2

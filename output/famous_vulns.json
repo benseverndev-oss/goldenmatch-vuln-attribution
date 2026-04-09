@@ -1,0 +1,185 @@
+[
+  {
+    "name": "Log4Shell",
+    "seed_cve": "CVE-2021-44228",
+    "root_id": "GHSA-jfh8-c2jp-5v3q",
+    "members": [
+      "CVE-2021-44228",
+      "GHSA-jfh8-c2jp-5v3q"
+    ],
+    "n_members": 2,
+    "sources": [
+      "ghsa-reviewed",
+      "osv-Maven"
+    ],
+    "n_sources": 2,
+    "ecosystems": [
+      "Maven"
+    ],
+    "n_ecosystems": 1,
+    "purls": [
+      "pkg:maven/com.guicedee.services/log4j-core",
+      "pkg:maven/org.apache.logging.log4j/log4j-core",
+      "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2",
+      "pkg:maven/org.xbib.elasticsearch/log4j",
+      "pkg:maven/uk.co.nichesolutions.logging.log4j/log4j-core"
+    ],
+    "n_purls": 5,
+    "packages": [
+      "com.guicedee.services:log4j-core",
+      "org.apache.logging.log4j:log4j-core",
+      "org.ops4j.pax.logging:pax-logging-log4j2",
+      "org.xbib.elasticsearch:log4j",
+      "uk.co.nichesolutions.logging.log4j:log4j-core"
+    ],
+    "earliest_published": "2021-12-10T00:40:56Z",
+    "latest_modified": "2025-10-22T19:37:02.616807Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H/E:H"
+    ]
+  },
+  {
+    "name": "Spring4Shell",
+    "seed_cve": "CVE-2022-22965",
+    "root_id": "GHSA-36p3-wjmg-h94x",
+    "members": [
+      "CVE-2022-22965",
+      "GHSA-36p3-wjmg-h94x"
+    ],
+    "n_members": 2,
+    "sources": [
+      "ghsa-reviewed",
+      "osv-Maven"
+    ],
+    "n_sources": 2,
+    "ecosystems": [
+      "Maven"
+    ],
+    "n_ecosystems": 1,
+    "purls": [
+      "pkg:maven/org.springframework.boot/spring-boot-starter-web",
+      "pkg:maven/org.springframework.boot/spring-boot-starter-webflux",
+      "pkg:maven/org.springframework/spring-beans",
+      "pkg:maven/org.springframework/spring-webflux",
+      "pkg:maven/org.springframework/spring-webmvc"
+    ],
+    "n_purls": 5,
+    "packages": [
+      "org.springframework.boot:spring-boot-starter-web",
+      "org.springframework.boot:spring-boot-starter-webflux",
+      "org.springframework:spring-beans",
+      "org.springframework:spring-webflux",
+      "org.springframework:spring-webmvc"
+    ],
+    "earliest_published": "2022-03-31T18:30:50Z",
+    "latest_modified": "2025-10-22T19:34:48.935927Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:H"
+    ]
+  },
+  {
+    "name": "Heartbleed",
+    "seed_cve": "CVE-2014-0160",
+    "root_id": "GHSA-w8r8-w5w4-4w4v",
+    "members": [
+      "CVE-2014-0160",
+      "GHSA-w8r8-w5w4-4w4v"
+    ],
+    "n_members": 2,
+    "sources": [
+      "ghsa-unreviewed"
+    ],
+    "n_sources": 1,
+    "ecosystems": [],
+    "n_ecosystems": 0,
+    "purls": [],
+    "n_purls": 0,
+    "packages": [],
+    "earliest_published": "2022-05-13T01:14:41Z",
+    "latest_modified": "2025-10-22T03:30:38Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    ]
+  },
+  {
+    "name": "Shellshock",
+    "seed_cve": "CVE-2014-6271",
+    "root_id": "GHSA-6hfc-grwp-2p9c",
+    "members": [
+      "CVE-2014-6271",
+      "GHSA-6hfc-grwp-2p9c"
+    ],
+    "n_members": 2,
+    "sources": [
+      "ghsa-unreviewed"
+    ],
+    "n_sources": 1,
+    "ecosystems": [],
+    "n_ecosystems": 0,
+    "purls": [],
+    "n_purls": 0,
+    "packages": [],
+    "earliest_published": "2022-05-13T01:05:13Z",
+    "latest_modified": "2025-10-22T03:30:41Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    ]
+  },
+  {
+    "name": "ProxyShell",
+    "seed_cve": "CVE-2021-34473",
+    "root_id": "GHSA-fgq9-p33g-xcfc",
+    "members": [
+      "CVE-2021-34473",
+      "GHSA-fgq9-p33g-xcfc"
+    ],
+    "n_members": 2,
+    "sources": [
+      "ghsa-unreviewed"
+    ],
+    "n_sources": 1,
+    "ecosystems": [],
+    "n_ecosystems": 0,
+    "purls": [],
+    "n_purls": 0,
+    "packages": [],
+    "earliest_published": "2022-05-24T19:07:52Z",
+    "latest_modified": "2025-10-22T00:32:18Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    ]
+  },
+  {
+    "name": "ZipSlip",
+    "seed_cve": "CVE-2018-1002105",
+    "root_id": "GHSA-579h-mv94-g4gp",
+    "members": [
+      "CVE-2018-1002105",
+      "GHSA-579h-mv94-g4gp",
+      "GO-2022-0792"
+    ],
+    "n_members": 3,
+    "sources": [
+      "ghsa-reviewed",
+      "go-vulndb",
+      "osv-Go"
+    ],
+    "n_sources": 3,
+    "ecosystems": [
+      "Go"
+    ],
+    "n_ecosystems": 1,
+    "purls": [
+      "pkg:golang/github.com/kubernetes/kubernetes"
+    ],
+    "n_purls": 1,
+    "packages": [
+      "github.com/kubernetes/kubernetes"
+    ],
+    "earliest_published": "2022-02-15T01:57:18Z",
+    "latest_modified": "2026-02-04T03:50:45.080176Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    ]
+  }
+]

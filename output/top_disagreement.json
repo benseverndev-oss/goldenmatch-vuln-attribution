@@ -1,0 +1,793 @@
+[
+  {
+    "root_id": "RUSTSEC-0000-0000",
+    "members": [
+      "CVE-2026-34941",
+      "CVE-2026-34942",
+      "CVE-2026-34943",
+      "CVE-2026-34944",
+      "CVE-2026-34945",
+      "CVE-2026-34946",
+      "CVE-2026-34971",
+      "CVE-2026-34983",
+      "CVE-2026-34987",
+      "CVE-2026-34988",
+      "CVE-2026-35186",
+      "CVE-2026-35195",
+      "GHSA-394w-hwhg-8vgm",
+      "GHSA-6wgr-89rj-399p",
+      "GHSA-f984-pcp8-v2p7",
+      "GHSA-hfr4-7c6c-48w2",
+      "GHSA-hx6p-xpx3-jvvv",
+      "GHSA-jhxm-h53p-jm7w",
+      "GHSA-jxhv-7h78-9775",
+      "GHSA-m758-wjhj-p3jq",
+      "GHSA-m9w2-8782-2946",
+      "GHSA-q49f-xg75-m9xw",
+      "GHSA-qqfj-4vcm-26hv",
+      "GHSA-xx5w-cvp6-jv83",
+      "RUSTSEC-0000-0000"
+    ],
+    "n_members": 25,
+    "sources": [
+      "rustsec"
+    ],
+    "n_sources": 1,
+    "ecosystems": [
+      "crates.io"
+    ],
+    "n_ecosystems": 1,
+    "purls": [
+      "pkg:cargo/wasmtime"
+    ],
+    "n_purls": 1,
+    "packages": [
+      "wasmtime"
+    ],
+    "earliest_published": "2026-04-09",
+    "latest_modified": "2026-04-09",
+    "severities": []
+  },
+  {
+    "root_id": "GHSA-qppj-fm5r-hxr3",
+    "members": [
+      "BIT-apisix-2023-44487",
+      "BIT-aspnet-core-2023-44487",
+      "BIT-contour-2023-44487",
+      "BIT-dotnet-2023-44487",
+      "BIT-dotnet-sdk-2023-44487",
+      "BIT-envoy-2023-44487",
+      "BIT-golang-2023-44487",
+      "BIT-jenkins-2023-44487",
+      "BIT-kong-2023-44487",
+      "BIT-nginx-2023-44487",
+      "BIT-nginx-gateway-2023-44487",
+      "BIT-nginx-ingress-controller-2023-44487",
+      "BIT-node-2023-44487",
+      "BIT-node-min-2023-44487",
+      "BIT-solr-2023-44487",
+      "BIT-tomcat-2023-44487",
+      "BIT-varnish-2023-44487",
+      "CVE-2023-44487",
+      "GHSA-qppj-fm5r-hxr3"
+    ],
+    "n_members": 19,
+    "sources": [
+      "ghsa-reviewed",
+      "osv-Go",
+      "osv-Maven"
+    ],
+    "n_sources": 3,
+    "ecosystems": [
+      "Go",
+      "Maven",
+      "SwiftURL"
+    ],
+    "n_ecosystems": 3,
+    "purls": [
+      "pkg:golang/golang.org/x/net",
+      "pkg:maven/com.typesafe.akka/akka-http-core",
+      "pkg:maven/com.typesafe.akka/akka-http-core_2.11",
+      "pkg:maven/com.typesafe.akka/akka-http-core_2.12",
+      "pkg:maven/com.typesafe.akka/akka-http-core_2.13",
+      "pkg:maven/org.apache.tomcat.embed/tomcat-embed-core",
+      "pkg:maven/org.apache.tomcat/tomcat-coyote",
+      "pkg:maven/org.eclipse.jetty.http2/http2-common",
+      "pkg:maven/org.eclipse.jetty.http2/http2-server",
+      "pkg:maven/org.eclipse.jetty.http2/jetty-http2-common",
+      "pkg:maven/org.eclipse.jetty.http2/jetty-http2-server",
+      "pkg:swift/github.com/apple/swift-nio-http2"
+    ],
+    "n_purls": 12,
+    "packages": [
+      "com.typesafe.akka:akka-http-core",
+      "com.typesafe.akka:akka-http-core_2.11",
+      "com.typesafe.akka:akka-http-core_2.12",
+      "com.typesafe.akka:akka-http-core_2.13",
+      "github.com/apple/swift-nio-http2",
+      "golang.org/x/net",
+      "org.apache.tomcat.embed:tomcat-embed-core",
+      "org.apache.tomcat:tomcat-coyote",
+      "org.eclipse.jetty.http2:http2-common",
+      "org.eclipse.jetty.http2:http2-server"
+    ],
+    "earliest_published": "2023-10-10T21:28:24Z",
+    "latest_modified": "2026-02-04T04:29:21.661957Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L/E:H"
+    ]
+  },
+  {
+    "root_id": "GHSA-28ph-f7gx-fqj8",
+    "members": [
+      "CVE-2020-35866",
+      "CVE-2020-35867",
+      "CVE-2020-35868",
+      "CVE-2020-35869",
+      "CVE-2020-35870",
+      "CVE-2020-35871",
+      "CVE-2020-35872",
+      "CVE-2020-35873",
+      "GHSA-28ph-f7gx-fqj8",
+      "GHSA-3cgf-9m6x-pwwr",
+      "GHSA-6q5w-m3c5-rv95",
+      "GHSA-8h4j-vm3r-vcq3",
+      "GHSA-8r7q-r9mx-35rh",
+      "GHSA-g4w7-3qr8-5623",
+      "GHSA-q3cc-7p7g-392c",
+      "GHSA-rjh8-p66p-jrh5",
+      "RUSTSEC-2020-0014"
+    ],
+    "n_members": 17,
+    "sources": [
+      "ghsa-reviewed",
+      "osv-crates.io",
+      "rustsec"
+    ],
+    "n_sources": 3,
+    "ecosystems": [
+      "crates.io"
+    ],
+    "n_ecosystems": 1,
+    "purls": [
+      "pkg:cargo/rusqlite"
+    ],
+    "n_purls": 1,
+    "packages": [
+      "rusqlite"
+    ],
+    "earliest_published": "2020-04-23",
+    "latest_modified": "2024-03-15T00:05:20.033730Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    ]
+  },
+  {
+    "root_id": "GHSA-4qr3-m7ww-hh9g",
+    "members": [
+      "CVE-2021-45713",
+      "CVE-2021-45714",
+      "CVE-2021-45715",
+      "CVE-2021-45716",
+      "CVE-2021-45717",
+      "CVE-2021-45718",
+      "CVE-2021-45719",
+      "GHSA-4qr3-m7ww-hh9g",
+      "GHSA-87xh-9q6h-r5cc",
+      "GHSA-92cx-4xm7-jr9m",
+      "GHSA-cm8g-544f-p9x9",
+      "GHSA-f6f2-3w33-54r9",
+      "GHSA-g4g4-3pqw-8m7f",
+      "GHSA-g87r-23vw-7f87",
+      "GHSA-q89g-4vhh-mvvm",
+      "RUSTSEC-2021-0128"
+    ],
+    "n_members": 16,
+    "sources": [
+      "ghsa-reviewed",
+      "osv-crates.io",
+      "rustsec"
+    ],
+    "n_sources": 3,
+    "ecosystems": [
+      "crates.io"
+    ],
+    "n_ecosystems": 1,
+    "purls": [
+      "pkg:cargo/rusqlite"
+    ],
+    "n_purls": 1,
+    "packages": [
+      "rusqlite"
+    ],
+    "earliest_published": "2021-12-07",
+    "latest_modified": "2024-03-15T00:05:18.748750Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "HIGH"
+    ]
+  },
+  {
+    "root_id": "GHSA-64gv-qg2v-vxv6",
+    "members": [
+      "CVE-2020-25791",
+      "CVE-2020-25792",
+      "CVE-2020-25793",
+      "CVE-2020-25794",
+      "CVE-2020-25795",
+      "CVE-2020-25796",
+      "GHSA-64gv-qg2v-vxv6",
+      "GHSA-9p9m-9xww-qjcx",
+      "GHSA-fqpx-cq8x-9wp4",
+      "GHSA-mp6f-p9gp-vpj9",
+      "GHSA-rfgg-vccr-m46m",
+      "GHSA-x54v-qxxr-93qc",
+      "RUSTSEC-2020-0041"
+    ],
+    "n_members": 13,
+    "sources": [
+      "ghsa-reviewed",
+      "osv-crates.io",
+      "rustsec"
+    ],
+    "n_sources": 3,
+    "ecosystems": [
+      "crates.io"
+    ],
+    "n_ecosystems": 1,
+    "purls": [
+      "pkg:cargo/sized-chunks"
+    ],
+    "n_purls": 1,
+    "packages": [
+      "sized-chunks"
+    ],
+    "earliest_published": "2020-09-06",
+    "latest_modified": "2024-04-22T18:52:15Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    ]
+  },
+  {
+    "root_id": "GHSA-44qx-v2f9-7rq9",
+    "members": [
+      "BIT-brotli-2020-8927",
+      "BIT-dotnet-2020-8927",
+      "BIT-dotnet-sdk-2020-8927",
+      "BIT-powershell-2020-8927",
+      "CVE-2020-36846",
+      "CVE-2020-8927",
+      "GHSA-44qx-v2f9-7rq9",
+      "GHSA-5v8v-66v8-mwm7",
+      "GO-2025-3726",
+      "PYSEC-2020-29",
+      "RUSTSEC-2021-0131",
+      "RUSTSEC-2021-0132"
+    ],
+    "n_members": 12,
+    "sources": [
+      "ghsa-reviewed",
+      "ghsa-unreviewed",
+      "go-vulndb",
+      "osv-Go",
+      "osv-NuGet",
+      "osv-PyPI",
+      "osv-crates.io",
+      "pypa",
+      "rustsec"
+    ],
+    "n_sources": 9,
+    "ecosystems": [
+      "Go",
+      "NuGet",
+      "PyPI",
+      "crates.io"
+    ],
+    "n_ecosystems": 4,
+    "purls": [
+      "pkg:cargo/brotli-sys",
+      "pkg:cargo/compu-brotli-sys",
+      "pkg:golang/github.com/google/brotli",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-arm",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-x86",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.browser-wasm",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-arm",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-x86",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.browser-wasm",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.ios-arm",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.ios-arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.iossimulator-arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.iossimulator-x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.iossimulator-x86",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.maccatalyst-arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.maccatalyst-x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.tvos-arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.tvossimulator-arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.tvossimulator-x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-arm",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-arm.Msi.x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-arm64.Msi.x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-x64.Msi.x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-x86",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-x86.Msi.x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.browser-wasm",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.browser-wasm.Msi.x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.LLVM.AOT.linux-arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.LLVM.AOT.linux-x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.LLVM.AOT.osx-x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.LLVM.linux-arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.LLVM.linux-x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.LLVM.osx-x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-arm",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-arm.Msi.arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-arm.Msi.x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-arm.Msi.x86",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-arm64.Msi.arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-arm64.Msi.x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-arm64.Msi.x86",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-x64.Msi.arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-x64.Msi.x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-x64.Msi.x86",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-x86",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-x86.Msi.arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-x86.Msi.x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-x86.Msi.x86",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.browser-wasm.Msi.arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.browser-wasm.Msi.x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.browser-wasm.Msi.x86",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.ios-arm",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.ios-arm.Msi.arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.ios-arm.Msi.x86",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.ios-arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.ios-arm64.Msi.arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.ios-arm64.Msi.x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.ios-arm64.Msi.x86",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-arm64.Msi.arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-arm64.Msi.x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-arm64.Msi.x86",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-x64.Msi.arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-x64.Msi.x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-x64.Msi.x86",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-x86",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-x86.Msi.arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-x86.Msi.x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-x86.Msi.x86",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.linux-arm",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.linux-arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.linux-musl-x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.linux-x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.maccatalyst-arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.maccatalyst-arm64.Msi.arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.maccatalyst-arm64.Msi.x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.maccatalyst-arm64.Msi.x86",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.maccatalyst-x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.maccatalyst-x64.Msi.arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.maccatalyst-x64.Msi.x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.maccatalyst-x64.Msi.x86",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.osx-arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.osx-x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvos-arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvos-arm64.Msi.arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvos-arm64.Msi.x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvos-arm64.Msi.x86",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvossimulator-arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvossimulator-arm64.Msi.arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvossimulator-arm64.Msi.x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvossimulator-arm64.Msi.x86",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvossimulator-x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvossimulator-x64.Msi.arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvossimulator-x64.Msi.x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvossimulator-x64.Msi.x86",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.win-x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.win-x86",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.browser-wasm",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.linux-arm",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.linux-arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.linux-musl-arm",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.linux-musl-arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.linux-musl-x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.linux-x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.osx-arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.osx-x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.win-arm",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.win-arm64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.win-x64",
+      "pkg:nuget/Microsoft.NETCore.App.Runtime.win-x86",
+      "pkg:pypi/brotli"
+    ],
+    "n_purls": 120,
+    "packages": [
+      "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-arm",
+      "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-arm64",
+      "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-x64",
+      "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-x86",
+      "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.browser-wasm",
+      "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-arm",
+      "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-arm64",
+      "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-x64",
+      "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-x86",
+      "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.browser-wasm"
+    ],
+    "earliest_published": "2020-09-15T10:15:00Z",
+    "latest_modified": "2026-03-03T04:56:39.449382Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
+    ]
+  },
+  {
+    "root_id": "GHSA-5wg8-7c9q-794v",
+    "members": [
+      "CVE-2020-35910",
+      "CVE-2020-35911",
+      "CVE-2020-35912",
+      "CVE-2020-35913",
+      "CVE-2020-35914",
+      "GHSA-5wg8-7c9q-794v",
+      "GHSA-gmv4-vmx3-x9f3",
+      "GHSA-hj9h-wrgg-hgmx",
+      "GHSA-ppj3-7jw3-8vc4",
+      "GHSA-vh4p-6j7g-f4j9",
+      "RUSTSEC-2020-0070"
+    ],
+    "n_members": 11,
+    "sources": [
+      "ghsa-reviewed",
+      "osv-crates.io",
+      "rustsec"
+    ],
+    "n_sources": 3,
+    "ecosystems": [
+      "crates.io"
+    ],
+    "n_ecosystems": 1,
+    "purls": [
+      "pkg:cargo/lock_api"
+    ],
+    "n_purls": 1,
+    "packages": [
+      "lock_api"
+    ],
+    "earliest_published": "2020-11-08",
+    "latest_modified": "2025-05-23T18:33:34Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H",
+      "CVSS_V3:CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    ]
+  },
+  {
+    "root_id": "GHSA-4873-36h9-wv49",
+    "members": [
+      "CVE-2021-39216",
+      "CVE-2021-39218",
+      "CVE-2021-39219",
+      "GHSA-4873-36h9-wv49",
+      "GHSA-q879-9g95-56mx",
+      "GHSA-v4cp-h94r-m7xf",
+      "PYSEC-2021-320",
+      "PYSEC-2021-321",
+      "PYSEC-2021-322",
+      "RUSTSEC-2021-0110"
+    ],
+    "n_members": 10,
+    "sources": [
+      "ghsa-reviewed",
+      "osv-PyPI",
+      "osv-crates.io",
+      "pypa",
+      "rustsec"
+    ],
+    "n_sources": 5,
+    "ecosystems": [
+      "PyPI",
+      "crates.io"
+    ],
+    "n_ecosystems": 2,
+    "purls": [
+      "pkg:cargo/wasmtime",
+      "pkg:pypi/wasmtime"
+    ],
+    "n_purls": 2,
+    "packages": [
+      "wasmtime"
+    ],
+    "earliest_published": "2021-09-17",
+    "latest_modified": "2026-03-13T22:15:23.246317Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:H",
+      "CVSS_V3:CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:H"
+    ]
+  },
+  {
+    "root_id": "GHSA-cxm3-wv7p-598c",
+    "members": [
+      "CVE-2025-10894",
+      "GHSA-cxm3-wv7p-598c",
+      "MAL-2025-41436",
+      "MAL-2025-41437",
+      "MAL-2025-41438",
+      "MAL-2025-41439",
+      "MAL-2025-41440",
+      "MAL-2025-41441",
+      "MAL-2025-41442",
+      "MAL-2025-41443"
+    ],
+    "n_members": 10,
+    "sources": [
+      "ghsa-reviewed",
+      "osv-npm"
+    ],
+    "n_sources": 2,
+    "ecosystems": [
+      "npm"
+    ],
+    "n_ecosystems": 1,
+    "purls": [
+      "pkg:npm/%40nx/devkit",
+      "pkg:npm/%40nx/enterprise-cloud",
+      "pkg:npm/%40nx/eslint",
+      "pkg:npm/%40nx/js",
+      "pkg:npm/%40nx/key",
+      "pkg:npm/%40nx/node",
+      "pkg:npm/%40nx/workspace",
+      "pkg:npm/nx"
+    ],
+    "n_purls": 8,
+    "packages": [
+      "@nx/devkit",
+      "@nx/enterprise-cloud",
+      "@nx/eslint",
+      "@nx/js",
+      "@nx/key",
+      "@nx/node",
+      "@nx/workspace",
+      "nx"
+    ],
+    "earliest_published": "2025-08-27T16:42:47Z",
+    "latest_modified": "2026-03-16T03:13:28.212592Z",
+    "severities": [
+      "CRITICAL"
+    ]
+  },
+  {
+    "root_id": "GHSA-24m5-r6hv-ccgp",
+    "members": [
+      "BIT-cilium-2023-41332",
+      "BIT-cilium-operator-2023-41332",
+      "BIT-cilium-proxy-2023-41332",
+      "BIT-hubble-2023-41332",
+      "BIT-hubble-relay-2023-41332",
+      "BIT-hubble-ui-2023-41332",
+      "BIT-hubble-ui-backend-2023-41332",
+      "CVE-2023-41332",
+      "GHSA-24m5-r6hv-ccgp",
+      "GO-2023-2079"
+    ],
+    "n_members": 10,
+    "sources": [
+      "ghsa-reviewed",
+      "go-vulndb",
+      "osv-Go"
+    ],
+    "n_sources": 3,
+    "ecosystems": [
+      "Go"
+    ],
+    "n_ecosystems": 1,
+    "purls": [
+      "pkg:golang/github.com/cilium/cilium"
+    ],
+    "n_purls": 1,
+    "packages": [
+      "github.com/cilium/cilium"
+    ],
+    "earliest_published": "2023-09-27T00:33:04Z",
+    "latest_modified": "2026-02-04T03:41:08.489150Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:A/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L"
+    ]
+  },
+  {
+    "root_id": "GHSA-2h44-x2wx-49f4",
+    "members": [
+      "BIT-cilium-2023-30851",
+      "BIT-cilium-operator-2023-30851",
+      "BIT-cilium-proxy-2023-30851",
+      "BIT-hubble-2023-30851",
+      "BIT-hubble-relay-2023-30851",
+      "BIT-hubble-ui-2023-30851",
+      "BIT-hubble-ui-backend-2023-30851",
+      "CVE-2023-30851",
+      "GHSA-2h44-x2wx-49f4",
+      "GO-2023-1785"
+    ],
+    "n_members": 10,
+    "sources": [
+      "ghsa-reviewed",
+      "go-vulndb",
+      "osv-Go"
+    ],
+    "n_sources": 3,
+    "ecosystems": [
+      "Go"
+    ],
+    "n_ecosystems": 1,
+    "purls": [
+      "pkg:golang/github.com/cilium/cilium"
+    ],
+    "n_purls": 1,
+    "packages": [
+      "github.com/cilium/cilium"
+    ],
+    "earliest_published": "2023-05-22T20:33:15Z",
+    "latest_modified": "2026-02-04T03:23:00.245917Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    ]
+  },
+  {
+    "root_id": "GHSA-4xp2-w642-7mcx",
+    "members": [
+      "BIT-cilium-2023-41333",
+      "BIT-cilium-operator-2023-41333",
+      "BIT-cilium-proxy-2023-41333",
+      "BIT-hubble-2023-41333",
+      "BIT-hubble-relay-2023-41333",
+      "BIT-hubble-ui-2023-41333",
+      "BIT-hubble-ui-backend-2023-41333",
+      "CVE-2023-41333",
+      "GHSA-4xp2-w642-7mcx",
+      "GO-2023-2080"
+    ],
+    "n_members": 10,
+    "sources": [
+      "ghsa-reviewed",
+      "go-vulndb",
+      "osv-Go"
+    ],
+    "n_sources": 3,
+    "ecosystems": [
+      "Go"
+    ],
+    "n_ecosystems": 1,
+    "purls": [
+      "pkg:golang/github.com/cilium/cilium"
+    ],
+    "n_purls": 1,
+    "packages": [
+      "github.com/cilium/cilium"
+    ],
+    "earliest_published": "2023-09-27T00:35:26Z",
+    "latest_modified": "2026-02-04T03:55:12.891504Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:A/AC:L/PR:H/UI:N/S:C/C:L/I:N/A:H"
+    ]
+  },
+  {
+    "root_id": "GHSA-68mj-9pjq-mc85",
+    "members": [
+      "BIT-cilium-2024-28248",
+      "BIT-cilium-operator-2024-28248",
+      "BIT-cilium-proxy-2024-28248",
+      "BIT-hubble-2024-28248",
+      "BIT-hubble-relay-2024-28248",
+      "BIT-hubble-ui-2024-28248",
+      "BIT-hubble-ui-backend-2024-28248",
+      "CVE-2024-28248",
+      "GHSA-68mj-9pjq-mc85",
+      "GO-2024-2653"
+    ],
+    "n_members": 10,
+    "sources": [
+      "ghsa-reviewed",
+      "go-vulndb",
+      "osv-Go"
+    ],
+    "n_sources": 3,
+    "ecosystems": [
+      "Go"
+    ],
+    "n_ecosystems": 1,
+    "purls": [
+      "pkg:golang/github.com/cilium/cilium"
+    ],
+    "n_purls": 1,
+    "packages": [
+      "github.com/cilium/cilium"
+    ],
+    "earliest_published": "2024-03-18T20:30:22Z",
+    "latest_modified": "2026-02-04T03:29:51.161551Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    ]
+  },
+  {
+    "root_id": "GHSA-6p8v-8cq8-v2r3",
+    "members": [
+      "BIT-cilium-2022-29178",
+      "BIT-cilium-operator-2022-29178",
+      "BIT-cilium-proxy-2022-29178",
+      "BIT-hubble-2022-29178",
+      "BIT-hubble-relay-2022-29178",
+      "BIT-hubble-ui-2022-29178",
+      "BIT-hubble-ui-backend-2022-29178",
+      "CVE-2022-29178",
+      "GHSA-6p8v-8cq8-v2r3",
+      "GO-2022-0457"
+    ],
+    "n_members": 10,
+    "sources": [
+      "ghsa-reviewed",
+      "go-vulndb",
+      "osv-Go"
+    ],
+    "n_sources": 3,
+    "ecosystems": [
+      "Go"
+    ],
+    "n_ecosystems": 1,
+    "purls": [
+      "pkg:golang/github.com/cilium/cilium"
+    ],
+    "n_purls": 1,
+    "packages": [
+      "github.com/cilium/cilium"
+    ],
+    "earliest_published": "2022-05-24T21:14:41Z",
+    "latest_modified": "2026-02-04T04:07:35.154374Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    ]
+  },
+  {
+    "root_id": "GHSA-7496-fgv9-xw82",
+    "members": [
+      "BIT-cilium-2024-25630",
+      "BIT-cilium-operator-2024-25630",
+      "BIT-cilium-proxy-2024-25630",
+      "BIT-hubble-2024-25630",
+      "BIT-hubble-relay-2024-25630",
+      "BIT-hubble-ui-2024-25630",
+      "BIT-hubble-ui-backend-2024-25630",
+      "CVE-2024-25630",
+      "GHSA-7496-fgv9-xw82",
+      "GO-2024-2568"
+    ],
+    "n_members": 10,
+    "sources": [
+      "ghsa-reviewed",
+      "go-vulndb",
+      "osv-Go"
+    ],
+    "n_sources": 3,
+    "ecosystems": [
+      "Go"
+    ],
+    "n_ecosystems": 1,
+    "purls": [
+      "pkg:golang/github.com/cilium/cilium"
+    ],
+    "n_purls": 1,
+    "packages": [
+      "github.com/cilium/cilium"
+    ],
+    "earliest_published": "2024-02-20T23:44:45Z",
+    "latest_modified": "2026-02-04T03:54:05.351189Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:C/C:H/I:N/A:N"
+    ]
+  }
+]
