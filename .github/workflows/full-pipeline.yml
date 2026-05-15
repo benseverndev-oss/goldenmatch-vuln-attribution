@@ -1,0 +1,88 @@
+name: Full vuln-reconciliation pipeline
+
+# Heavy bulk-data run: fetches ~1.5 GB of public vuln archives, extracts
+# 6M+ rows, runs goldencheck → goldenflow → goldenmatch end-to-end, and
+# uploads the JSON outputs as workflow artifacts.
+#
+# Target runner: gm-bench-64c (64 vCPU / 256 GB RAM / 2 TB disk).
+
+on:
+  workflow_dispatch:
+    inputs:
+      skip_cvelist:
+        description: "Skip the 556 MB CVE Project bulk archive"
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  pipeline:
+    runs-on: gm-bench-64c
+    timeout-minutes: 120
+    env:
+      SKIP_CVELIST: ${{ inputs.skip_cvelist && '1' || '' }}
+      PIP_DISABLE_PIP_VERSION_CHECK: "1"
+      PYTHONUNBUFFERED: "1"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: System snapshot
+        run: |
+          echo "## Runner specs"
+          nproc
+          free -h
+          df -h /
+          python --version
+
+      - name: Fetch public datasets
+        run: python -u fetch_public_data.py
+
+      - name: Extract to parquet
+        run: python -u extract_records.py
+
+      - name: GoldenCheck DQ scan
+        run: python -u dq_check.py
+
+      - name: GoldenFlow normalize
+        run: python -u normalize.py
+
+      - name: GoldenMatch ER + analysis
+        run: python -u analyze.py
+
+      - name: Summarize outputs
+        run: |
+          ls -la output/
+          echo "---"
+          echo "report.json headline:"
+          python -c "import json; r=json.load(open('output/report.json')); [print(f'  {k}: {v}') for k,v in r.items() if not isinstance(v, dict)]; print('  kev:', r.get('kev')); print('  high_epss_blind_spot:', r.get('high_epss_blind_spot'))"
+
+      - name: Upload pipeline outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: pipeline-outputs
+          path: |
+            output/*.json
+          retention-days: 30
+
+      - name: Upload records parquet (for downstream re-analysis)
+        uses: actions/upload-artifact@v4
+        with:
+          name: records-parquet
+          path: |
+            data/records.parquet
+            data/records_normalized.parquet
+          retention-days: 30
+          if-no-files-found: warn

@@ -2,10 +2,10 @@
   {
     "name": "Log4Shell",
     "seed_cve": "CVE-2021-44228",
-    "root_id": "GHSA-jfh8-c2jp-5v3q",
+    "root_id": "CVE-2021-44228",
     "members": [
       "CVE-2021-44228",
-      "GHSA-jfh8-c2jp-5v3q"
+      "GHSA-JFH8-C2JP-5V3Q"
     ],
     "n_members": 2,
     "sources": [
@@ -41,10 +41,10 @@
   {
     "name": "Spring4Shell",
     "seed_cve": "CVE-2022-22965",
-    "root_id": "GHSA-36p3-wjmg-h94x",
+    "root_id": "CVE-2022-22965",
     "members": [
       "CVE-2022-22965",
-      "GHSA-36p3-wjmg-h94x"
+      "GHSA-36P3-WJMG-H94X"
     ],
     "n_members": 2,
     "sources": [
@@ -80,10 +80,10 @@
   {
     "name": "Heartbleed",
     "seed_cve": "CVE-2014-0160",
-    "root_id": "GHSA-w8r8-w5w4-4w4v",
+    "root_id": "CVE-2014-0160",
     "members": [
       "CVE-2014-0160",
-      "GHSA-w8r8-w5w4-4w4v"
+      "GHSA-W8R8-W5W4-4W4V"
     ],
     "n_members": 2,
     "sources": [
@@ -104,10 +104,10 @@
   {
     "name": "Shellshock",
     "seed_cve": "CVE-2014-6271",
-    "root_id": "GHSA-6hfc-grwp-2p9c",
+    "root_id": "CVE-2014-6271",
     "members": [
       "CVE-2014-6271",
-      "GHSA-6hfc-grwp-2p9c"
+      "GHSA-6HFC-GRWP-2P9C"
     ],
     "n_members": 2,
     "sources": [
@@ -128,10 +128,10 @@
   {
     "name": "ProxyShell",
     "seed_cve": "CVE-2021-34473",
-    "root_id": "GHSA-fgq9-p33g-xcfc",
+    "root_id": "CVE-2021-34473",
     "members": [
       "CVE-2021-34473",
-      "GHSA-fgq9-p33g-xcfc"
+      "GHSA-FGQ9-P33G-XCFC"
     ],
     "n_members": 2,
     "sources": [
@@ -152,10 +152,10 @@
   {
     "name": "ZipSlip",
     "seed_cve": "CVE-2018-1002105",
-    "root_id": "GHSA-579h-mv94-g4gp",
+    "root_id": "CVE-2018-1002105",
     "members": [
       "CVE-2018-1002105",
-      "GHSA-579h-mv94-g4gp",
+      "GHSA-579H-MV94-G4GP",
       "GO-2022-0792"
     ],
     "n_members": 3,

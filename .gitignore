@@ -8,8 +8,9 @@ venv/
 # Large downloaded datasets — fetched by fetch_public_data.py
 data/public/
 
-# Derived parquet (~15 MB, regenerable from extract_records.py)
+# Derived parquet (~15 MB, regenerable from extract_records.py / normalize.py)
 data/records.parquet
+data/records_normalized.parquet
 data/source_counts.json
 
 # OS / editor noise

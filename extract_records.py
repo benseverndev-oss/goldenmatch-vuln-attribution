@@ -11,13 +11,16 @@ source to a common row schema:
     published  : ISO timestamp (may be empty)
     modified   : ISO timestamp (may be empty)
     severity   : free-text severity (CVSS string or level name)
-    source     : osv-PyPI / ghsa-reviewed / ghsa-unreviewed / pypa / rustsec / go-vulndb
+    source     : osv-PyPI / ghsa-reviewed / ghsa-unreviewed / pypa / rustsec / go-vulndb / epss / cisa-kev / cve-project
 
-One row per (vuln_id, affected_package) pair — i.e., a single advisory that
+One row per (vuln_id, affected_package) pair -- i.e., a single advisory that
 affects three packages emits three rows with the same vuln_id. This matches
 how downstream ER pipelines want to reason about it.
 """
 from __future__ import annotations
+import csv
+import gzip
+import io
 import json
 import re
 import zipfile
@@ -34,22 +37,23 @@ ROOT = Path(__file__).resolve().parent
 PUB = ROOT / "data" / "public"
 OUT = ROOT / "data" / "records.parquet"
 
-ROWS: list[dict] = []
+COLS: dict[str, list[str]] = {
+    "vuln_id": [], "aliases": [], "ecosystem": [], "package": [],
+    "purl": [], "published": [], "modified": [], "severity": [], "source": [],
+}
 
 
 def emit(*, vuln_id: str, aliases: list[str], ecosystem: str, package: str,
          purl: str, published: str, modified: str, severity: str, source: str) -> None:
-    ROWS.append({
-        "vuln_id": vuln_id or "",
-        "aliases": ";".join(a for a in (aliases or []) if a),
-        "ecosystem": ecosystem or "",
-        "package": package or "",
-        "purl": purl or "",
-        "published": published or "",
-        "modified": modified or "",
-        "severity": severity or "",
-        "source": source,
-    })
+    COLS["vuln_id"].append(vuln_id or "")
+    COLS["aliases"].append(";".join(a for a in (aliases or []) if a))
+    COLS["ecosystem"].append(ecosystem or "")
+    COLS["package"].append(package or "")
+    COLS["purl"].append(purl or "")
+    COLS["published"].append(str(published) if published else "")
+    COLS["modified"].append(str(modified) if modified else "")
+    COLS["severity"].append(str(severity) if severity else "")
+    COLS["source"].append(source)
 
 
 def severity_text(d: dict) -> str:
@@ -90,12 +94,25 @@ def emit_osv_record(d: dict, source: str) -> None:
 
 # ---------- 1. OSV bulk exports ----------
 OSV_ECOSYSTEMS = [
+    # Language / package ecosystems
     "PyPI", "npm", "Go", "Maven", "RubyGems", "crates.io",
-    "Packagist", "NuGet", "Debian", "Alpine",
+    "Packagist", "NuGet", "Hex", "Pub", "Hackage", "CRAN",
+    "Bioconductor", "GHC", "SwiftURL",
+    # OS / distro
+    "Debian", "Alpine", "Ubuntu", "Rocky Linux", "AlmaLinux",
+    "Mageia", "openSUSE", "SUSE", "Photon OS", "Red Hat",
+    "Wolfi", "Chainguard", "MinimOS",
+    # Cross-cutting
+    "Linux", "OSS-Fuzz", "Bitnami", "GIT", "Curl", "UVI",
+    "GitHub Actions", "Kubernetes", "Android",
 ]
 print("[1] OSV bulk exports")
 for eco in OSV_ECOSYSTEMS:
-    zp = PUB / "osv" / f"{eco.replace('.', '_')}.zip"
+    fname = eco.replace(".", "_").replace(" ", "_") + ".zip"
+    zp = PUB / "osv" / fname
+    if not zp.exists():
+        # Optional ecosystems may have 404'd at fetch time
+        continue
     src = f"osv-{eco}"
     n = 0
     with zipfile.ZipFile(zp) as zf:
@@ -109,7 +126,7 @@ for eco in OSV_ECOSYSTEMS:
                     continue
             emit_osv_record(d, src)
             n += 1
-    print(f"  {eco:>12}: {n:>7,}")
+    print(f"  {eco:>16}: {n:>7,}")
 
 # ---------- 2. GHSA (split reviewed / unreviewed) ----------
 print("[2] GHSA")
@@ -236,24 +253,164 @@ if yaml is not None:
                 n += 1
 print(f"  records:    {n:>7,}")
 
-# ---------- Write parquet ----------
-# Coerce every cell to a string so YAML datetime values don't fight polars
-# schema inference.
-for r in ROWS:
-    for k, v in list(r.items()):
-        if v is None:
-            r[k] = ""
-        elif not isinstance(v, str):
-            r[k] = str(v)
+# ---------- 6. EPSS exploit prediction scores ----------
+# Stored as gzipped CSV, schema: cve,epss,percentile.
+# We emit one row per scored CVE so it joins to the alias graph and
+# shows up as a source coverage line. Score lives in the severity column
+# (formatted as 'epss:<score>:<percentile>') because every other source
+# already overloads that field for CVSS strings / level names.
+print("[6] EPSS")
+n = 0
+epss_path = PUB / "epss_scores.csv.gz"
+if epss_path.exists():
+    with gzip.open(epss_path, "rt", encoding="utf-8") as f:
+        # First line is a comment: "#model_version:...,score_date:..."
+        first = f.readline()
+        # If first line wasn't a comment, rewind via concat
+        if not first.startswith("#"):
+            reader = csv.DictReader(io.StringIO(first + f.read()))
+        else:
+            reader = csv.DictReader(f)
+        for row in reader:
+            cve = (row.get("cve") or "").strip()
+            if not cve:
+                continue
+            score = row.get("epss") or ""
+            pct = row.get("percentile") or ""
+            emit(
+                vuln_id=cve,
+                aliases=[],
+                ecosystem="",
+                package="",
+                purl="",
+                published="",
+                modified="",
+                severity=f"epss:{score}:{pct}",
+                source="epss",
+            )
+            n += 1
+print(f"  records:    {n:>7,}")
 
-print(f"\nTotal rows emitted: {len(ROWS):,}")
+# ---------- 7. CISA KEV (actively exploited catalog) ----------
+print("[7] CISA KEV")
+n = 0
+kev_path = PUB / "cisa_kev.json"
+if kev_path.exists():
+    with kev_path.open(encoding="utf-8") as f:
+        kev = json.load(f)
+    for v in kev.get("vulnerabilities", []):
+        cve = v.get("cveID") or ""
+        if not cve:
+            continue
+        vendor = v.get("vendorProject") or ""
+        product = v.get("product") or ""
+        package = f"{vendor}:{product}".strip(":")
+        ransom = v.get("knownRansomwareCampaignUse") or ""
+        emit(
+            vuln_id=cve,
+            aliases=[],
+            ecosystem="",
+            package=package,
+            purl="",
+            published=v.get("dateAdded") or "",
+            modified=v.get("dateAdded") or "",
+            severity=f"kev:ransomware={ransom or 'Unknown'}",
+            source="cisa-kev",
+        )
+        n += 1
+print(f"  records:    {n:>7,}")
+
+# ---------- 8. CVE Project bulk (cvelistV5) ----------
+# One JSON file per CVE record under cves/<year>/<thousand>/CVE-*.json.
+# The schema is the official CVE JSON 5.x form (cveMetadata + containers.cna).
+# We pull cveId, dates, descriptions[0].lang=en for severity hint, and any
+# affected.vendor+product as package rows.
+print("[8] CVE Project (cvelistV5)")
+n = 0
+cve_path = PUB / "cvelistV5.zip"
+if cve_path.exists():
+    with zipfile.ZipFile(cve_path) as zf:
+        for info in zf.infolist():
+            name = info.filename
+            # Skip non-CVE entries (READMEs, schema, deltas).
+            if "/cves/" not in name or not name.endswith(".json"):
+                continue
+            if "/delta_" in name:
+                continue
+            with zf.open(info) as f:
+                try:
+                    d = json.load(f)
+                except Exception:
+                    continue
+            if not isinstance(d, dict):
+                continue
+            meta = d.get("cveMetadata") or {}
+            if not isinstance(meta, dict):
+                continue
+            cve = meta.get("cveId") or ""
+            if not cve:
+                continue
+            state = meta.get("state") or ""
+            if state and state.upper() == "REJECTED":
+                continue
+            published = meta.get("datePublished") or ""
+            modified = meta.get("dateUpdated") or ""
+            containers = d.get("containers") or {}
+            cna = containers.get("cna") if isinstance(containers, dict) else None
+            if not isinstance(cna, dict):
+                cna = {}
+            metrics = cna.get("metrics") or []
+            sev = ""
+            for m in metrics:
+                if not isinstance(m, dict):
+                    continue
+                for k in ("cvssV3_1", "cvssV3_0", "cvssV4_0", "cvssV2_0"):
+                    if k in m and isinstance(m[k], dict):
+                        score = m[k].get("baseScore")
+                        vec = m[k].get("vectorString") or ""
+                        if score is not None:
+                            sev = f"{k}:{score}:{vec}"
+                            break
+                if sev:
+                    break
+            affected = cna.get("affected") or []
+            if not affected:
+                emit(
+                    vuln_id=cve, aliases=[], ecosystem="", package="",
+                    purl="", published=published, modified=modified,
+                    severity=sev, source="cve-project",
+                )
+                n += 1
+                continue
+            for aff in affected:
+                if not isinstance(aff, dict):
+                    continue
+                vendor = aff.get("vendor") or ""
+                product = aff.get("product") or ""
+                pkg = f"{vendor}:{product}".strip(":")
+                emit(
+                    vuln_id=cve, aliases=[], ecosystem="", package=pkg,
+                    purl="", published=published, modified=modified,
+                    severity=sev, source="cve-project",
+                )
+                n += 1
+print(f"  records:    {n:>7,}")
+
+# ---------- Write parquet ----------
+# Build a polars DataFrame from columnar lists — far cheaper in memory
+# than a list-of-dicts at 6M+ rows. Schema is pinned to Utf8 across the
+# board so YAML datetimes / numeric severities can't fight inference.
+n_rows = len(COLS["vuln_id"])
+print(f"\nTotal rows emitted: {n_rows:,}")
 schema = {
     "vuln_id": pl.Utf8, "aliases": pl.Utf8, "ecosystem": pl.Utf8,
     "package": pl.Utf8, "purl": pl.Utf8, "published": pl.Utf8,
     "modified": pl.Utf8, "severity": pl.Utf8, "source": pl.Utf8,
 }
-df = pl.DataFrame(ROWS, schema=schema)
-df.write_parquet(OUT)
+df = pl.DataFrame(COLS, schema=schema)
+# Free the columnar lists before write so the parquet allocator has room.
+COLS.clear()
+df.write_parquet(OUT, compression="zstd")
 print(f"Wrote {OUT.name} ({OUT.stat().st_size / 1024 / 1024:.1f} MB)")
 print()
 print("Schema:")

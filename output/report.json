@@ -1,4 +1,6 @@
 {
+  "goldenmatch_version": "1.14.0",
+  "input_file": "records_normalized.parquet",
   "total_rows": 869771,
   "unique_vuln_ids": 616237,
   "unique_canonical_vulns": 608463,

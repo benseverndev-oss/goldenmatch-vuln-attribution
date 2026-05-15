@@ -1,0 +1,930 @@
+{
+  "goldencheck_version": "1.2.0",
+  "input": "records.parquet",
+  "row_count": 869771,
+  "column_count": 9,
+  "health_grade": "A",
+  "health_score": 100,
+  "severity_counts": {
+    "WARNING": 5,
+    "INFO": 66
+  },
+  "columns": [
+    {
+      "name": "vuln_id",
+      "inferred_type": "String",
+      "null_pct": 0.0,
+      "unique_pct": 0.71,
+      "top_values": []
+    },
+    {
+      "name": "aliases",
+      "inferred_type": "String",
+      "null_pct": 0.0,
+      "unique_pct": 0.41,
+      "top_values": []
+    },
+    {
+      "name": "ecosystem",
+      "inferred_type": "String",
+      "null_pct": 0.0,
+      "unique_pct": 0.0,
+      "top_values": []
+    },
+    {
+      "name": "package",
+      "inferred_type": "String",
+      "null_pct": 0.0,
+      "unique_pct": 0.28,
+      "top_values": []
+    },
+    {
+      "name": "purl",
+      "inferred_type": "String",
+      "null_pct": 0.0,
+      "unique_pct": 0.28,
+      "top_values": []
+    },
+    {
+      "name": "published",
+      "inferred_type": "String",
+      "null_pct": 0.0,
+      "unique_pct": 0.16,
+      "top_values": []
+    },
+    {
+      "name": "modified",
+      "inferred_type": "String",
+      "null_pct": 0.0,
+      "unique_pct": 0.26,
+      "top_values": []
+    },
+    {
+      "name": "severity",
+      "inferred_type": "String",
+      "null_pct": 0.0,
+      "unique_pct": 0.01,
+      "top_values": []
+    },
+    {
+      "name": "source",
+      "inferred_type": "String",
+      "null_pct": 0.0,
+      "unique_pct": 0.0,
+      "top_values": []
+    }
+  ],
+  "findings": [
+    {
+      "severity": "WARNING",
+      "column": "aliases",
+      "check": "drift_detection",
+      "message": "Categorical drift detected in 'aliases': 22852 new categor(y/ies) appear in the second half of the data that are absent from the first half: ['BIT-activemq-2021-21350;CVE-2021-21350', 'BIT-activemq-2022-41678;CVE-2022-41678', 'BIT-activemq-2023-46604;CVE-2023-46604', 'BIT-activemq-2025-66168;CVE-2025-66168', 'BIT-airflow-2020-9485;CVE-2020-9485;GHSA-j38c-25fj-mr84', 'BIT-airflow-2021-26559;CVE-2021-26559;GHSA-ffw3-6mp6-jmvj', 'BIT-airflow-2022-27949;CVE-2022-27949;PYSEC-2022-42981', 'BIT-airflow-2023-35908;CVE-2023-35908;GHSA-2h84-3crq-vgfj', 'BIT-airflow-2023-42792;CVE-2023-42792;GHSA-j3w8-2p2h-mrr9', 'BIT-airflow-2023-49920;CVE-2023-49920;PYSEC-2023-266']",
+      "affected_rows": 23300,
+      "sample_values": [
+        "BIT-activemq-2021-21350;CVE-2021-21350",
+        "BIT-activemq-2022-41678;CVE-2022-41678",
+        "BIT-activemq-2023-46604;CVE-2023-46604",
+        "BIT-activemq-2025-66168;CVE-2025-66168",
+        "BIT-airflow-2020-9485;CVE-2020-9485;GHSA-j38c-25fj-mr84"
+      ],
+      "suggestion": "Verify whether new categories are expected or indicate schema/labelling drift"
+    },
+    {
+      "severity": "WARNING",
+      "column": "package",
+      "check": "drift_detection",
+      "message": "Categorical drift detected in 'package': 15291 new categor(y/ies) appear in the second half of the data that are absent from the first half: ['-john-wick-4-keanu-reeves-peliculas-completa-h-d-varindo-en-casa-lliena-espanol', '-john-wick-4-keanu-reeves-peliculas-completa-h-d-varindo-en-casa-lliena-love', '-pem-misa', '000webhost-connect', '02-echo', '04axvm', '101', '13-pkg-14', '1337qq-js', '1inch.io']",
+      "affected_rows": 15853,
+      "sample_values": [
+        "-john-wick-4-keanu-reeves-peliculas-completa-h-d-varindo-en-casa-lliena-espanol",
+        "-john-wick-4-keanu-reeves-peliculas-completa-h-d-varindo-en-casa-lliena-love",
+        "-pem-misa",
+        "000webhost-connect",
+        "02-echo"
+      ],
+      "suggestion": "Verify whether new categories are expected or indicate schema/labelling drift"
+    },
+    {
+      "severity": "WARNING",
+      "column": "purl",
+      "check": "drift_detection",
+      "message": "Categorical drift detected in 'purl': 14956 new categor(y/ies) appear in the second half of the data that are absent from the first half: ['pkg:apk/alpine/ansible-base?arch=source', 'pkg:apk/alpine/bubblewrap?arch=source', 'pkg:apk/alpine/coreutils?arch=source', 'pkg:apk/alpine/darkhttpd?arch=source', 'pkg:apk/alpine/fail2ban?arch=source', 'pkg:apk/alpine/fuse?arch=source', 'pkg:apk/alpine/gst-plugins-bad1?arch=source', 'pkg:apk/alpine/gst-plugins-good?arch=source', 'pkg:apk/alpine/icecast?arch=source', 'pkg:apk/alpine/iperf3?arch=source']",
+      "affected_rows": 15439,
+      "sample_values": [
+        "pkg:apk/alpine/ansible-base?arch=source",
+        "pkg:apk/alpine/bubblewrap?arch=source",
+        "pkg:apk/alpine/coreutils?arch=source",
+        "pkg:apk/alpine/darkhttpd?arch=source",
+        "pkg:apk/alpine/fail2ban?arch=source"
+      ],
+      "suggestion": "Verify whether new categories are expected or indicate schema/labelling drift"
+    },
+    {
+      "severity": "WARNING",
+      "column": "published",
+      "check": "drift_detection",
+      "message": "Categorical drift detected in 'published': 21034 new categor(y/ies) appear in the second half of the data that are absent from the first half: ['1999-07-25T04:00:00Z', '2000-01-08T05:00:00Z', '2001-06-19T04:00:00Z', '2002-06-18T04:00:00Z', '2002-07-26T04:00:00Z', '2002-08-17T00:00:00Z', '2002-09-05T04:00:00Z', '2002-10-04T04:00:00Z', '2002-10-08T00:00:00Z', '2002-10-10T04:00:00Z']",
+      "affected_rows": 24730,
+      "sample_values": [
+        "1999-07-25T04:00:00Z",
+        "2000-01-08T05:00:00Z",
+        "2001-06-19T04:00:00Z",
+        "2002-06-18T04:00:00Z",
+        "2002-07-26T04:00:00Z"
+      ],
+      "suggestion": "Verify whether new categories are expected or indicate schema/labelling drift"
+    },
+    {
+      "severity": "WARNING",
+      "column": "modified",
+      "check": "drift_detection",
+      "message": "Categorical drift detected in 'modified': 25970 new categor(y/ies) appear in the second half of the data that are absent from the first half: ['2015-09-29T00:00:00Z', '2016-09-10', '2018-06-30', '2018-08-22', '2019-08-13T18:15:00Z', '2019-09-01', '2019-10-06', '2019-12-26T16:34:06Z', '2020-01-24T22:44:00Z', '2020-01-30']",
+      "affected_rows": 29068,
+      "sample_values": [
+        "2015-09-29T00:00:00Z",
+        "2016-09-10",
+        "2018-06-30",
+        "2018-08-22",
+        "2019-08-13T18:15:00Z"
+      ],
+      "suggestion": "Verify whether new categories are expected or indicate schema/labelling drift"
+    },
+    {
+      "severity": "INFO",
+      "column": "vuln_id",
+      "check": "nullability",
+      "message": "0 nulls across 100000 rows \u2014 likely required",
+      "affected_rows": 0,
+      "sample_values": [],
+      "suggestion": null
+    },
+    {
+      "severity": "INFO",
+      "column": "vuln_id",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLLL-LDLD-DDLL-DDDD' appears in 1 row(s) (0.0%) vs dominant pattern 'LLLLLL-LLL-DDDD-DDDDD' (14130 row(s)) (suppressed: identifier column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "GHSA-f2c3-28fv-2466"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "vuln_id",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLLL-LDDD-DDDL-DDLL' appears in 1 row(s) (0.0%) vs dominant pattern 'LLLLLL-LLL-DDDD-DDDDD' (14130 row(s)) (suppressed: identifier column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "GHSA-w843-352m-75pp"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "vuln_id",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLLL-DDDD-DDLD-DDDL' appears in 1 row(s) (0.0%) vs dominant pattern 'LLLLLL-LLL-DDDD-DDDDD' (14130 row(s)) (suppressed: identifier column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "GHSA-4788-86m4-464h"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "vuln_id",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLLL-DLDD-LDLL-DDDL' appears in 1 row(s) (0.0%) vs dominant pattern 'LLLLLL-LLL-DDDD-DDDDD' (14130 row(s)) (suppressed: identifier column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "GHSA-8w47-g5wh-386w"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "vuln_id",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLLL-DDDL-LLDL-DDDD' appears in 1 row(s) (0.0%) vs dominant pattern 'LLLLLL-LLL-DDDD-DDDDD' (14130 row(s)) (suppressed: identifier column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "GHSA-932h-pf5w-9584"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "vuln_id",
+      "check": "pattern_consistency",
+      "message": "4058 additional inconsistent pattern(s) detected (showing top 5)",
+      "affected_rows": 0,
+      "sample_values": [],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "aliases",
+      "check": "nullability",
+      "message": "0 nulls across 100000 rows \u2014 likely required",
+      "affected_rows": 0,
+      "sample_values": [],
+      "suggestion": null
+    },
+    {
+      "severity": "INFO",
+      "column": "aliases",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLL-DDDD-DDDDD;LLLL-DDDL-DDDD-LLLD' appears in 1 row(s) (0.0%) vs dominant pattern '' (50258 row(s)) \u2014 possible invalid format or mixed coding standard (suppressed: person_name column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "CVE-2024-27102;GHSA-494h-9924-xww9"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "aliases",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLL-DDDD-DDDDD;LLLL-LDLD-LDLL-LLLD' appears in 1 row(s) (0.0%) vs dominant pattern '' (50258 row(s)) \u2014 possible invalid format or mixed coding standard (suppressed: person_name column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "CVE-2024-53263;GHSA-q6r2-x2cc-vrp7"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "aliases",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLLL-LLDD-LDDD-LLLL' appears in 1 row(s) (0.0%) vs dominant pattern '' (50258 row(s)) \u2014 possible invalid format or mixed coding standard (suppressed: person_name column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "GHSA-mr68-c768-crhw"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "aliases",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLL-DDDD-DDDDD;LLLL-LLDL-DLLL-DLLL' appears in 1 row(s) (0.0%) vs dominant pattern '' (50258 row(s)) \u2014 possible invalid format or mixed coding standard (suppressed: person_name column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "CVE-2025-64433;GHSA-qw6q-3pgr-5cwq"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "aliases",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLLL-LL-LLLLLLLLLLLLLLDDLLLLLD-DDDDDDD' appears in 1 row(s) (0.0%) vs dominant pattern '' (50258 row(s)) \u2014 possible invalid format or mixed coding standard (suppressed: person_name column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "SNYK-JS-TEMPOMATIOMEGA69EMCUF7-3336074"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "aliases",
+      "check": "pattern_consistency",
+      "message": "3349 additional inconsistent pattern(s) detected (showing top 5)",
+      "affected_rows": 0,
+      "sample_values": [],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "ecosystem",
+      "check": "nullability",
+      "message": "0 nulls across 100000 rows \u2014 likely required",
+      "affected_rows": 0,
+      "sample_values": [],
+      "suggestion": null
+    },
+    {
+      "severity": "INFO",
+      "column": "ecosystem",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLLLLL LLLLLLL' appears in 7 row(s) (0.0%) vs dominant pattern '' (33966 row(s)) \u2014 possible invalid format or mixed coding standard (suppressed: person_name column)",
+      "affected_rows": 7,
+      "sample_values": [
+        "GitHub Actions",
+        "GitHub Actions",
+        "GitHub Actions",
+        "GitHub Actions",
+        "GitHub Actions"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "ecosystem",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLLLLLLLL:LLLLL://LLLLLLLL.LLLLLL.LLL/D' appears in 49 row(s) (0.0%) vs dominant pattern '' (33966 row(s)) \u2014 possible invalid format or mixed coding standard (suppressed: person_name column)",
+      "affected_rows": 49,
+      "sample_values": [
+        "Packagist:https://packages.drupal.org/8",
+        "Packagist:https://packages.drupal.org/8",
+        "Packagist:https://packages.drupal.org/8",
+        "Packagist:https://packages.drupal.org/8",
+        "Packagist:https://packages.drupal.org/8"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "ecosystem",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLLLLL:D.D' appears in 474 row(s) (0.5%) vs dominant pattern '' (33966 row(s)) \u2014 possible invalid format or mixed coding standard (suppressed: person_name column)",
+      "affected_rows": 474,
+      "sample_values": [
+        "Debian:3.0",
+        "Debian:3.0",
+        "Debian:3.0",
+        "Debian:3.1",
+        "Debian:3.0"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "ecosystem",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLLLLLLL' appears in 571 row(s) (0.6%) vs dominant pattern '' (33966 row(s)) \u2014 possible invalid format or mixed coding standard (suppressed: person_name column)",
+      "affected_rows": 571,
+      "sample_values": [
+        "RubyGems",
+        "RubyGems",
+        "SwiftURL",
+        "RubyGems",
+        "RubyGems"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "ecosystem",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLLLLL:D' appears in 578 row(s) (0.6%) vs dominant pattern '' (33966 row(s)) \u2014 possible invalid format or mixed coding standard (suppressed: person_name column)",
+      "affected_rows": 578,
+      "sample_values": [
+        "Debian:9",
+        "Debian:7",
+        "Debian:8",
+        "Debian:9",
+        "Debian:7"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "ecosystem",
+      "check": "pattern_consistency",
+      "message": "9 additional inconsistent pattern(s) detected (showing top 5)",
+      "affected_rows": 0,
+      "sample_values": [],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "package",
+      "check": "type_inference",
+      "message": "Column is string but 0.0% of values appear numeric (1 values) \u2014 possible data entry error",
+      "affected_rows": 1,
+      "sample_values": [],
+      "suggestion": "Investigate numeric values in this text column"
+    },
+    {
+      "severity": "INFO",
+      "column": "package",
+      "check": "nullability",
+      "message": "0 nulls across 100000 rows \u2014 likely required",
+      "affected_rows": 0,
+      "sample_values": [],
+      "suggestion": null
+    },
+    {
+      "severity": "INFO",
+      "column": "package",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: '@LLLLLLLLL/LLLLL-LLLLLLLLLLLLLL' appears in 1 row(s) (0.0%) vs dominant pattern '' (33966 row(s)) \u2014 possible invalid format or mixed coding standard (suppressed: person_name column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "@diotoborg/omnis-necessitatibus"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "package",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLL-LLL-LL-LLLLLL-LLLLLL' appears in 1 row(s) (0.0%) vs dominant pattern '' (33966 row(s)) \u2014 possible invalid format or mixed coding standard (suppressed: person_name column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "atg-all-in-wonder-player"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "package",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLL-LLLLLL-LLLLLL-LLLLLLLLD' appears in 1 row(s) (0.0%) vs dominant pattern '' (33966 row(s)) \u2014 possible invalid format or mixed coding standard (suppressed: person_name column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "vue-custom-widget-template1"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "package",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLLLLLLLLLLLL.LLLLLLLLLLL' appears in 1 row(s) (0.0%) vs dominant pattern '' (33966 row(s)) \u2014 possible invalid format or mixed coding standard (suppressed: person_name column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "BlockMountai\u0578.Tra\u0501ingView"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "package",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLLLLLLL-LLLL-LLLLL-LLLLL' appears in 1 row(s) (0.0%) vs dominant pattern '' (33966 row(s)) \u2014 possible invalid format or mixed coding standard (suppressed: person_name column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "hoisting-peer-check-child"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "package",
+      "check": "pattern_consistency",
+      "message": "9211 additional inconsistent pattern(s) detected (showing top 5)",
+      "affected_rows": 0,
+      "sample_values": [],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "package",
+      "check": "encoding_detection",
+      "message": "61 value(s) contain non-ASCII / unicode characters \u2014 verify encoding is intentional (international text vs. mojibake)",
+      "affected_rows": 61,
+      "sample_values": [
+        "'Be.Vlaandere\u0578.B\u0430sisregisters.GrAr.Extracts'",
+        "'Blockcore.Feat\u057dres.BlockStor\u0435.Persistence.LevelDb'",
+        "'B\u0435.Vlaanderen.Basisregisters.Utilit\u0456es.Rfc3339Dat\u0435T\u0456meOffset'",
+        "'Be.Vlaanderen.Basisregisters.Co\u0578verters.TrimStri\u0578g'",
+        "'Equ\u0430ls.F\u043e\u0501\u0443'"
+      ],
+      "suggestion": "Confirm the source encoding; if mojibake, re-encode from Latin-1 to UTF-8"
+    },
+    {
+      "severity": "INFO",
+      "column": "purl",
+      "check": "nullability",
+      "message": "0 nulls across 100000 rows \u2014 likely required",
+      "affected_rows": 0,
+      "sample_values": [],
+      "suggestion": null
+    },
+    {
+      "severity": "INFO",
+      "column": "purl",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLL:LLL/LLLL-LLLLLLL-LLLLLLL-LLLL-LLLLLLLL' appears in 1 row(s) (0.0%) vs dominant pattern '' (40030 row(s)) \u2014 possible invalid format or mixed coding standard (suppressed: address column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "pkg:npm/rate-limiter-express-iota-registry"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "purl",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLL:LLL/LLL_LLLL_DLLLLLLLL' appears in 1 row(s) (0.0%) vs dominant pattern '' (40030 row(s)) \u2014 possible invalid format or mixed coding standard (suppressed: address column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "pkg:npm/fat_lynx_0xrequest"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "purl",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLL:LLL/LLLLLL-LLLLL-LLLLLLL-LLLL-LLLLLLL-LLLLLL' appears in 1 row(s) (0.0%) vs dominant pattern '' (40030 row(s)) \u2014 possible invalid format or mixed coding standard (suppressed: address column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "pkg:npm/bunyan-redis-capella-html-webpack-plugin"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "purl",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLL:LLL/LLLLLLLL-LLLL-LLL-LLLLLLL-LLLLLL-LLLLLL-LLLLLL' appears in 1 row(s) (0.0%) vs dominant pattern '' (40030 row(s)) \u2014 possible invalid format or mixed coding standard (suppressed: address column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "pkg:npm/chariklo-mini-css-extract-plugin-rollup-google"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "purl",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLL:LLL/LLLL-LLL-LLLLLLLLL-LLLL-LLLLL' appears in 1 row(s) (0.0%) vs dominant pattern '' (40030 row(s)) \u2014 possible invalid format or mixed coding standard (suppressed: address column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "pkg:npm/bash-xml-transpile-good-catch"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "purl",
+      "check": "pattern_consistency",
+      "message": "9245 additional inconsistent pattern(s) detected (showing top 5)",
+      "affected_rows": 0,
+      "sample_values": [],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "published",
+      "check": "nullability",
+      "message": "0 nulls across 100000 rows \u2014 likely required",
+      "affected_rows": 0,
+      "sample_values": [],
+      "suggestion": null
+    },
+    {
+      "severity": "INFO",
+      "column": "published",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'DDDD-DD-DDLDD:DD:DD.DDDDDDL' appears in 16 row(s) (0.0%) vs dominant pattern 'DDDD-DD-DDLDD:DD:DDL' (76170 row(s)) (suppressed: address column)",
+      "affected_rows": 16,
+      "sample_values": [
+        "2026-04-03T09:00:19.484470Z",
+        "2026-04-03T13:00:30.424804Z",
+        "2026-04-03T21:01:31.175948Z",
+        "2026-04-03T09:00:19.484470Z",
+        "2026-04-01T09:00:13.263953Z"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "published",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'DDDD-DD-DD DD:DD:DD+DD:DD' appears in 94 row(s) (0.1%) vs dominant pattern 'DDDD-DD-DDLDD:DD:DDL' (76170 row(s)) (suppressed: address column)",
+      "affected_rows": 94,
+      "sample_values": [
+        "2024-10-29 15:15:11+00:00",
+        "2023-10-11 18:15:00+00:00",
+        "2022-07-01 20:11:34+00:00",
+        "2023-06-30 18:15:00+00:00",
+        "2022-02-17 17:33:35+00:00"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "published",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'DDDD-DD-DD' appears in 118 row(s) (0.1%) vs dominant pattern 'DDDD-DD-DDLDD:DD:DDL' (76170 row(s)) (suppressed: address column)",
+      "affected_rows": 118,
+      "sample_values": [
+        "2020-04-24",
+        "2025-04-07",
+        "2022-11-01",
+        "2017-05-06",
+        "2021-07-04"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "published",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: '' appears in 465 row(s) (0.5%) vs dominant pattern 'DDDD-DD-DDLDD:DD:DDL' (76170 row(s)) \u2014 possible invalid format or mixed coding standard (suppressed: address column)",
+      "affected_rows": 465,
+      "sample_values": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "published",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'DDDD-DD-DDLDD:DD:DD.DDDL' appears in 23137 row(s) (23.1%) vs dominant pattern 'DDDD-DD-DDLDD:DD:DDL' (76170 row(s))",
+      "affected_rows": 23137,
+      "sample_values": [
+        "2019-10-09T16:15:13.907Z",
+        "2019-05-20T16:29:01.240Z",
+        "2017-09-15T19:29:00.190Z",
+        "2022-01-26T12:15:08.030Z",
+        "2023-08-15T18:15:13.217Z"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "modified",
+      "check": "nullability",
+      "message": "0 nulls across 100000 rows \u2014 likely required",
+      "affected_rows": 0,
+      "sample_values": [],
+      "suggestion": null
+    },
+    {
+      "severity": "INFO",
+      "column": "modified",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'DDDD-DD-DD DD:DD:DD+DD:DD' appears in 1 row(s) (0.0%) vs dominant pattern 'DDDD-DD-DDLDD:DD:DDL' (63652 row(s)) (suppressed: address column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "2023-07-03 20:33:00+00:00"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "modified",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'DDDD-DD-DDLDD:DD:DD.DDDDDL' appears in 3 row(s) (0.0%) vs dominant pattern 'DDDD-DD-DDLDD:DD:DDL' (63652 row(s)) (suppressed: address column)",
+      "affected_rows": 3,
+      "sample_values": [
+        "2024-11-21T14:22:49.85073Z",
+        "2024-11-21T14:22:48.67141Z",
+        "2024-11-21T14:22:41.00719Z"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "modified",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'DDDD-DD-DDLDD:DD:DD.DDDL' appears in 30 row(s) (0.0%) vs dominant pattern 'DDDD-DD-DDLDD:DD:DDL' (63652 row(s)) (suppressed: address column)",
+      "affected_rows": 30,
+      "sample_values": [
+        "2025-04-28T06:14:01.812Z",
+        "2025-12-03T22:50:21.029Z",
+        "2026-03-17T02:49:13.280Z",
+        "2025-11-20T10:16:31.619Z",
+        "2023-11-08T04:21:27.705Z"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "modified",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'DDDD-DD-DD DD:DD:DD.DDDDDD+DD:DD' appears in 56 row(s) (0.1%) vs dominant pattern 'DDDD-DD-DDLDD:DD:DDL' (63652 row(s)) (suppressed: address column)",
+      "affected_rows": 56,
+      "sample_values": [
+        "2025-01-19 19:19:01.811922+00:00",
+        "2023-10-13 22:28:56.802294+00:00",
+        "2023-06-30 20:25:46.450877+00:00",
+        "2024-11-21 14:22:45.495938+00:00",
+        "2024-02-10 07:18:43.563257+00:00"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "modified",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'DDDD-DD-DDLDD:DD:DD.DDDDDDDDDL' appears in 67 row(s) (0.1%) vs dominant pattern 'DDDD-DD-DDLDD:DD:DDL' (63652 row(s)) (suppressed: address column)",
+      "affected_rows": 67,
+      "sample_values": [
+        "2026-04-07T17:46:13.966211052Z",
+        "2026-04-06T00:44:17.638941998Z",
+        "2026-03-23T04:56:29.257112722Z",
+        "2026-04-02T13:29:24.096578232Z",
+        "2026-04-02T13:29:23.867333879Z"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "modified",
+      "check": "pattern_consistency",
+      "message": "2 additional inconsistent pattern(s) detected (showing top 5)",
+      "affected_rows": 0,
+      "sample_values": [],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "severity",
+      "check": "nullability",
+      "message": "0 nulls across 100000 rows \u2014 likely required",
+      "affected_rows": 0,
+      "sample_values": [],
+      "suggestion": null
+    },
+    {
+      "severity": "INFO",
+      "column": "severity",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLLL_LD:LLLL:D.D/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/L:LLLLL' appears in 1 row(s) (0.0%) vs dominant pattern 'LLLL_LD:LLLL:D.D/LL:L/LL:L/LL:L/LL:L/L:L/L:L/L:L/L:L' (51899 row(s)) (suppressed: person_name column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "CVSS_V4:CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L/U:Amber"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "severity",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLLL_LD:LLLL:D.D/LL:L/LL:L/L:L/L:L/L:L/LL:L/L:L/LL:L' appears in 1 row(s) (0.0%) vs dominant pattern 'LLLL_LD:LLLL:D.D/LL:L/LL:L/LL:L/LL:L/L:L/L:L/L:L/L:L' (51899 row(s)) (suppressed: person_name column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "CVSS_V3:CVSS:3.1/AC:L/AV:N/A:H/C:H/I:H/PR:L/S:C/UI:N"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "severity",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLLL_LD:LLLL:D.D/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/L:L/L:LLL' appears in 1 row(s) (0.0%) vs dominant pattern 'LLLL_LD:LLLL:D.D/LL:L/LL:L/LL:L/LL:L/L:L/L:L/L:L/L:L' (51899 row(s)) (suppressed: person_name column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "CVSS_V4:CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:H/VA:N/SC:N/SI:N/SA:N/E:A/U:Red"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "severity",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLLL_LD:LLLL:D.D/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/L:L' appears in 1 row(s) (0.0%) vs dominant pattern 'LLLL_LD:LLLL:D.D/LL:L/LL:L/LL:L/LL:L/L:L/L:L/L:L/L:L' (51899 row(s)) (suppressed: person_name column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "CVSS_V4:CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/AU:Y/R:A"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "severity",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLLL_LD:LLLL:D.D/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/LL:L/L:L/L:L/LL:L/L:LLL' appears in 1 row(s) (0.0%) vs dominant pattern 'LLLL_LD:LLLL:D.D/LL:L/LL:L/LL:L/LL:L/L:L/L:L/L:L/L:L' (51899 row(s)) (suppressed: person_name column)",
+      "affected_rows": 1,
+      "sample_values": [
+        "CVSS_V4:CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/AU:Y/R:U/V:D/RE:M/U:Red"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "severity",
+      "check": "pattern_consistency",
+      "message": "16 additional inconsistent pattern(s) detected (showing top 5)",
+      "affected_rows": 0,
+      "sample_values": [],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "severity",
+      "check": "drift_detection",
+      "message": "Categorical drift detected in 'severity': 556 new categor(y/ies) appear in the second half of the data that are absent from the first half: ['CVSS_V3:CVSS:3.0/AV:A/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:H', 'CVSS_V3:CVSS:3.0/AV:A/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N', 'CVSS_V3:CVSS:3.0/AV:A/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N', 'CVSS_V3:CVSS:3.0/AV:A/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N', 'CVSS_V3:CVSS:3.0/AV:A/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N', 'CVSS_V3:CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N', 'CVSS_V3:CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L', 'CVSS_V3:CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N', 'CVSS_V3:CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L', 'CVSS_V3:CVSS:3.0/AV:A/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N']",
+      "affected_rows": 736,
+      "sample_values": [
+        "CVSS_V3:CVSS:3.0/AV:A/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:H",
+        "CVSS_V3:CVSS:3.0/AV:A/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
+        "CVSS_V3:CVSS:3.0/AV:A/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+        "CVSS_V3:CVSS:3.0/AV:A/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N",
+        "CVSS_V3:CVSS:3.0/AV:A/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+      ],
+      "suggestion": "Verify whether new categories are expected or indicate schema/labelling drift"
+    },
+    {
+      "severity": "INFO",
+      "column": "source",
+      "check": "nullability",
+      "message": "0 nulls across 100000 rows \u2014 likely required",
+      "affected_rows": 0,
+      "sample_values": [],
+      "suggestion": null
+    },
+    {
+      "severity": "INFO",
+      "column": "source",
+      "check": "cardinality",
+      "message": "Low cardinality: 15 unique value(s) across 100000 rows \u2014 consider using an enum type",
+      "affected_rows": 100000,
+      "sample_values": [
+        "ghsa-reviewed",
+        "ghsa-unreviewed",
+        "go-vulndb",
+        "osv-Alpine",
+        "osv-Debian"
+      ],
+      "suggestion": "Define an enum or categorical constraint for this column"
+    },
+    {
+      "severity": "INFO",
+      "column": "source",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLLLLLL' appears in 118 row(s) (0.1%) vs dominant pattern 'LLLL-LLLLLLLLLL' (33966 row(s)) (suppressed: person_name column)",
+      "affected_rows": 118,
+      "sample_values": [
+        "rustsec",
+        "rustsec",
+        "rustsec",
+        "rustsec",
+        "rustsec"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "source",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLL-LLLLLL.LL' appears in 343 row(s) (0.3%) vs dominant pattern 'LLLL-LLLLLLLLLL' (33966 row(s)) (suppressed: person_name column)",
+      "affected_rows": 343,
+      "sample_values": [
+        "osv-crates.io",
+        "osv-crates.io",
+        "osv-crates.io",
+        "osv-crates.io",
+        "osv-crates.io"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "source",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLLL' appears in 350 row(s) (0.4%) vs dominant pattern 'LLLL-LLLLLLLLLL' (33966 row(s)) (suppressed: person_name column)",
+      "affected_rows": 350,
+      "sample_values": [
+        "pypa",
+        "pypa",
+        "pypa",
+        "pypa",
+        "pypa"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "source",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LLL-LLLLLLLL' appears in 359 row(s) (0.4%) vs dominant pattern 'LLLL-LLLLLLLLLL' (33966 row(s)) (suppressed: person_name column)",
+      "affected_rows": 359,
+      "sample_values": [
+        "osv-RubyGems",
+        "osv-RubyGems",
+        "osv-RubyGems",
+        "osv-RubyGems",
+        "osv-RubyGems"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "source",
+      "check": "pattern_consistency",
+      "message": "Inconsistent pattern detected: 'LL-LLLLLL' appears in 502 row(s) (0.5%) vs dominant pattern 'LLLL-LLLLLLLLLL' (33966 row(s)) (suppressed: person_name column)",
+      "affected_rows": 502,
+      "sample_values": [
+        "go-vulndb",
+        "go-vulndb",
+        "go-vulndb",
+        "go-vulndb",
+        "go-vulndb"
+      ],
+      "suggestion": "Standardize values to a single format/pattern"
+    },
+    {
+      "severity": "INFO",
+      "column": "source",
+      "check": "pattern_consistency",
+      "message": "7 additional inconsistent pattern(s) detected (showing top 5)",
+      "affected_rows": 0,
+      "sample_values": [],
+      "suggestion": "Standardize values to a single format/pattern"
+    }
+  ]
+}
