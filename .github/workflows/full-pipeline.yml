@@ -4,7 +4,7 @@ name: Full vuln-reconciliation pipeline
 # 6M+ rows, runs goldencheck → goldenflow → goldenmatch end-to-end, and
 # uploads the JSON outputs as workflow artifacts.
 #
-# Target runner: gm-bench-64c (64 vCPU / 256 GB RAM / 2 TB disk).
+# Target runner: large-new-64GB (16 vCPU / 64 GB RAM / 600 GB SSD).
 
 on:
   workflow_dispatch:
@@ -17,7 +17,7 @@ on:
 
 jobs:
   pipeline:
-    runs-on: gm-bench-64c
+    runs-on: large-new-64GB
     timeout-minutes: 120
     env:
       SKIP_CVELIST: ${{ inputs.skip_cvelist && '1' || '' }}
