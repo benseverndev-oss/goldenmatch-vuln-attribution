@@ -1,52 +1,113 @@
 [
   {
-    "root_id": "CVE-2026-34941",
+    "root_id": "CVE-2021-0489",
     "members": [
-      "CVE-2026-34941",
-      "CVE-2026-34942",
-      "CVE-2026-34943",
-      "CVE-2026-34944",
-      "CVE-2026-34945",
-      "CVE-2026-34946",
-      "CVE-2026-34971",
-      "CVE-2026-34983",
-      "CVE-2026-34987",
-      "CVE-2026-34988",
-      "CVE-2026-35186",
-      "CVE-2026-35195",
-      "GHSA-394W-HWHG-8VGM",
-      "GHSA-6WGR-89RJ-399P",
-      "GHSA-F984-PCP8-V2P7",
-      "GHSA-HFR4-7C6C-48W2",
-      "GHSA-HX6P-XPX3-JVVV",
-      "GHSA-JHXM-H53P-JM7W",
-      "GHSA-JXHV-7H78-9775",
-      "GHSA-M758-WJHJ-P3JQ",
-      "GHSA-M9W2-8782-2946",
-      "GHSA-Q49F-XG75-M9XW",
-      "GHSA-QQFJ-4VCM-26HV",
-      "GHSA-XX5W-CVP6-JV83",
-      "RUSTSEC-0000-0000"
+      "A-183459078",
+      "A-183459083",
+      "A-183461315",
+      "A-183461317",
+      "A-183461318",
+      "A-183461320",
+      "A-183461321",
+      "A-183464866",
+      "A-183464868",
+      "A-183467912",
+      "A-185193929",
+      "A-185193931",
+      "A-185193932",
+      "A-185195264",
+      "A-185195266",
+      "A-185195268",
+      "A-185195272",
+      "A-185196175",
+      "A-185196177",
+      "ASB-A-183459078",
+      "ASB-A-183459083",
+      "ASB-A-183461315",
+      "ASB-A-183461317",
+      "ASB-A-183461318",
+      "ASB-A-183461320",
+      "ASB-A-183461321",
+      "ASB-A-183464866",
+      "ASB-A-183464868",
+      "ASB-A-183467912",
+      "ASB-A-185193929",
+      "ASB-A-185193931",
+      "ASB-A-185193932",
+      "ASB-A-185195264",
+      "ASB-A-185195266",
+      "ASB-A-185195268",
+      "ASB-A-185195272",
+      "ASB-A-185196175",
+      "ASB-A-185196177",
+      "CVE-2021-0489",
+      "CVE-2021-0490",
+      "CVE-2021-0491",
+      "CVE-2021-0492",
+      "CVE-2021-0493",
+      "CVE-2021-0494",
+      "CVE-2021-0495",
+      "CVE-2021-0496",
+      "CVE-2021-0497",
+      "CVE-2021-0498",
+      "CVE-2021-0525",
+      "CVE-2021-0526",
+      "CVE-2021-0527",
+      "CVE-2021-0528",
+      "CVE-2021-0529",
+      "CVE-2021-0530",
+      "CVE-2021-0531",
+      "CVE-2021-0532",
+      "CVE-2021-0533",
+      "GHSA-25PG-VQ6C-7VFW",
+      "GHSA-26VP-298R-FJ8F",
+      "GHSA-435G-QXVX-3XC9",
+      "GHSA-5C3G-M9WM-47J8",
+      "GHSA-5GR3-HCQ9-FP58",
+      "GHSA-5PC4-M6CR-G3JJ",
+      "GHSA-65W7-V7RW-7GMM",
+      "GHSA-6RWQ-388V-8MMP",
+      "GHSA-CGMC-8G68-RVHG",
+      "GHSA-FW8F-W2G8-Q74W",
+      "GHSA-HC9M-QX5W-GGWV",
+      "GHSA-M4MC-3J5V-879X",
+      "GHSA-MJC4-QPGX-FG5C",
+      "GHSA-QFQG-FWPJ-F3C6",
+      "GHSA-QG5V-4JVF-974X",
+      "GHSA-QMWM-89J5-97F5",
+      "GHSA-V28H-RMRC-PJVQ",
+      "GHSA-VQF9-25FJ-94V3",
+      "GHSA-W5MW-4W5V-8MGJ",
+      "M-ALPS05403499"
     ],
-    "n_members": 25,
+    "n_members": 77,
     "sources": [
-      "rustsec"
+      "cve-project",
+      "epss",
+      "ghsa-unreviewed",
+      "osv-Android"
     ],
-    "n_sources": 1,
+    "n_sources": 4,
     "ecosystems": [
-      "crates.io"
+      "Android"
     ],
     "n_ecosystems": 1,
-    "purls": [
-      "pkg:cargo/wasmtime"
-    ],
-    "n_purls": 1,
+    "purls": [],
+    "n_purls": 0,
     "packages": [
-      "wasmtime"
+      ":unknown:",
+      "n/a:Android"
     ],
-    "earliest_published": "2026-04-09",
-    "latest_modified": "2026-04-09",
-    "severities": []
+    "earliest_published": "2021-05-01T00:00:00Z",
+    "latest_modified": "2026-05-15T15:01:37.959123Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "HIGH"
+    ],
+    "epss_score": 0.00019,
+    "epss_percentile": 0.05312,
+    "kev": false,
+    "kev_ransomware": ""
   },
   {
     "root_id": "CVE-2023-44487",
@@ -68,24 +129,77 @@
       "BIT-SOLR-2023-44487",
       "BIT-TOMCAT-2023-44487",
       "BIT-VARNISH-2023-44487",
+      "CGA-4MMR-QWXR-F88G",
+      "CGA-5JP5-95P2-JW83",
+      "CGA-5V4R-558C-254R",
+      "CGA-9W4R-68HH-64J5",
+      "CGA-M49H-WJP5-J434",
+      "CGA-MP43-Q6P3-96V2",
       "CVE-2023-44487",
-      "GHSA-QPPJ-FM5R-HXR3"
+      "GHSA-M425-MQ94-257G",
+      "GHSA-QPPJ-FM5R-HXR3",
+      "GO-2023-2153"
     ],
-    "n_members": 19,
+    "n_members": 27,
     "sources": [
+      "cisa-kev",
+      "cve-project",
+      "epss",
       "ghsa-reviewed",
+      "go-vulndb",
+      "osv-Bitnami",
+      "osv-Chainguard",
+      "osv-GIT",
       "osv-Go",
-      "osv-Maven"
+      "osv-Maven",
+      "osv-SwiftURL",
+      "osv-Wolfi"
     ],
-    "n_sources": 3,
+    "n_sources": 12,
     "ecosystems": [
+      "Bitnami",
+      "Chainguard",
       "Go",
       "Maven",
-      "SwiftURL"
+      "SwiftURL",
+      "Wolfi"
     ],
-    "n_ecosystems": 3,
+    "n_ecosystems": 6,
     "purls": [
+      "pkg:apk/chainguard/cluster-autoscaler-1.26",
+      "pkg:apk/chainguard/cluster-autoscaler-1.26-compat",
+      "pkg:apk/chainguard/cluster-autoscaler-1.27",
+      "pkg:apk/chainguard/cluster-autoscaler-1.27-compat",
+      "pkg:apk/chainguard/cluster-autoscaler-1.28",
+      "pkg:apk/chainguard/cluster-autoscaler-1.28-compat",
+      "pkg:apk/chainguard/k3d",
+      "pkg:apk/chainguard/keda-2.8",
+      "pkg:apk/chainguard/keda-2.9",
+      "pkg:apk/wolfi/cluster-autoscaler-1.26",
+      "pkg:apk/wolfi/cluster-autoscaler-1.26-compat",
+      "pkg:apk/wolfi/cluster-autoscaler-1.27",
+      "pkg:apk/wolfi/cluster-autoscaler-1.27-compat",
+      "pkg:apk/wolfi/cluster-autoscaler-1.28",
+      "pkg:apk/wolfi/cluster-autoscaler-1.28-compat",
+      "pkg:bitnami/apisix",
+      "pkg:bitnami/aspnet-core",
+      "pkg:bitnami/contour",
+      "pkg:bitnami/dotnet",
+      "pkg:bitnami/dotnet-sdk",
+      "pkg:bitnami/envoy",
+      "pkg:bitnami/golang",
+      "pkg:bitnami/jenkins",
+      "pkg:bitnami/kong",
+      "pkg:bitnami/nginx",
+      "pkg:bitnami/nginx-gateway",
+      "pkg:bitnami/nginx-ingress-controller",
+      "pkg:bitnami/node",
+      "pkg:bitnami/node-min",
+      "pkg:bitnami/solr",
+      "pkg:bitnami/tomcat",
+      "pkg:bitnami/varnish",
       "pkg:golang/golang.org/x/net",
+      "pkg:golang/google.golang.org/grpc",
       "pkg:maven/com.typesafe.akka/akka-http-core",
       "pkg:maven/com.typesafe.akka/akka-http-core_2.11",
       "pkg:maven/com.typesafe.akka/akka-http-core_2.12",
@@ -98,24 +212,297 @@
       "pkg:maven/org.eclipse.jetty.http2/jetty-http2-server",
       "pkg:swift/github.com/apple/swift-nio-http2"
     ],
-    "n_purls": 12,
+    "n_purls": 45,
     "packages": [
-      "com.typesafe.akka:akka-http-core",
-      "com.typesafe.akka:akka-http-core_2.11",
-      "com.typesafe.akka:akka-http-core_2.12",
-      "com.typesafe.akka:akka-http-core_2.13",
-      "github.com/apple/swift-nio-http2",
-      "golang.org/x/net",
-      "org.apache.tomcat.embed:tomcat-embed-core",
-      "org.apache.tomcat:tomcat-coyote",
-      "org.eclipse.jetty.http2:http2-common",
-      "org.eclipse.jetty.http2:http2-server"
+      "IETF:HTTP/2",
+      "apisix",
+      "aspnet-core",
+      "cluster-autoscaler-1.26",
+      "cluster-autoscaler-1.26-compat",
+      "cluster-autoscaler-1.27",
+      "cluster-autoscaler-1.27-compat",
+      "cluster-autoscaler-1.28",
+      "cluster-autoscaler-1.28-compat",
+      "com.typesafe.akka:akka-http-core"
     ],
-    "earliest_published": "2023-10-10T21:28:24Z",
-    "latest_modified": "2026-02-04T04:29:21.661957Z",
+    "earliest_published": "2023-10-10",
+    "latest_modified": "2026-05-13T15:34:13.277453Z",
     "severities": [
-      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L/E:H"
-    ]
+      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L/E:H",
+      "High",
+      "kev:ransomware=Unknown"
+    ],
+    "epss_score": 0.94394,
+    "epss_percentile": 0.99974,
+    "kev": true,
+    "kev_ransomware": "Unknown"
+  },
+  {
+    "root_id": "CVE-2020-0251",
+    "members": [
+      "A-152225183",
+      "A-152236803",
+      "A-152647365",
+      "A-152647626",
+      "A-152647751",
+      "ALPS05098839",
+      "ASB-A-152225183",
+      "ASB-A-152236803",
+      "ASB-A-152647365",
+      "ASB-A-152647626",
+      "ASB-A-152647751",
+      "CVE-2020-0251",
+      "CVE-2020-0252",
+      "CVE-2020-0253",
+      "CVE-2020-0254",
+      "CVE-2020-0260",
+      "GHSA-4732-GXVM-37J5",
+      "GHSA-G3FQ-76V3-JCJ7",
+      "GHSA-PG9M-62GC-VQQ9",
+      "GHSA-WXRG-WM3P-QGWQ",
+      "GHSA-XVQ7-6CJQ-GWH7"
+    ],
+    "n_members": 21,
+    "sources": [
+      "cve-project",
+      "epss",
+      "ghsa-unreviewed",
+      "osv-Android"
+    ],
+    "n_sources": 4,
+    "ecosystems": [
+      "Android"
+    ],
+    "n_ecosystems": 1,
+    "purls": [],
+    "n_purls": 0,
+    "packages": [
+      ":unknown:",
+      "n/a:Android"
+    ],
+    "earliest_published": "2020-08-01T00:00:00Z",
+    "latest_modified": "2026-05-15T15:01:37.959123Z",
+    "severities": [
+      "HIGH",
+      "MODERATE"
+    ],
+    "epss_score": 0.00199,
+    "epss_percentile": 0.41794,
+    "kev": false,
+    "kev_ransomware": ""
+  },
+  {
+    "root_id": "CVE-2022-20387",
+    "members": [
+      "A-238227323",
+      "A-238227324",
+      "A-238257000",
+      "A-238257002",
+      "A-238257004",
+      "ASB-A-238227323",
+      "ASB-A-238227324",
+      "ASB-A-238257000",
+      "ASB-A-238257002",
+      "ASB-A-238257004",
+      "CVE-2022-20387",
+      "CVE-2022-20388",
+      "CVE-2022-20389",
+      "CVE-2022-20390",
+      "CVE-2022-20391",
+      "GHSA-5278-8MM6-HXRV",
+      "GHSA-8F79-J5CH-6F4V",
+      "GHSA-C7CX-2C29-C54M",
+      "GHSA-JGHQ-PMQ2-8GQ7",
+      "GHSA-P6VJ-8J24-8HV4",
+      "U-1872920"
+    ],
+    "n_members": 21,
+    "sources": [
+      "cve-project",
+      "epss",
+      "ghsa-unreviewed",
+      "osv-Android"
+    ],
+    "n_sources": 4,
+    "ecosystems": [
+      "Android"
+    ],
+    "n_ecosystems": 1,
+    "purls": [],
+    "n_purls": 0,
+    "packages": [
+      ":unknown:",
+      "n/a:Android"
+    ],
+    "earliest_published": "2022-09-01T00:00:00Z",
+    "latest_modified": "2026-05-15T15:01:37.959123Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    ],
+    "epss_score": 0.00151,
+    "epss_percentile": 0.35264,
+    "kev": false,
+    "kev_ransomware": ""
+  },
+  {
+    "root_id": "CVE-2022-20430",
+    "members": [
+      "A-242221233",
+      "A-242221238",
+      "A-242221899",
+      "A-242221901",
+      "A-242244028",
+      "ASB-A-242221233",
+      "ASB-A-242221238",
+      "ASB-A-242221899",
+      "ASB-A-242221901",
+      "ASB-A-242244028",
+      "CVE-2022-20430",
+      "CVE-2022-20431",
+      "CVE-2022-20432",
+      "CVE-2022-20433",
+      "CVE-2022-20434",
+      "GHSA-22CV-P6M9-W66J",
+      "GHSA-F6RQ-VVXP-669R",
+      "GHSA-HCRP-WVV9-C3PJ",
+      "GHSA-MJ97-HR52-9XX5",
+      "GHSA-X9F9-FX28-38JM",
+      "U-1882896"
+    ],
+    "n_members": 21,
+    "sources": [
+      "cve-project",
+      "epss",
+      "ghsa-unreviewed",
+      "osv-Android"
+    ],
+    "n_sources": 4,
+    "ecosystems": [
+      "Android"
+    ],
+    "n_ecosystems": 1,
+    "purls": [],
+    "n_purls": 0,
+    "packages": [
+      ":unknown:",
+      "n/a:Android"
+    ],
+    "earliest_published": "2022-10-01T00:00:00Z",
+    "latest_modified": "2026-05-15T15:01:37.959123Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    ],
+    "epss_score": 0.00014,
+    "epss_percentile": 0.02809,
+    "kev": false,
+    "kev_ransomware": ""
+  },
+  {
+    "root_id": "CVE-2022-44434",
+    "members": [
+      "A-258759189",
+      "A-258759192",
+      "A-258760518",
+      "A-258760519",
+      "A-258760781",
+      "ASB-A-258759189",
+      "ASB-A-258759192",
+      "ASB-A-258760518",
+      "ASB-A-258760519",
+      "ASB-A-258760781",
+      "CVE-2022-44434",
+      "CVE-2022-44435",
+      "CVE-2022-44436",
+      "CVE-2022-44437",
+      "CVE-2022-44438",
+      "GHSA-3F49-WVQ8-QPC4",
+      "GHSA-4CQ6-6G8F-H68R",
+      "GHSA-P26C-JRQW-9C3H",
+      "GHSA-WRMR-HCRR-9Q2V",
+      "GHSA-XXCQ-PHQ6-GFR3",
+      "U-2064988"
+    ],
+    "n_members": 21,
+    "sources": [
+      "cve-project",
+      "epss",
+      "ghsa-unreviewed",
+      "osv-Android"
+    ],
+    "n_sources": 4,
+    "ecosystems": [
+      "Android"
+    ],
+    "n_ecosystems": 1,
+    "purls": [],
+    "n_purls": 0,
+    "packages": [
+      ":unknown:",
+      "Unisoc (Shanghai) Technologies Co., Ltd.:SC9863A/SC9832E/SC7731E/T610/T310/T606/T760/T610/T618/T606/T612/T616/T760/T770/T820/S8000"
+    ],
+    "earliest_published": "2023-01-01T00:00:00Z",
+    "latest_modified": "2026-05-15T15:01:37.959123Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    ],
+    "epss_score": 0.00034,
+    "epss_percentile": 0.09988,
+    "kev": false,
+    "kev_ransomware": ""
+  },
+  {
+    "root_id": "CVE-2020-24588",
+    "members": [
+      "2861800",
+      "2866467",
+      "2867578",
+      "2867994",
+      "2868616",
+      "2877094",
+      "2879013",
+      "2883162",
+      "2886422",
+      "2888466",
+      "2890623",
+      "2896070",
+      "2896369",
+      "2943860",
+      "A-175626624",
+      "ASB-A-175626624",
+      "CVE-2020-24588",
+      "GHSA-QRGR-QFR9-4XFH"
+    ],
+    "n_members": 18,
+    "sources": [
+      "cve-project",
+      "epss",
+      "ghsa-unreviewed",
+      "osv-Android",
+      "osv-GIT"
+    ],
+    "n_sources": 5,
+    "ecosystems": [
+      "Android"
+    ],
+    "n_ecosystems": 1,
+    "purls": [],
+    "n_purls": 0,
+    "packages": [
+      ":linux_kernel:Qualcomm",
+      "n/a:n/a",
+      "oss/wigig-utils",
+      "platform/vendor/qcom-opensource/wlan/prima"
+    ],
+    "earliest_published": "2021-05-11T00:00:00.000Z",
+    "latest_modified": "2026-05-15T15:01:37.959123Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:A/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+    ],
+    "epss_score": 0.00311,
+    "epss_percentile": 0.54425,
+    "kev": false,
+    "kev_ransomware": ""
   },
   {
     "root_id": "CVE-2020-35866",
@@ -140,11 +527,14 @@
     ],
     "n_members": 17,
     "sources": [
+      "cve-project",
+      "epss",
       "ghsa-reviewed",
+      "osv-GIT",
       "osv-crates.io",
       "rustsec"
     ],
-    "n_sources": 3,
+    "n_sources": 6,
     "ecosystems": [
       "crates.io"
     ],
@@ -154,14 +544,318 @@
     ],
     "n_purls": 1,
     "packages": [
+      "n/a:n/a",
       "rusqlite"
     ],
     "earliest_published": "2020-04-23",
-    "latest_modified": "2024-03-15T00:05:20.033730Z",
+    "latest_modified": "2026-04-10T04:27:04.791465Z",
     "severities": [
       "CVSS_V3:CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
       "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
-    ]
+    ],
+    "epss_score": 0.00509,
+    "epss_percentile": 0.66526,
+    "kev": false,
+    "kev_ransomware": ""
+  },
+  {
+    "root_id": "CVE-2022-20437",
+    "members": [
+      "A-242258929",
+      "A-242259918",
+      "A-242259920",
+      "A-242266172",
+      "ASB-A-242258929",
+      "ASB-A-242259918",
+      "ASB-A-242259920",
+      "ASB-A-242266172",
+      "CVE-2022-20437",
+      "CVE-2022-20438",
+      "CVE-2022-20439",
+      "CVE-2022-20440",
+      "GHSA-2PPJ-VXW6-593J",
+      "GHSA-9X39-XF9P-4WRQ",
+      "GHSA-CJMJ-78W3-V69V",
+      "GHSA-CXHX-FHJ3-7WWR",
+      "U-1916307"
+    ],
+    "n_members": 17,
+    "sources": [
+      "cve-project",
+      "epss",
+      "ghsa-unreviewed",
+      "osv-Android"
+    ],
+    "n_sources": 4,
+    "ecosystems": [
+      "Android"
+    ],
+    "n_ecosystems": 1,
+    "purls": [],
+    "n_purls": 0,
+    "packages": [
+      ":unknown:",
+      "n/a:Android"
+    ],
+    "earliest_published": "2022-10-01T00:00:00Z",
+    "latest_modified": "2026-05-15T15:01:37.959123Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    ],
+    "epss_score": 0.00019,
+    "epss_percentile": 0.05121,
+    "kev": false,
+    "kev_ransomware": ""
+  },
+  {
+    "root_id": "CVE-2022-38690",
+    "members": [
+      "A-244109033",
+      "A-252950986",
+      "A-252951342",
+      "A-300376910",
+      "ASB-A-244109033",
+      "ASB-A-252950986",
+      "ASB-A-252951342",
+      "ASB-A-300376910",
+      "CVE-2022-38690",
+      "CVE-2022-39131",
+      "CVE-2022-39132",
+      "CVE-2022-48456",
+      "GHSA-34XG-89CF-QR7J",
+      "GHSA-99VR-7HVG-69WF",
+      "GHSA-PM6V-H84R-MX24",
+      "GHSA-Q5HC-GPJW-FPVP",
+      "U-1914157"
+    ],
+    "n_members": 17,
+    "sources": [
+      "cve-project",
+      "epss",
+      "ghsa-unreviewed",
+      "osv-Android"
+    ],
+    "n_sources": 4,
+    "ecosystems": [
+      "Android"
+    ],
+    "n_ecosystems": 1,
+    "purls": [],
+    "n_purls": 0,
+    "packages": [
+      ":unknown:",
+      "Unisoc (Shanghai) Technologies Co., Ltd.:SC7731E/SC9832E/SC9863A/T310/T606/T612/T616/T610/T618/T760/T770/T820/S8000",
+      "Unisoc (Shanghai) Technologies Co., Ltd.:SC9863A/SC9832E/SC7731E/T610/T310/T606/T760/T610/T618/T606/T612/T616/T760/T770/T820/S8000"
+    ],
+    "earliest_published": "2022-10-14T00:00:00.000Z",
+    "latest_modified": "2026-05-15T15:01:37.959123Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
+      "CVSS_V3:CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    ],
+    "epss_score": 0.00039,
+    "epss_percentile": 0.11804,
+    "kev": false,
+    "kev_ransomware": ""
+  },
+  {
+    "root_id": "CVE-2022-38672",
+    "members": [
+      "A-244684957",
+      "A-246482122",
+      "A-252943954",
+      "A-252950982",
+      "ASB-A-244684957",
+      "ASB-A-246482122",
+      "ASB-A-252943954",
+      "ASB-A-252950982",
+      "CVE-2022-38672",
+      "CVE-2022-38673",
+      "CVE-2022-39129",
+      "CVE-2022-39130",
+      "GHSA-3P26-6F92-V9VG",
+      "GHSA-42CV-6JJ9-78P6",
+      "GHSA-G2XR-62JM-9Q24",
+      "GHSA-JCG7-M437-6G35",
+      "U-1957128"
+    ],
+    "n_members": 17,
+    "sources": [
+      "cve-project",
+      "epss",
+      "ghsa-unreviewed",
+      "osv-Android"
+    ],
+    "n_sources": 4,
+    "ecosystems": [
+      "Android"
+    ],
+    "n_ecosystems": 1,
+    "purls": [],
+    "n_purls": 0,
+    "packages": [
+      ":unknown:",
+      "Unisoc (Shanghai) Technologies Co., Ltd.:SC9863A/SC9832E/SC7731E/T610/T310/T606/T760/T610/T618/T606/T612/T616/T760/T770/T820/S8000"
+    ],
+    "earliest_published": "2022-10-14T00:00:00.000Z",
+    "latest_modified": "2026-05-15T15:01:37.959123Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    ],
+    "epss_score": 0.00016,
+    "epss_percentile": 0.0357,
+    "kev": false,
+    "kev_ransomware": ""
+  },
+  {
+    "root_id": "CVE-2022-42755",
+    "members": [
+      "A-253957344",
+      "A-258741360",
+      "A-258743555",
+      "A-258743558",
+      "ASB-A-253957344",
+      "ASB-A-258741360",
+      "ASB-A-258743555",
+      "ASB-A-258743558",
+      "CVE-2022-42755",
+      "CVE-2022-44429",
+      "CVE-2022-44431",
+      "CVE-2022-44432",
+      "GHSA-52RJ-7M6G-JF9J",
+      "GHSA-HF6V-G8XQ-QPVM",
+      "GHSA-PH5R-6MWC-FMF6",
+      "GHSA-V5MR-588J-H899",
+      "U-1981296"
+    ],
+    "n_members": 17,
+    "sources": [
+      "cve-project",
+      "epss",
+      "ghsa-unreviewed",
+      "osv-Android"
+    ],
+    "n_sources": 4,
+    "ecosystems": [
+      "Android"
+    ],
+    "n_ecosystems": 1,
+    "purls": [],
+    "n_purls": 0,
+    "packages": [
+      ":unknown:",
+      "Unisoc (Shanghai) Technologies Co., Ltd.:SC9863A/SC9832E/SC7731E/T610/T310/T606/T760/T610/T618/T606/T612/T616/T760/T770/T820/S8000",
+      "Unisoc (Shanghai) Technologies Co., Ltd.:SC9863A/SC9832E/SC7731E/T610/T310/T606/T760/T610/T618/T606/T612/T616/T760/T770/T820/S8023"
+    ],
+    "earliest_published": "2022-12-01T00:00:00Z",
+    "latest_modified": "2026-05-15T15:01:37.959123Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    ],
+    "epss_score": 0.00069,
+    "epss_percentile": 0.21091,
+    "kev": false,
+    "kev_ransomware": ""
+  },
+  {
+    "root_id": "CVE-2024-20090",
+    "members": [
+      "A-359692902",
+      "A-359699091",
+      "A-359699094",
+      "A-359699096",
+      "ASB-A-359692902",
+      "ASB-A-359699091",
+      "ASB-A-359699094",
+      "ASB-A-359699096",
+      "CVE-2024-20090",
+      "CVE-2024-20091",
+      "CVE-2024-20092",
+      "CVE-2024-20093",
+      "GHSA-76Q6-3R42-2MJ6",
+      "GHSA-9XJX-CFJM-M3PQ",
+      "GHSA-R9JM-JR7P-H85C",
+      "GHSA-RW58-478H-633W",
+      "M-ALPS09028313"
+    ],
+    "n_members": 17,
+    "sources": [
+      "cve-project",
+      "epss",
+      "ghsa-unreviewed",
+      "osv-Android"
+    ],
+    "n_sources": 4,
+    "ecosystems": [
+      "Android"
+    ],
+    "n_ecosystems": 1,
+    "purls": [],
+    "n_purls": 0,
+    "packages": [
+      ":unknown:",
+      "MediaTek, Inc.:MT6761, MT6765, MT6768, MT6779, MT6785, MT6853, MT6873, MT6885, MT8385, MT8666, MT8667, MT8766, MT8768, MT8781, MT8788, MT8789"
+    ],
+    "earliest_published": "2024-10-01T00:00:00Z",
+    "latest_modified": "2026-05-15T15:01:37.959123Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+      "CVSS_V3:CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N",
+      "CVSS_V3:CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    ],
+    "epss_score": 0.00056,
+    "epss_percentile": 0.17449,
+    "kev": false,
+    "kev_ransomware": ""
+  },
+  {
+    "root_id": "CVE-2026-20425",
+    "members": [
+      "A-473321948",
+      "A-473379718",
+      "A-473385373",
+      "A-473385374",
+      "ASB-A-473321948",
+      "ASB-A-473379718",
+      "ASB-A-473385373",
+      "ASB-A-473385374",
+      "CVE-2026-20425",
+      "CVE-2026-20426",
+      "CVE-2026-20427",
+      "CVE-2026-20428",
+      "GHSA-3CGC-4CR5-M995",
+      "GHSA-FM57-5C89-J982",
+      "GHSA-JWQ5-VXVG-G6RP",
+      "GHSA-VQ5P-P2GC-WRVP",
+      "M-ALPS10320471"
+    ],
+    "n_members": 17,
+    "sources": [
+      "cve-project",
+      "epss",
+      "ghsa-unreviewed",
+      "osv-Android"
+    ],
+    "n_sources": 4,
+    "ecosystems": [
+      "Android"
+    ],
+    "n_ecosystems": 1,
+    "purls": [],
+    "n_purls": 0,
+    "packages": [
+      ":unknown:",
+      "MediaTek, Inc.:MediaTek chipset"
+    ],
+    "earliest_published": "2026-03-01T00:00:00Z",
+    "latest_modified": "2026-05-15T15:01:37.959123Z",
+    "severities": [
+      "CVSS_V3:CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    ],
+    "epss_score": 6e-05,
+    "epss_percentile": 0.00375,
+    "kev": false,
+    "kev_ransomware": ""
   },
   {
     "root_id": "CVE-2021-45713",
@@ -185,11 +879,14 @@
     ],
     "n_members": 16,
     "sources": [
+      "cve-project",
+      "epss",
       "ghsa-reviewed",
+      "osv-GIT",
       "osv-crates.io",
       "rustsec"
     ],
-    "n_sources": 3,
+    "n_sources": 6,
     "ecosystems": [
       "crates.io"
     ],
@@ -199,595 +896,19 @@
     ],
     "n_purls": 1,
     "packages": [
+      "n/a:n/a",
       "rusqlite"
     ],
     "earliest_published": "2021-12-07",
-    "latest_modified": "2024-03-15T00:05:18.748750Z",
+    "latest_modified": "2026-03-14T11:18:08.078484Z",
     "severities": [
       "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
       "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
       "HIGH"
-    ]
-  },
-  {
-    "root_id": "CVE-2020-25791",
-    "members": [
-      "CVE-2020-25791",
-      "CVE-2020-25792",
-      "CVE-2020-25793",
-      "CVE-2020-25794",
-      "CVE-2020-25795",
-      "CVE-2020-25796",
-      "GHSA-64GV-QG2V-VXV6",
-      "GHSA-9P9M-9XWW-QJCX",
-      "GHSA-FQPX-CQ8X-9WP4",
-      "GHSA-MP6F-P9GP-VPJ9",
-      "GHSA-RFGG-VCCR-M46M",
-      "GHSA-X54V-QXXR-93QC",
-      "RUSTSEC-2020-0041"
     ],
-    "n_members": 13,
-    "sources": [
-      "ghsa-reviewed",
-      "osv-crates.io",
-      "rustsec"
-    ],
-    "n_sources": 3,
-    "ecosystems": [
-      "crates.io"
-    ],
-    "n_ecosystems": 1,
-    "purls": [
-      "pkg:cargo/sized-chunks"
-    ],
-    "n_purls": 1,
-    "packages": [
-      "sized-chunks"
-    ],
-    "earliest_published": "2020-09-06",
-    "latest_modified": "2024-04-22T18:52:15Z",
-    "severities": [
-      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
-    ]
-  },
-  {
-    "root_id": "CVE-2020-36846",
-    "members": [
-      "BIT-BROTLI-2020-8927",
-      "BIT-DOTNET-2020-8927",
-      "BIT-DOTNET-SDK-2020-8927",
-      "BIT-POWERSHELL-2020-8927",
-      "CVE-2020-36846",
-      "CVE-2020-8927",
-      "GHSA-44QX-V2F9-7RQ9",
-      "GHSA-5V8V-66V8-MWM7",
-      "GO-2025-3726",
-      "PYSEC-2020-29",
-      "RUSTSEC-2021-0131",
-      "RUSTSEC-2021-0132"
-    ],
-    "n_members": 12,
-    "sources": [
-      "ghsa-reviewed",
-      "ghsa-unreviewed",
-      "go-vulndb",
-      "osv-Go",
-      "osv-NuGet",
-      "osv-PyPI",
-      "osv-crates.io",
-      "pypa",
-      "rustsec"
-    ],
-    "n_sources": 9,
-    "ecosystems": [
-      "Go",
-      "NuGet",
-      "PyPI",
-      "crates.io"
-    ],
-    "n_ecosystems": 4,
-    "purls": [
-      "pkg:cargo/brotli-sys",
-      "pkg:cargo/compu-brotli-sys",
-      "pkg:golang/github.com/google/brotli",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-arm",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-x86",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.browser-wasm",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-arm",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-x86",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.browser-wasm",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.ios-arm",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.ios-arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.iossimulator-arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.iossimulator-x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.iossimulator-x86",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.maccatalyst-arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.maccatalyst-x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.tvos-arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.tvossimulator-arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.tvossimulator-x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-arm",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-arm.Msi.x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-arm64.Msi.x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-x64.Msi.x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-x86",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.android-x86.Msi.x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.browser-wasm",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.AOT.win-x64.Cross.browser-wasm.Msi.x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.LLVM.AOT.linux-arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.LLVM.AOT.linux-x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.LLVM.AOT.osx-x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.LLVM.linux-arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.LLVM.linux-x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.LLVM.osx-x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-arm",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-arm.Msi.arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-arm.Msi.x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-arm.Msi.x86",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-arm64.Msi.arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-arm64.Msi.x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-arm64.Msi.x86",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-x64.Msi.arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-x64.Msi.x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-x64.Msi.x86",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-x86",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-x86.Msi.arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-x86.Msi.x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.android-x86.Msi.x86",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.browser-wasm.Msi.arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.browser-wasm.Msi.x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.browser-wasm.Msi.x86",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.ios-arm",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.ios-arm.Msi.arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.ios-arm.Msi.x86",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.ios-arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.ios-arm64.Msi.arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.ios-arm64.Msi.x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.ios-arm64.Msi.x86",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-arm64.Msi.arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-arm64.Msi.x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-arm64.Msi.x86",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-x64.Msi.arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-x64.Msi.x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-x64.Msi.x86",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-x86",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-x86.Msi.arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-x86.Msi.x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.iossimulator-x86.Msi.x86",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.linux-arm",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.linux-arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.linux-musl-x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.linux-x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.maccatalyst-arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.maccatalyst-arm64.Msi.arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.maccatalyst-arm64.Msi.x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.maccatalyst-arm64.Msi.x86",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.maccatalyst-x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.maccatalyst-x64.Msi.arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.maccatalyst-x64.Msi.x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.maccatalyst-x64.Msi.x86",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.osx-arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.osx-x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvos-arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvos-arm64.Msi.arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvos-arm64.Msi.x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvos-arm64.Msi.x86",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvossimulator-arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvossimulator-arm64.Msi.arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvossimulator-arm64.Msi.x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvossimulator-arm64.Msi.x86",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvossimulator-x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvossimulator-x64.Msi.arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvossimulator-x64.Msi.x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.tvossimulator-x64.Msi.x86",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.win-x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.Mono.win-x86",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.browser-wasm",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.linux-arm",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.linux-arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.linux-musl-arm",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.linux-musl-arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.linux-musl-x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.linux-x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.osx-arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.osx-x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.win-arm",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.win-arm64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.win-x64",
-      "pkg:nuget/Microsoft.NETCore.App.Runtime.win-x86",
-      "pkg:pypi/brotli"
-    ],
-    "n_purls": 120,
-    "packages": [
-      "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-arm",
-      "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-arm64",
-      "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-x64",
-      "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.android-x86",
-      "Microsoft.NETCore.App.Runtime.AOT.linux-x64.Cross.browser-wasm",
-      "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-arm",
-      "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-arm64",
-      "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-x64",
-      "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.android-x86",
-      "Microsoft.NETCore.App.Runtime.AOT.osx-x64.Cross.browser-wasm"
-    ],
-    "earliest_published": "2020-09-15T10:15:00Z",
-    "latest_modified": "2026-03-03T04:56:39.449382Z",
-    "severities": [
-      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
-    ]
-  },
-  {
-    "root_id": "CVE-2020-35910",
-    "members": [
-      "CVE-2020-35910",
-      "CVE-2020-35911",
-      "CVE-2020-35912",
-      "CVE-2020-35913",
-      "CVE-2020-35914",
-      "GHSA-5WG8-7C9Q-794V",
-      "GHSA-GMV4-VMX3-X9F3",
-      "GHSA-HJ9H-WRGG-HGMX",
-      "GHSA-PPJ3-7JW3-8VC4",
-      "GHSA-VH4P-6J7G-F4J9",
-      "RUSTSEC-2020-0070"
-    ],
-    "n_members": 11,
-    "sources": [
-      "ghsa-reviewed",
-      "osv-crates.io",
-      "rustsec"
-    ],
-    "n_sources": 3,
-    "ecosystems": [
-      "crates.io"
-    ],
-    "n_ecosystems": 1,
-    "purls": [
-      "pkg:cargo/lock_api"
-    ],
-    "n_purls": 1,
-    "packages": [
-      "lock_api"
-    ],
-    "earliest_published": "2020-11-08",
-    "latest_modified": "2025-05-23T18:33:34Z",
-    "severities": [
-      "CVSS_V3:CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H",
-      "CVSS_V3:CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
-    ]
-  },
-  {
-    "root_id": "CVE-2021-39216",
-    "members": [
-      "CVE-2021-39216",
-      "CVE-2021-39218",
-      "CVE-2021-39219",
-      "GHSA-4873-36H9-WV49",
-      "GHSA-Q879-9G95-56MX",
-      "GHSA-V4CP-H94R-M7XF",
-      "PYSEC-2021-320",
-      "PYSEC-2021-321",
-      "PYSEC-2021-322",
-      "RUSTSEC-2021-0110"
-    ],
-    "n_members": 10,
-    "sources": [
-      "ghsa-reviewed",
-      "osv-PyPI",
-      "osv-crates.io",
-      "pypa",
-      "rustsec"
-    ],
-    "n_sources": 5,
-    "ecosystems": [
-      "PyPI",
-      "crates.io"
-    ],
-    "n_ecosystems": 2,
-    "purls": [
-      "pkg:cargo/wasmtime",
-      "pkg:pypi/wasmtime"
-    ],
-    "n_purls": 2,
-    "packages": [
-      "wasmtime"
-    ],
-    "earliest_published": "2021-09-17",
-    "latest_modified": "2026-03-13T22:15:23.246317Z",
-    "severities": [
-      "CVSS_V3:CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:H",
-      "CVSS_V3:CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:H"
-    ]
-  },
-  {
-    "root_id": "CVE-2025-10894",
-    "members": [
-      "CVE-2025-10894",
-      "GHSA-CXM3-WV7P-598C",
-      "MAL-2025-41436",
-      "MAL-2025-41437",
-      "MAL-2025-41438",
-      "MAL-2025-41439",
-      "MAL-2025-41440",
-      "MAL-2025-41441",
-      "MAL-2025-41442",
-      "MAL-2025-41443"
-    ],
-    "n_members": 10,
-    "sources": [
-      "ghsa-reviewed",
-      "osv-npm"
-    ],
-    "n_sources": 2,
-    "ecosystems": [
-      "npm"
-    ],
-    "n_ecosystems": 1,
-    "purls": [
-      "pkg:npm/%40nx/devkit",
-      "pkg:npm/%40nx/enterprise-cloud",
-      "pkg:npm/%40nx/eslint",
-      "pkg:npm/%40nx/js",
-      "pkg:npm/%40nx/key",
-      "pkg:npm/%40nx/node",
-      "pkg:npm/%40nx/workspace",
-      "pkg:npm/nx"
-    ],
-    "n_purls": 8,
-    "packages": [
-      "@nx/devkit",
-      "@nx/enterprise-cloud",
-      "@nx/eslint",
-      "@nx/js",
-      "@nx/key",
-      "@nx/node",
-      "@nx/workspace",
-      "nx"
-    ],
-    "earliest_published": "2025-08-27T16:42:47Z",
-    "latest_modified": "2026-03-16T03:13:28.212592Z",
-    "severities": [
-      "CRITICAL"
-    ]
-  },
-  {
-    "root_id": "CVE-2023-41332",
-    "members": [
-      "BIT-CILIUM-2023-41332",
-      "BIT-CILIUM-OPERATOR-2023-41332",
-      "BIT-CILIUM-PROXY-2023-41332",
-      "BIT-HUBBLE-2023-41332",
-      "BIT-HUBBLE-RELAY-2023-41332",
-      "BIT-HUBBLE-UI-2023-41332",
-      "BIT-HUBBLE-UI-BACKEND-2023-41332",
-      "CVE-2023-41332",
-      "GHSA-24M5-R6HV-CCGP",
-      "GO-2023-2079"
-    ],
-    "n_members": 10,
-    "sources": [
-      "ghsa-reviewed",
-      "go-vulndb",
-      "osv-Go"
-    ],
-    "n_sources": 3,
-    "ecosystems": [
-      "Go"
-    ],
-    "n_ecosystems": 1,
-    "purls": [
-      "pkg:golang/github.com/cilium/cilium"
-    ],
-    "n_purls": 1,
-    "packages": [
-      "github.com/cilium/cilium"
-    ],
-    "earliest_published": "2023-09-27T00:33:04Z",
-    "latest_modified": "2026-02-04T03:41:08.489150Z",
-    "severities": [
-      "CVSS_V3:CVSS:3.1/AV:A/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L"
-    ]
-  },
-  {
-    "root_id": "CVE-2023-30851",
-    "members": [
-      "BIT-CILIUM-2023-30851",
-      "BIT-CILIUM-OPERATOR-2023-30851",
-      "BIT-CILIUM-PROXY-2023-30851",
-      "BIT-HUBBLE-2023-30851",
-      "BIT-HUBBLE-RELAY-2023-30851",
-      "BIT-HUBBLE-UI-2023-30851",
-      "BIT-HUBBLE-UI-BACKEND-2023-30851",
-      "CVE-2023-30851",
-      "GHSA-2H44-X2WX-49F4",
-      "GO-2023-1785"
-    ],
-    "n_members": 10,
-    "sources": [
-      "ghsa-reviewed",
-      "go-vulndb",
-      "osv-Go"
-    ],
-    "n_sources": 3,
-    "ecosystems": [
-      "Go"
-    ],
-    "n_ecosystems": 1,
-    "purls": [
-      "pkg:golang/github.com/cilium/cilium"
-    ],
-    "n_purls": 1,
-    "packages": [
-      "github.com/cilium/cilium"
-    ],
-    "earliest_published": "2023-05-22T20:33:15Z",
-    "latest_modified": "2026-02-04T03:23:00.245917Z",
-    "severities": [
-      "CVSS_V3:CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N"
-    ]
-  },
-  {
-    "root_id": "CVE-2023-41333",
-    "members": [
-      "BIT-CILIUM-2023-41333",
-      "BIT-CILIUM-OPERATOR-2023-41333",
-      "BIT-CILIUM-PROXY-2023-41333",
-      "BIT-HUBBLE-2023-41333",
-      "BIT-HUBBLE-RELAY-2023-41333",
-      "BIT-HUBBLE-UI-2023-41333",
-      "BIT-HUBBLE-UI-BACKEND-2023-41333",
-      "CVE-2023-41333",
-      "GHSA-4XP2-W642-7MCX",
-      "GO-2023-2080"
-    ],
-    "n_members": 10,
-    "sources": [
-      "ghsa-reviewed",
-      "go-vulndb",
-      "osv-Go"
-    ],
-    "n_sources": 3,
-    "ecosystems": [
-      "Go"
-    ],
-    "n_ecosystems": 1,
-    "purls": [
-      "pkg:golang/github.com/cilium/cilium"
-    ],
-    "n_purls": 1,
-    "packages": [
-      "github.com/cilium/cilium"
-    ],
-    "earliest_published": "2023-09-27T00:35:26Z",
-    "latest_modified": "2026-02-04T03:55:12.891504Z",
-    "severities": [
-      "CVSS_V3:CVSS:3.1/AV:A/AC:L/PR:H/UI:N/S:C/C:L/I:N/A:H"
-    ]
-  },
-  {
-    "root_id": "CVE-2024-28248",
-    "members": [
-      "BIT-CILIUM-2024-28248",
-      "BIT-CILIUM-OPERATOR-2024-28248",
-      "BIT-CILIUM-PROXY-2024-28248",
-      "BIT-HUBBLE-2024-28248",
-      "BIT-HUBBLE-RELAY-2024-28248",
-      "BIT-HUBBLE-UI-2024-28248",
-      "BIT-HUBBLE-UI-BACKEND-2024-28248",
-      "CVE-2024-28248",
-      "GHSA-68MJ-9PJQ-MC85",
-      "GO-2024-2653"
-    ],
-    "n_members": 10,
-    "sources": [
-      "ghsa-reviewed",
-      "go-vulndb",
-      "osv-Go"
-    ],
-    "n_sources": 3,
-    "ecosystems": [
-      "Go"
-    ],
-    "n_ecosystems": 1,
-    "purls": [
-      "pkg:golang/github.com/cilium/cilium"
-    ],
-    "n_purls": 1,
-    "packages": [
-      "github.com/cilium/cilium"
-    ],
-    "earliest_published": "2024-03-18T20:30:22Z",
-    "latest_modified": "2026-02-04T03:29:51.161551Z",
-    "severities": [
-      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
-    ]
-  },
-  {
-    "root_id": "CVE-2022-29178",
-    "members": [
-      "BIT-CILIUM-2022-29178",
-      "BIT-CILIUM-OPERATOR-2022-29178",
-      "BIT-CILIUM-PROXY-2022-29178",
-      "BIT-HUBBLE-2022-29178",
-      "BIT-HUBBLE-RELAY-2022-29178",
-      "BIT-HUBBLE-UI-2022-29178",
-      "BIT-HUBBLE-UI-BACKEND-2022-29178",
-      "CVE-2022-29178",
-      "GHSA-6P8V-8CQ8-V2R3",
-      "GO-2022-0457"
-    ],
-    "n_members": 10,
-    "sources": [
-      "ghsa-reviewed",
-      "go-vulndb",
-      "osv-Go"
-    ],
-    "n_sources": 3,
-    "ecosystems": [
-      "Go"
-    ],
-    "n_ecosystems": 1,
-    "purls": [
-      "pkg:golang/github.com/cilium/cilium"
-    ],
-    "n_purls": 1,
-    "packages": [
-      "github.com/cilium/cilium"
-    ],
-    "earliest_published": "2022-05-24T21:14:41Z",
-    "latest_modified": "2026-02-04T04:07:35.154374Z",
-    "severities": [
-      "CVSS_V3:CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
-    ]
-  },
-  {
-    "root_id": "CVE-2024-25630",
-    "members": [
-      "BIT-CILIUM-2024-25630",
-      "BIT-CILIUM-OPERATOR-2024-25630",
-      "BIT-CILIUM-PROXY-2024-25630",
-      "BIT-HUBBLE-2024-25630",
-      "BIT-HUBBLE-RELAY-2024-25630",
-      "BIT-HUBBLE-UI-2024-25630",
-      "BIT-HUBBLE-UI-BACKEND-2024-25630",
-      "CVE-2024-25630",
-      "GHSA-7496-FGV9-XW82",
-      "GO-2024-2568"
-    ],
-    "n_members": 10,
-    "sources": [
-      "ghsa-reviewed",
-      "go-vulndb",
-      "osv-Go"
-    ],
-    "n_sources": 3,
-    "ecosystems": [
-      "Go"
-    ],
-    "n_ecosystems": 1,
-    "purls": [
-      "pkg:golang/github.com/cilium/cilium"
-    ],
-    "n_purls": 1,
-    "packages": [
-      "github.com/cilium/cilium"
-    ],
-    "earliest_published": "2024-02-20T23:44:45Z",
-    "latest_modified": "2026-02-04T03:54:05.351189Z",
-    "severities": [
-      "CVSS_V3:CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:C/C:H/I:N/A:N"
-    ]
+    "epss_score": 0.00403,
+    "epss_percentile": 0.61025,
+    "kev": false,
+    "kev_ransomware": ""
   }
 ]

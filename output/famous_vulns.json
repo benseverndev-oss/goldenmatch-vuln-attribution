@@ -9,10 +9,14 @@
     ],
     "n_members": 2,
     "sources": [
+      "cisa-kev",
+      "cve-project",
+      "epss",
       "ghsa-reviewed",
+      "osv-GIT",
       "osv-Maven"
     ],
-    "n_sources": 2,
+    "n_sources": 6,
     "ecosystems": [
       "Maven"
     ],
@@ -26,17 +30,25 @@
     ],
     "n_purls": 5,
     "packages": [
+      "Apache Software Foundation:Apache Log4j2",
+      "Apache:Log4j2",
       "com.guicedee.services:log4j-core",
       "org.apache.logging.log4j:log4j-core",
       "org.ops4j.pax.logging:pax-logging-log4j2",
       "org.xbib.elasticsearch:log4j",
       "uk.co.nichesolutions.logging.log4j:log4j-core"
     ],
-    "earliest_published": "2021-12-10T00:40:56Z",
-    "latest_modified": "2025-10-22T19:37:02.616807Z",
+    "earliest_published": "2021-12-10",
+    "latest_modified": "2026-04-16T04:30:26.990433093Z",
     "severities": [
-      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H/E:H"
-    ]
+      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H/E:H",
+      "kev:ransomware=Known"
+    ],
+    "epss_score": 0.94358,
+    "epss_percentile": 0.99963,
+    "kev": true,
+    "kev_ransomware": "Known"
   },
   {
     "name": "Spring4Shell",
@@ -48,10 +60,14 @@
     ],
     "n_members": 2,
     "sources": [
+      "cisa-kev",
+      "cve-project",
+      "epss",
       "ghsa-reviewed",
+      "osv-GIT",
       "osv-Maven"
     ],
-    "n_sources": 2,
+    "n_sources": 6,
     "ecosystems": [
       "Maven"
     ],
@@ -65,6 +81,8 @@
     ],
     "n_purls": 5,
     "packages": [
+      "VMware:Spring Framework",
+      "n/a:Spring Framework",
       "org.springframework.boot:spring-boot-starter-web",
       "org.springframework.boot:spring-boot-starter-webflux",
       "org.springframework:spring-beans",
@@ -72,10 +90,16 @@
       "org.springframework:spring-webmvc"
     ],
     "earliest_published": "2022-03-31T18:30:50Z",
-    "latest_modified": "2025-10-22T19:34:48.935927Z",
+    "latest_modified": "2026-04-10T04:44:36.182708Z",
     "severities": [
-      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:H"
-    ]
+      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:H",
+      "kev:ransomware=Unknown"
+    ],
+    "epss_score": 0.94428,
+    "epss_percentile": 0.99984,
+    "kev": true,
+    "kev_ransomware": "Unknown"
   },
   {
     "name": "Heartbleed",
@@ -87,19 +111,30 @@
     ],
     "n_members": 2,
     "sources": [
+      "cisa-kev",
+      "cve-project",
+      "epss",
       "ghsa-unreviewed"
     ],
-    "n_sources": 1,
+    "n_sources": 4,
     "ecosystems": [],
     "n_ecosystems": 0,
     "purls": [],
     "n_purls": 0,
-    "packages": [],
-    "earliest_published": "2022-05-13T01:14:41Z",
+    "packages": [
+      "OpenSSL:OpenSSL",
+      "n/a:n/a"
+    ],
+    "earliest_published": "2014-04-07T00:00:00.000Z",
     "latest_modified": "2025-10-22T03:30:38Z",
     "severities": [
-      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
-    ]
+      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "kev:ransomware=Unknown"
+    ],
+    "epss_score": 0.94464,
+    "epss_percentile": 0.99996,
+    "kev": true,
+    "kev_ransomware": "Unknown"
   },
   {
     "name": "Shellshock",
@@ -111,19 +146,30 @@
     ],
     "n_members": 2,
     "sources": [
+      "cisa-kev",
+      "cve-project",
+      "epss",
       "ghsa-unreviewed"
     ],
-    "n_sources": 1,
+    "n_sources": 4,
     "ecosystems": [],
     "n_ecosystems": 0,
     "purls": [],
     "n_purls": 0,
-    "packages": [],
-    "earliest_published": "2022-05-13T01:05:13Z",
+    "packages": [
+      "GNU:Bourne-Again Shell (Bash)",
+      "n/a:n/a"
+    ],
+    "earliest_published": "2014-09-24T18:00:00.000Z",
     "latest_modified": "2025-10-22T03:30:41Z",
     "severities": [
-      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
-    ]
+      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "kev:ransomware=Unknown"
+    ],
+    "epss_score": 0.9422,
+    "epss_percentile": 0.99927,
+    "kev": true,
+    "kev_ransomware": "Unknown"
   },
   {
     "name": "ProxyShell",
@@ -135,19 +181,35 @@
     ],
     "n_members": 2,
     "sources": [
+      "cisa-kev",
+      "cve-project",
+      "epss",
       "ghsa-unreviewed"
     ],
-    "n_sources": 1,
+    "n_sources": 4,
     "ecosystems": [],
     "n_ecosystems": 0,
     "purls": [],
     "n_purls": 0,
-    "packages": [],
-    "earliest_published": "2022-05-24T19:07:52Z",
+    "packages": [
+      "Microsoft:Exchange Server",
+      "Microsoft:Microsoft Exchange Server 2013 Cumulative Update 23",
+      "Microsoft:Microsoft Exchange Server 2016 Cumulative Update 19",
+      "Microsoft:Microsoft Exchange Server 2016 Cumulative Update 20",
+      "Microsoft:Microsoft Exchange Server 2019 Cumulative Update 8",
+      "Microsoft:Microsoft Exchange Server 2019 Cumulative Update 9"
+    ],
+    "earliest_published": "2021-07-14T17:54:03.000Z",
     "latest_modified": "2025-10-22T00:32:18Z",
     "severities": [
-      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
-    ]
+      "CVSS_V3:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "cvssV3_1:9.1:CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N/E:U/RL:O/RC:C",
+      "kev:ransomware=Known"
+    ],
+    "epss_score": 0.9423,
+    "epss_percentile": 0.99929,
+    "kev": true,
+    "kev_ransomware": "Known"
   },
   {
     "name": "ZipSlip",
@@ -160,11 +222,14 @@
     ],
     "n_members": 3,
     "sources": [
+      "cve-project",
+      "epss",
       "ghsa-reviewed",
       "go-vulndb",
+      "osv-GIT",
       "osv-Go"
     ],
-    "n_sources": 3,
+    "n_sources": 6,
     "ecosystems": [
       "Go"
     ],
@@ -174,12 +239,18 @@
     ],
     "n_purls": 1,
     "packages": [
+      "Kubernetes:Kubernetes",
       "github.com/kubernetes/kubernetes"
     ],
-    "earliest_published": "2022-02-15T01:57:18Z",
-    "latest_modified": "2026-02-04T03:50:45.080176Z",
+    "earliest_published": "2018-12-05T21:00:00.000Z",
+    "latest_modified": "2026-04-10T04:03:36.735482Z",
     "severities": [
-      "CVSS_V3:CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
-    ]
+      "CVSS_V3:CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "cvssV3_0:9.8:CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    ],
+    "epss_score": 0.90698,
+    "epss_percentile": 0.99632,
+    "kev": false,
+    "kev_ransomware": ""
   }
 ]

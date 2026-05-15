@@ -19,3 +19,7 @@ Thumbs.db
 *.swp
 .idea/
 .vscode/
+
+# Local diagnostic artifacts
+extract_log.txt
+output-cloud/
