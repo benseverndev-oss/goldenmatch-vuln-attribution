@@ -1,0 +1,71 @@
+name: Deep analysis (re-run on existing parquet)
+
+# Downloads the records-parquet artifact from a prior full-pipeline run
+# and runs analyze_deep.py against it. Skips fetch/extract entirely so
+# iteration on the analysis script is fast (~1 min vs ~5 min full run).
+#
+# Target runner: large-new-64GB (16 vCPU / 64 GB RAM).
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: "Workflow run ID that produced the records-parquet artifact"
+        required: true
+        type: string
+
+jobs:
+  analyze:
+    runs-on: large-new-64GB
+    timeout-minutes: 30
+    env:
+      PIP_DISABLE_PIP_VERSION_CHECK: "1"
+      PYTHONUNBUFFERED: "1"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Download records parquet from source run
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p data
+          gh run download ${{ inputs.source_run_id }} \
+            --name records-parquet \
+            --dir data/ \
+            --repo ${{ github.repository }}
+          ls -la data/
+
+      - name: Download pipeline outputs from source run
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p output
+          gh run download ${{ inputs.source_run_id }} \
+            --name pipeline-outputs \
+            --dir output/ \
+            --repo ${{ github.repository }}
+          ls -la output/
+
+      - name: Run deep analysis
+        run: python -u analyze_deep.py
+
+      - name: Upload deep-analysis output
+        uses: actions/upload-artifact@v4
+        with:
+          name: analysis-deep
+          path: |
+            output/analysis_deep.json
+          retention-days: 30
