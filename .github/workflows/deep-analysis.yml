@@ -52,6 +52,10 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          # The repo has placeholder output/*.json files committed for
+          # docs; remove them before downloading the canonical artifact
+          # so gh-cli doesn't trip on file-exists.
+          rm -rf output
           mkdir -p output
           gh run download ${{ inputs.source_run_id }} \
             --name pipeline-outputs \
