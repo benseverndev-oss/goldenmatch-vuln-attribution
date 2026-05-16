@@ -1,0 +1,243 @@
+{
+  "bucket_definitions": {
+    "PACKAGE_RANGE": "Has version-range data in one of 8 language ecosystems (the matcher can answer 'am I affected at version X' for this CVE)",
+    "PACKAGE_ADVISORY": "Has a curated advisory in the 8-ecosystem space (ghsa-reviewed, pypa, rustsec, go-vulndb, osv-{8 ecos}) but no source ships a version range",
+    "DISTRO": "Has a curated record only in OSV's distro buckets (Debian / Ubuntu / Alpine / RPM-based / Wolfi / Chainguard / MinimOS)",
+    "UNREVIEWED_MIRROR": "Only appears in ghsa-unreviewed and/or osv-GIT/Linux/Bitnami/etc -- essentially CVE-Project passthroughs ingested without curation",
+    "CVE_ONLY": "Only appears in cve-project / KEV / EPSS. No advisory feed (curated or unreviewed) ships any record. Classic appliance/firmware/browser/kernel population.",
+    "UNCLASSIFIED": "Defensive bucket; should be ~0"
+  },
+  "bucket_sizes": {
+    "UNREVIEWED_MIRROR": 297534,
+    "PACKAGE_RANGE": 25352,
+    "CVE_ONLY": 14336,
+    "PACKAGE_ADVISORY": 293,
+    "DISTRO": 1
+  },
+  "bucket_shares_of_corpus": {
+    "UNREVIEWED_MIRROR": 0.8815,
+    "PACKAGE_RANGE": 0.0751,
+    "CVE_ONLY": 0.0425,
+    "PACKAGE_ADVISORY": 0.0009,
+    "DISTRO": 0.0
+  },
+  "cohort_breakdown": {
+    "all_cves": {
+      "total_in_cohort": 337516,
+      "UNREVIEWED_MIRROR": {
+        "n": 297534,
+        "share_of_cohort": 0.8815
+      },
+      "PACKAGE_RANGE": {
+        "n": 25352,
+        "share_of_cohort": 0.0751
+      },
+      "CVE_ONLY": {
+        "n": 14336,
+        "share_of_cohort": 0.0425
+      },
+      "PACKAGE_ADVISORY": {
+        "n": 293,
+        "share_of_cohort": 0.0009
+      },
+      "DISTRO": {
+        "n": 1,
+        "share_of_cohort": 0.0
+      }
+    },
+    "kev": {
+      "total_in_cohort": 1592,
+      "UNREVIEWED_MIRROR": {
+        "n": 1442,
+        "share_of_cohort": 0.9058
+      },
+      "PACKAGE_RANGE": {
+        "n": 117,
+        "share_of_cohort": 0.0735
+      },
+      "CVE_ONLY": {
+        "n": 31,
+        "share_of_cohort": 0.0195
+      },
+      "PACKAGE_ADVISORY": {
+        "n": 2,
+        "share_of_cohort": 0.0013
+      },
+      "DISTRO": {
+        "n": 0,
+        "share_of_cohort": 0.0
+      }
+    },
+    "kev_ransomware": {
+      "total_in_cohort": 321,
+      "UNREVIEWED_MIRROR": {
+        "n": 305,
+        "share_of_cohort": 0.9502
+      },
+      "PACKAGE_RANGE": {
+        "n": 14,
+        "share_of_cohort": 0.0436
+      },
+      "CVE_ONLY": {
+        "n": 2,
+        "share_of_cohort": 0.0062
+      },
+      "PACKAGE_ADVISORY": {
+        "n": 0,
+        "share_of_cohort": 0.0
+      },
+      "DISTRO": {
+        "n": 0,
+        "share_of_cohort": 0.0
+      }
+    },
+    "epss_p95": {
+      "total_in_cohort": 16306,
+      "UNREVIEWED_MIRROR": {
+        "n": 14743,
+        "share_of_cohort": 0.9041
+      },
+      "PACKAGE_RANGE": {
+        "n": 1378,
+        "share_of_cohort": 0.0845
+      },
+      "CVE_ONLY": {
+        "n": 176,
+        "share_of_cohort": 0.0108
+      },
+      "PACKAGE_ADVISORY": {
+        "n": 9,
+        "share_of_cohort": 0.0006
+      },
+      "DISTRO": {
+        "n": 0,
+        "share_of_cohort": 0.0
+      }
+    },
+    "epss_p99": {
+      "total_in_cohort": 3264,
+      "UNREVIEWED_MIRROR": {
+        "n": 2695,
+        "share_of_cohort": 0.8257
+      },
+      "PACKAGE_RANGE": {
+        "n": 514,
+        "share_of_cohort": 0.1575
+      },
+      "CVE_ONLY": {
+        "n": 52,
+        "share_of_cohort": 0.0159
+      },
+      "PACKAGE_ADVISORY": {
+        "n": 3,
+        "share_of_cohort": 0.0009
+      },
+      "DISTRO": {
+        "n": 0,
+        "share_of_cohort": 0.0
+      }
+    },
+    "kev_minus_epss_p95": {
+      "total_in_cohort": 480,
+      "UNREVIEWED_MIRROR": {
+        "n": 449,
+        "share_of_cohort": 0.9354
+      },
+      "PACKAGE_RANGE": {
+        "n": 9,
+        "share_of_cohort": 0.0187
+      },
+      "CVE_ONLY": {
+        "n": 21,
+        "share_of_cohort": 0.0437
+      },
+      "PACKAGE_ADVISORY": {
+        "n": 1,
+        "share_of_cohort": 0.0021
+      },
+      "DISTRO": {
+        "n": 0,
+        "share_of_cohort": 0.0
+      }
+    },
+    "epss_p95_minus_kev": {
+      "total_in_cohort": 15194,
+      "UNREVIEWED_MIRROR": {
+        "n": 13750,
+        "share_of_cohort": 0.905
+      },
+      "PACKAGE_RANGE": {
+        "n": 1270,
+        "share_of_cohort": 0.0836
+      },
+      "CVE_ONLY": {
+        "n": 166,
+        "share_of_cohort": 0.0109
+      },
+      "PACKAGE_ADVISORY": {
+        "n": 8,
+        "share_of_cohort": 0.0005
+      },
+      "DISTRO": {
+        "n": 0,
+        "share_of_cohort": 0.0
+      }
+    }
+  },
+  "cve_only_top_vendors_overall": {
+    "n/a": 1071,
+    "Linux": 1064,
+    "Microsoft": 328,
+    "Google": 278,
+    "Apple": 251,
+    "nextcloud": 239,
+    "OpenClaw": 232,
+    "LabRedesCefetRJ": 168,
+    "glpi-project": 159,
+    "FreeRDP": 136,
+    "Adobe": 108,
+    "InternationalColorConsortium": 104,
+    "zephyrproject-rtos": 102,
+    "Oracle Corporation": 98,
+    "openemr": 82,
+    "Totolink": 73,
+    "SourceCodester": 72,
+    "Tenda": 71,
+    "code-projects": 70,
+    "chamilo": 69,
+    "Red Hat": 66,
+    "dataease": 65,
+    "ChurchCRM": 65,
+    "Apache Software Foundation": 62,
+    "AMD": 62,
+    "Enalean": 62,
+    "freescout-help-desk": 61,
+    "Combodo": 61,
+    "frappe": 59,
+    "Mozilla": 59
+  },
+  "cve_only_top_vendors_in_kev": {
+    "Apple": 9,
+    "Microsoft": 4,
+    "FreePBX": 2,
+    "Google": 2,
+    "Adobe": 1,
+    "Progress Software Corporation": 1,
+    "metabase": 1,
+    "Palo Alto Networks": 1,
+    "erlang": 1,
+    "WebPros": 1,
+    "Ivanti": 1,
+    "Linux": 1,
+    "Cisco": 1,
+    "n/a": 1,
+    "checkpoint": 1,
+    "The Linux Kernel Organization": 1,
+    "BerriAI": 1,
+    "Cacti": 1
+  },
+  "cve_only_top_vendors_in_kev_ransomware": {
+    "WebPros": 1,
+    "checkpoint": 1
+  }
+}

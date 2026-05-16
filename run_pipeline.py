@@ -103,6 +103,11 @@ analyze_representability_stage = _stage_from_script(
     "analyze_representability.py",
     ["output/representability.json"],
 )
+analyze_representability_taxonomy_stage = _stage_from_script(
+    "analyze_representability_taxonomy",
+    "analyze_representability_taxonomy.py",
+    ["output/representability_taxonomy.json"],
+)
 
 STAGES = {
     "fetch": fetch_stage,
@@ -114,6 +119,7 @@ STAGES = {
     "analyze_timing": analyze_timing_stage,
     "analyze_independence": analyze_independence_stage,
     "analyze_representability": analyze_representability_stage,
+    "analyze_representability_taxonomy": analyze_representability_taxonomy_stage,
 }
 
 
@@ -134,6 +140,7 @@ def main() -> int:
         "check", "normalize", "analyze",
         "analyze_ranges", "analyze_timing",
         "analyze_independence", "analyze_representability",
+        "analyze_representability_taxonomy",
     ]
 
     stage_specs: list[StageSpec | str] = [StageSpec(use=name) for name in stage_names]

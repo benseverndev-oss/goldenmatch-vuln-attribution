@@ -45,6 +45,8 @@ that ran the same pipeline shape on blockchain data.
 | **All CVEs that are package-representable** | **25,352 / 337,526 = 7.5%** |
 | **KEV CVEs that are package-representable** | **117 / 1,592 = 7.4%** |
 | **KEV-with-ransomware CVEs that are package-representable** | **14 / 321 = 4.4%** |
+| **Curated public OSS vulnerability coverage (PACKAGE_RANGE + PACKAGE_ADVISORY + DISTRO)** | **7.6%** of CVE corpus |
+| **Raw NVD passthrough mirror share** | **88.2%** of CVE corpus |
 
 ## Core thesis
 
@@ -65,7 +67,7 @@ The remaining ~92% — appliances, firmware, kernels, browsers, service
 configs — live in a fundamentally different vulnerability universe than
 package-version intelligence can describe. See finding #9.
 
-Nine defensible findings surface in the data:
+Ten defensible findings surface in the data:
 
 ### 1. 88% of actively-exploited vulns are invisible to package scanners
 
@@ -343,6 +345,69 @@ Two read-outs:
 Full breakdown including KEV-by-year:
 [`output/representability.json`](./output/representability.json).
 
+### 10. Representability taxonomy: where every CVE lives
+
+`analyze_representability_taxonomy.py` partitions every one of the
+**337,516 CVEs** in the corpus into five mutually-exclusive buckets by
+which source-family ships data for it. Priority order (richest signal
+first):
+
+| Bucket | Definition | Corpus share |
+|---|---|---|
+| **PACKAGE_RANGE** | Has a version range in one of the 8 v1 language ecosystems. The matcher can answer "am I affected at version X". | **7.51%** (25,352) |
+| **PACKAGE_ADVISORY** | Has a curated record (ghsa-reviewed, pypa, rustsec, go-vulndb, osv-{8 ecos}) but no source ships a version range. | 0.09% (293) |
+| **DISTRO** | Curated record only in OSV's distro buckets (Debian / Ubuntu / Alpine / RPM-based / Wolfi / Chainguard / MinimOS). | 0.00% (1) |
+| **UNREVIEWED_MIRROR** | Only appears in `ghsa-unreviewed` and/or `osv-GIT`/Linux/Bitnami/etc. Essentially CVE-Project passthroughs ingested without curation. | **88.15%** (297,534) |
+| **CVE_ONLY** | Only appears in `cve-project` / `cisa-kev` / `epss`. No advisory feed (curated or unreviewed) ships any record. Classic appliance / firmware / browser / kernel population. | 4.25% (14,336) |
+
+Two things stand out about the corpus topology:
+
+- **Curated public OSS vulnerability intelligence covers about 7.6% of
+  CVEs.** PACKAGE_RANGE + PACKAGE_ADVISORY + DISTRO totals 25,646 CVEs.
+  The remaining 92% is split between raw NVD passthrough mirrors (88%)
+  and CVEs that no advisory feed mentions at all (4%).
+- **The "everything is in OSV / GHSA" intuition is technically true but
+  misleading.** OSV's per-ecosystem buckets and GHSA-unreviewed
+  collectively mirror almost the entire CVE Project — but for 88% of
+  the corpus, that "mirror" is a CVE description without
+  package-version semantics. There's no fix-version intelligence to
+  match against an SBOM.
+
+Cross-tabbed against KEV and the ransomware sub-cohort, the
+representability skew gets sharper:
+
+| Cohort | PACKAGE_RANGE | UNREVIEWED_MIRROR | CVE_ONLY |
+|---|---|---|---|
+| All CVEs (n=337,516) | 7.51% | 88.15% | 4.25% |
+| **KEV** (n=1,592) | **7.35%** | **90.58%** | 1.95% |
+| **KEV ∩ ransomware** (n=321) | **4.36%** | **95.02%** | 0.62% |
+| EPSS p95+ (n=16,306) | 8.45% | 88.97% | 2.51% |
+| EPSS p99+ (n=3,264) | 15.75% | 83.27% | 0.92% |
+
+KEV is not skewed toward package-representable vulns — it has roughly
+the same package-rate as the global CVE corpus. The ransomware-tagged
+sub-cohort is actually **less** package-representable than baseline
+(4.4% vs 7.5%).
+
+Top vendors driving the `CVE_ONLY ∩ KEV` bucket (the 31 KEV CVEs that
+no advisory feed — not even passthrough — covers):
+
+| Vendor | Count |
+|---|---|
+| Apple | 9 |
+| Microsoft | 4 |
+| FreePBX | 2 |
+| Google | 2 |
+| Adobe / Progress Software / Palo Alto Networks / Erlang / WebPros / metabase | 1 each |
+
+These are very recent KEV additions where the CVE-Project record
+hasn't yet propagated to GitHub-unreviewed or OSV-GIT — i.e., even the
+mirror lag matters operationally if you're trying to act on KEV
+quickly.
+
+Full taxonomy + per-bucket EPSS breakdowns:
+[`output/representability_taxonomy.json`](./output/representability_taxonomy.json).
+
 ## How it works
 
 1. **Fetch** — eight sources as zip / json / csv.gz archives
@@ -436,6 +501,7 @@ Each stage is also independently runnable:
 .\.venv\Scripts\python.exe analyze_timing.py      # CVE -> source first-seen lag distributions
 .\.venv\Scripts\python.exe analyze_independence.py    # de-overlap fix-version agreement
 .\.venv\Scripts\python.exe analyze_representability.py  # representability by KEV/EPSS slice
+.\.venv\Scripts\python.exe analyze_representability_taxonomy.py  # 5-bucket source-presence taxonomy
 .\.venv\Scripts\python.exe check_affected.py --sbom examples/sample_sbom.json
 ```
 
@@ -449,6 +515,7 @@ Outputs land in `output/`:
 - `timing_lag.json` — CVE → first-seen-per-source lag distributions
 - `independence.json` — INDEPENDENT vs MIRROR fix-version agreement breakdown
 - `representability.json` — package-representability by population
+- `representability_taxonomy.json` — 5-bucket source-presence breakdown
 - `sample_sbom_report.json` — verdicts for `examples/sample_sbom.json`
   (only when `check_affected.py` has been run)
 
@@ -466,6 +533,7 @@ Outputs land in `output/`:
 | `analyze_timing.py` | CVE → source-first-seen lag distributions (incl. KEV / per-ecosystem) |
 | `analyze_independence.py` | De-overlap fix-version agreement test (INDEPENDENT vs MIRROR source pairs) |
 | `analyze_representability.py` | Representability rates by population (all / KEV / KEV-ransomware / EPSS) |
+| `analyze_representability_taxonomy.py` | 5-bucket source-presence taxonomy cross-tabbed against KEV / EPSS / ransomware |
 | `check_affected.py` | Per-PURL / CycloneDX SBOM matcher → `AFFECTED` / `NOT_AFFECTED` / `UNKNOWN` (uses `univers`) |
 | `sync_cloud.py` | Pull the latest cloud-built parquet + JSONs to `data/` and `output/` (release or `gh` mode) |
 | `run_pipeline.py` | GoldenPipe orchestrator over all of the above |

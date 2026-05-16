@@ -77,6 +77,9 @@ jobs:
       - name: Representability (package-expressible vs operational/system)
         run: python -u analyze_representability.py
 
+      - name: Representability taxonomy (5-bucket source-presence model)
+        run: python -u analyze_representability_taxonomy.py
+
       - name: Sample-SBOM check (end-to-end demo of check_affected)
         run: python -u check_affected.py --sbom examples/sample_sbom.json --out output/sample_sbom_report.json
 
@@ -131,6 +134,7 @@ jobs:
             echo "- \`timing_lag.json\` -- CVE -> source-first-seen lag distributions"
             echo "- \`independence.json\` -- cross-source fix-version agreement after de-overlap"
             echo "- \`representability.json\` -- package-representability rates by KEV / EPSS slice"
+            echo "- \`representability_taxonomy.json\` -- 5-bucket source-presence taxonomy cross-tabbed against KEV / EPSS / ransomware"
             echo "- \`sample_sbom_report.json\` -- verdicts for examples/sample_sbom.json"
             echo "- \`dq_report.json\` -- goldencheck DQ findings"
           } > "$NOTES_FILE"
@@ -141,6 +145,7 @@ jobs:
           cp output/report.json output/kev_clusters.json output/famous_vulns.json \
              output/top_disagreement.json output/range_disagreement.json \
              output/timing_lag.json output/independence.json output/representability.json \
+             output/representability_taxonomy.json \
              output/sample_sbom_report.json output/dq_report.json "$stage/"
 
           # Delete and recreate the tag so the release always points at the
