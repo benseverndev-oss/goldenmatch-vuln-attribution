@@ -15,6 +15,9 @@ on:
         type: boolean
         default: false
 
+permissions:
+  contents: write   # needed for the rolling `latest` release publish step
+
 jobs:
   pipeline:
     runs-on: large-new-64GB
@@ -62,6 +65,12 @@ jobs:
       - name: GoldenMatch ER + analysis
         run: python -u analyze.py
 
+      - name: Range-disagreement sweep
+        run: python -u analyze_ranges.py
+
+      - name: Sample-SBOM check (end-to-end demo of check_affected)
+        run: python -u check_affected.py --sbom examples/sample_sbom.json --out output/sample_sbom_report.json
+
       - name: Summarize outputs
         run: |
           ls -la output/
@@ -86,3 +95,47 @@ jobs:
             data/records_normalized.parquet
           retention-days: 30
           if-no-files-found: warn
+
+      # ---------- Publish a rolling `latest` GitHub release ----------
+      # Lets people pull the parquet + JSONs over plain HTTPS without
+      # needing the `gh` CLI or any auth. The release is recreated each
+      # successful run so the URL is stable and the content is fresh.
+      - name: Publish artifacts to rolling `latest` release
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          TAG="latest"
+          NOTES_FILE="$(mktemp)"
+          {
+            echo "Rolling artifact bundle from \`full-pipeline.yml\` run ${GITHUB_RUN_ID}."
+            echo ""
+            echo "Built on $(date -u +%Y-%m-%dT%H:%M:%SZ) from commit ${GITHUB_SHA}."
+            echo ""
+            echo "## Files"
+            echo "- \`records_normalized.parquet\` -- goldenflow-normalized parquet (the matcher's input)"
+            echo "- \`report.json\` -- headline reconciliation stats"
+            echo "- \`kev_clusters.json\` -- KEV drill-down"
+            echo "- \`famous_vulns.json\`, \`top_disagreement.json\` -- ER samples"
+            echo "- \`range_disagreement.json\` -- cross-source fix agreement sweep"
+            echo "- \`sample_sbom_report.json\` -- verdicts for examples/sample_sbom.json"
+            echo "- \`dq_report.json\` -- goldencheck DQ findings"
+          } > "$NOTES_FILE"
+
+          # Stage assets in a flat directory so filenames in the release are clean.
+          stage="$(mktemp -d)"
+          cp data/records_normalized.parquet "$stage/"
+          cp output/report.json output/kev_clusters.json output/famous_vulns.json \
+             output/top_disagreement.json output/range_disagreement.json \
+             output/sample_sbom_report.json output/dq_report.json "$stage/"
+
+          # Delete and recreate the tag so the release always points at the
+          # latest run. `gh release delete --cleanup-tag -y` removes both.
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release delete "$TAG" --cleanup-tag -y
+          fi
+          gh release create "$TAG" \
+            --title "Latest pipeline outputs" \
+            --notes-file "$NOTES_FILE" \
+            "$stage"/*

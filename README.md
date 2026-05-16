@@ -224,23 +224,40 @@ GitHub Actions runner.
 
 ## Run it
 
-### On a GitHub Actions runner (recommended)
+### From the cloud (recommended — zero local compute)
 
-```bash
-gh workflow run full-pipeline.yml --ref main
-gh run watch
-gh run download <run-id> --name pipeline-outputs --dir output/
+The full pipeline ships its outputs as a rolling [`latest` GitHub
+release](../../releases/tag/latest) on every successful run. The
+laptop-friendly path is to just pull that:
+
+```powershell
+.\.venv\Scripts\python.exe sync_cloud.py            # default: pull `latest` release
+```
+
+No `gh` CLI or GitHub auth required. Lands the parquet in `data/` and
+the JSONs in `output/`, ready for `check_affected.py` against your own
+SBOM.
+
+If you need a build fresher than the latest release (e.g. you just
+pushed a code change), trigger a new run and pull its artifacts:
+
+```powershell
+.\.venv\Scripts\python.exe sync_cloud.py --gh       # requires authenticated `gh`
 ```
 
 The [`full-pipeline.yml`](./.github/workflows/full-pipeline.yml) workflow
 targets the org's `large-new-64GB` runner (16 vCPU / 64 GB RAM / 600 GB
-SSD) and completes in ~5 minutes including fetch.
+SSD) and completes in ~5 minutes including fetch. It runs the full
+chain through `analyze_ranges.py` and the bundled sample-SBOM check, so
+the published bundle has every output the local pipeline would.
 
-### On a laptop
+### Locally (full local rebuild)
 
-Requires Python 3.12, ~6 GB RAM, ~3 GB free disk (or set
-`SKIP_CVELIST=1` to skip the 556 MB CVE Project archive and run in
-~4 GB / 1 GB).
+For hackers who want to rebuild from scratch. Requires Python 3.12,
+~6 GB RAM, ~3 GB free disk (or set `SKIP_CVELIST=1` to skip the 556 MB
+CVE Project archive and run in ~4 GB / 1 GB). Note: `analyze.py` will
+OOM on a laptop at the full corpus size — that's the stage `sync_cloud.py`
+exists to skip.
 
 ```powershell
 # 1. Install
@@ -288,6 +305,7 @@ Outputs land in `output/`:
 | `analyze.py` | GoldenMatch `build_clusters` + headline findings + famous-vuln lookup |
 | `analyze_ranges.py` | Cross-source `fixed`-version agreement sweep over the `ranges` column |
 | `check_affected.py` | Per-PURL / CycloneDX SBOM matcher → `AFFECTED` / `NOT_AFFECTED` / `UNKNOWN` (uses `univers`) |
+| `sync_cloud.py` | Pull the latest cloud-built parquet + JSONs to `data/` and `output/` (release or `gh` mode) |
 | `run_pipeline.py` | GoldenPipe orchestrator over all of the above |
 
 ## Data sources
