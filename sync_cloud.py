@@ -49,6 +49,7 @@ RELEASE_ASSETS = [
     ("independence.json", OUT_DIR),
     ("representability.json", OUT_DIR),
     ("representability_taxonomy.json", OUT_DIR),
+    ("actionability.json", OUT_DIR),
     ("sample_sbom_report.json", OUT_DIR),
     ("dq_report.json", OUT_DIR),
 ]

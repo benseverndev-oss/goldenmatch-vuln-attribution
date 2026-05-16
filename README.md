@@ -47,6 +47,25 @@ that ran the same pipeline shape on blockchain data.
 | **KEV-with-ransomware CVEs that are package-representable** | **14 / 321 = 4.4%** |
 | **Curated public OSS vulnerability coverage (PACKAGE_RANGE + PACKAGE_ADVISORY + DISTRO)** | **7.6%** of CVE corpus |
 | **Raw NVD passthrough mirror share** | **88.2%** of CVE corpus |
+| **Representable AND has published fix (actionable)** | **21,535 / 337,516 = 6.4%** |
+| Actionable-given-representable | **84.9%** |
+
+## Operational definitions
+
+The four constructs the analyses operate on are defined in
+[`docs/definitions.md`](./docs/definitions.md), in increasing strictness:
+
+1. **Identity fragmentation** — cluster size > 1 across the
+   `(vuln_id, alias)` graph
+2. **Representability** — at least one alias-graph row carries a range
+   in the 8 v1 language ecosystems
+3. **Actionability** — representable *and* at least one source ships a
+   `fixed` event
+4. **Remediation convergence** — independent sources agree (set-equal
+   `fixed` events) on the same `(CVE, ecosystem, package)`
+
+Each is implemented by a named script (linked from the definitions
+doc) and reproducible from the `latest` GitHub release.
 
 ## Core thesis
 
@@ -67,7 +86,7 @@ The remaining ~92% — appliances, firmware, kernels, browsers, service
 configs — live in a fundamentally different vulnerability universe than
 package-version intelligence can describe. See finding #9.
 
-Ten defensible findings surface in the data:
+Eleven defensible findings surface in the data:
 
 ### 1. 88% of actively-exploited vulns are invisible to package scanners
 
@@ -408,6 +427,45 @@ quickly.
 Full taxonomy + per-bucket EPSS breakdowns:
 [`output/representability_taxonomy.json`](./output/representability_taxonomy.json).
 
+### 11. Actionability: representable AND has a published fix
+
+`analyze_actionability.py` tightens the representability bar with a
+follow-on condition (defined in
+[`docs/definitions.md`](./docs/definitions.md)):
+
+> A CVE is **actionable** iff it is representable *and* at least one
+> of its range rows ships a `fixed` event.
+
+Representability is a *necessary* precondition for SBOM matching;
+actionability is *sufficient* for telling the user which version to
+upgrade to. An advisory that says "vulnerable starting at 1.0" with
+no upper bound is representable (the matcher returns AFFECTED for
+anything `>= 1.0`) but not actionable.
+
+| Population | Total | Representable | Actionable | Gap | Action / Repr |
+|---|---|---|---|---|---|
+| **All CVEs** | 337,516 | 25,352 | **21,535** | 3,817 | **84.9%** |
+| KEV | 1,592 | 117 | 111 | 6 | 94.9% |
+| KEV ∩ ransomware | 321 | 14 | 13 | 1 | 92.9% |
+| EPSS p95+ | 16,306 | 1,378 | 1,211 | 167 | 87.9% |
+| EPSS p99+ | 3,264 | 514 | 463 | 51 | 90.1% |
+| KEV − EPSS p95+ | 480 | 9 | 8 | 1 | 88.9% |
+
+Two read-outs:
+
+- **15% of representable CVEs lack a fix.** The 3,817-CVE gap between
+  representable and actionable is real informational asymmetry —
+  advisories where the source ships an `introduced` event but no
+  `fixed` event yet. Treat any representability-rate number as a
+  *ceiling* on what scanners can actually act on.
+- **The KEV / EPSS cohorts have higher action-given-repr rates than
+  the global corpus** (94.9% / 92.9% / 90.1%) — i.e., when the
+  exploitation-prediction signals say "this matters", the curated
+  feeds have usually also published the fix. Fix data tracks
+  exploitation severity, just on a long tail.
+
+Full breakdown: [`output/actionability.json`](./output/actionability.json).
+
 ## How it works
 
 1. **Fetch** — eight sources as zip / json / csv.gz archives
@@ -502,6 +560,7 @@ Each stage is also independently runnable:
 .\.venv\Scripts\python.exe analyze_independence.py    # de-overlap fix-version agreement
 .\.venv\Scripts\python.exe analyze_representability.py  # representability by KEV/EPSS slice
 .\.venv\Scripts\python.exe analyze_representability_taxonomy.py  # 5-bucket source-presence taxonomy
+.\.venv\Scripts\python.exe analyze_actionability.py   # representable AND fix published
 .\.venv\Scripts\python.exe check_affected.py --sbom examples/sample_sbom.json
 ```
 
@@ -516,6 +575,7 @@ Outputs land in `output/`:
 - `independence.json` — INDEPENDENT vs MIRROR fix-version agreement breakdown
 - `representability.json` — package-representability by population
 - `representability_taxonomy.json` — 5-bucket source-presence breakdown
+- `actionability.json` — representable AND has a published fix
 - `sample_sbom_report.json` — verdicts for `examples/sample_sbom.json`
   (only when `check_affected.py` has been run)
 
@@ -534,6 +594,7 @@ Outputs land in `output/`:
 | `analyze_independence.py` | De-overlap fix-version agreement test (INDEPENDENT vs MIRROR source pairs) |
 | `analyze_representability.py` | Representability rates by population (all / KEV / KEV-ransomware / EPSS) |
 | `analyze_representability_taxonomy.py` | 5-bucket source-presence taxonomy cross-tabbed against KEV / EPSS / ransomware |
+| `analyze_actionability.py` | Representable CVEs that ship a concrete `fixed` event (gap = repr but not actionable) |
 | `check_affected.py` | Per-PURL / CycloneDX SBOM matcher → `AFFECTED` / `NOT_AFFECTED` / `UNKNOWN` (uses `univers`) |
 | `sync_cloud.py` | Pull the latest cloud-built parquet + JSONs to `data/` and `output/` (release or `gh` mode) |
 | `run_pipeline.py` | GoldenPipe orchestrator over all of the above |

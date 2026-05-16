@@ -1,0 +1,115 @@
+{
+  "definition": "A CVE is actionable iff it is representable (has range data in one of the 8 v1 language ecosystems) *and* at least one of those range rows ships a `fixed` event, giving a concrete upgrade target.",
+  "totals": {
+    "representable": 25352,
+    "actionable": 21535,
+    "gap_representable_not_actionable": 3817,
+    "actionable_given_representable": 0.8494
+  },
+  "by_population": {
+    "kev": {
+      "total": 1592,
+      "representable": 117,
+      "actionable": 111,
+      "gap": 6,
+      "representability_rate": 0.0735,
+      "actionability_rate": 0.0697,
+      "actionable_given_representable": 0.9487
+    },
+    "kev_ransomware": {
+      "total": 321,
+      "representable": 14,
+      "actionable": 13,
+      "gap": 1,
+      "representability_rate": 0.0436,
+      "actionability_rate": 0.0405,
+      "actionable_given_representable": 0.9286
+    },
+    "epss_p95": {
+      "total": 16306,
+      "representable": 1378,
+      "actionable": 1211,
+      "gap": 167,
+      "representability_rate": 0.0845,
+      "actionability_rate": 0.0743,
+      "actionable_given_representable": 0.8788
+    },
+    "epss_p99": {
+      "total": 3264,
+      "representable": 514,
+      "actionable": 463,
+      "gap": 51,
+      "representability_rate": 0.1575,
+      "actionability_rate": 0.1419,
+      "actionable_given_representable": 0.9008
+    },
+    "kev_minus_epss_p95": {
+      "total": 480,
+      "representable": 9,
+      "actionable": 8,
+      "gap": 1,
+      "representability_rate": 0.0187,
+      "actionability_rate": 0.0167,
+      "actionable_given_representable": 0.8889
+    },
+    "epss_p95_minus_kev": {
+      "total": 15194,
+      "representable": 1270,
+      "actionable": 1108,
+      "gap": 162,
+      "representability_rate": 0.0836,
+      "actionability_rate": 0.0729,
+      "actionable_given_representable": 0.8724
+    }
+  },
+  "per_ecosystem": {
+    "Go": {
+      "representable": 3294,
+      "actionable": 2988,
+      "gap": 306,
+      "actionable_given_representable": 0.9071
+    },
+    "Maven": {
+      "representable": 6201,
+      "actionable": 5132,
+      "gap": 1069,
+      "actionable_given_representable": 0.8276
+    },
+    "NuGet": {
+      "representable": 803,
+      "actionable": 754,
+      "gap": 49,
+      "actionable_given_representable": 0.939
+    },
+    "Packagist": {
+      "representable": 4818,
+      "actionable": 4133,
+      "gap": 685,
+      "actionable_given_representable": 0.8578
+    },
+    "PyPI": {
+      "representable": 4648,
+      "actionable": 3956,
+      "gap": 692,
+      "actionable_given_representable": 0.8511
+    },
+    "RubyGems": {
+      "representable": 919,
+      "actionable": 860,
+      "gap": 59,
+      "actionable_given_representable": 0.9358
+    },
+    "crates.io": {
+      "representable": 792,
+      "actionable": 679,
+      "gap": 113,
+      "actionable_given_representable": 0.8573
+    },
+    "npm": {
+      "representable": 4276,
+      "actionable": 3370,
+      "gap": 906,
+      "actionable_given_representable": 0.7881
+    }
+  }
+}
