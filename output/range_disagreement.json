@@ -1,0 +1,36 @@
+{
+  "summary": {
+    "total_groups_checked": 37542,
+    "multi_source_groups": 32746,
+    "disagreement_groups": 1,
+    "per_ecosystem": {
+      "PyPI": 1
+    }
+  },
+  "disagreements": [
+    {
+      "vuln_id": "GHSA-WQC8-X2PR-7JQH",
+      "ecosystem": "PyPI",
+      "package": "restrictedpython",
+      "fixes_by_source": {
+        "osv-PyPI": [
+          "5.3",
+          "6.1"
+        ],
+        "ghsa-reviewed": [
+          "5.3"
+        ]
+      },
+      "fixes_only_in_one_source": [
+        "6.1"
+      ],
+      "distinct_fix_versions": [
+        "5.3",
+        "6.1"
+      ],
+      "n_sources": 2,
+      "n_distinct_fixes": 2,
+      "n_fixes_only_in_one_source": 1
+    }
+  ]
+}

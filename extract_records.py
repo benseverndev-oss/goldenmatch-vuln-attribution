@@ -12,6 +12,11 @@ source to a common row schema:
     modified   : ISO timestamp (may be empty)
     severity   : free-text severity (CVSS string or level name)
     source     : osv-PyPI / ghsa-reviewed / ghsa-unreviewed / pypa / rustsec / go-vulndb / epss / cisa-kev / cve-project
+    ranges     : JSON-encoded list of OSV range objects (type + events) for the
+                 8 v1 target ecosystems (PyPI/npm/Maven/Go/crates.io/RubyGems/
+                 NuGet/Packagist). Empty string for sources/ecosystems where
+                 version-range matching is out of scope. Parsed at query time
+                 by check_affected.py via the `univers` library.
 
 One row per (vuln_id, affected_package) pair -- i.e., a single advisory that
 affects three packages emits three rows with the same vuln_id. This matches
@@ -40,11 +45,20 @@ OUT = ROOT / "data" / "records.parquet"
 COLS: dict[str, list[str]] = {
     "vuln_id": [], "aliases": [], "ecosystem": [], "package": [],
     "purl": [], "published": [], "modified": [], "severity": [], "source": [],
+    "ranges": [],
+}
+
+# Ecosystems where v1 of the version-range matcher (check_affected.py) is
+# in scope. Only these get `ranges` populated; everything else stores "" to
+# keep parquet size sane and verdicts honest.
+RANGE_ECOSYSTEMS = {
+    "PyPI", "npm", "Maven", "Go", "crates.io", "RubyGems", "NuGet", "Packagist",
 }
 
 
 def emit(*, vuln_id: str, aliases: list[str], ecosystem: str, package: str,
-         purl: str, published: str, modified: str, severity: str, source: str) -> None:
+         purl: str, published: str, modified: str, severity: str, source: str,
+         ranges: str = "") -> None:
     COLS["vuln_id"].append(vuln_id or "")
     COLS["aliases"].append(";".join(a for a in (aliases or []) if a))
     COLS["ecosystem"].append(ecosystem or "")
@@ -54,6 +68,7 @@ def emit(*, vuln_id: str, aliases: list[str], ecosystem: str, package: str,
     COLS["modified"].append(str(modified) if modified else "")
     COLS["severity"].append(str(severity) if severity else "")
     COLS["source"].append(source)
+    COLS["ranges"].append(ranges or "")
 
 
 def severity_text(d: dict) -> str:
@@ -87,9 +102,17 @@ def emit_osv_record(d: dict, source: str) -> None:
         eco = pkg.get("ecosystem") or ""
         name = pkg.get("name") or ""
         purl = pkg.get("purl") or ""
+        # Only serialize ranges for v1 target ecosystems. OSV `ranges` is a
+        # list of {type, events:[{introduced|fixed|last_affected: ...}]} dicts;
+        # check_affected.py parses these at query time.
+        ranges_json = ""
+        if eco in RANGE_ECOSYSTEMS:
+            rng = aff.get("ranges") or []
+            if rng:
+                ranges_json = json.dumps(rng, separators=(",", ":"))
         emit(vuln_id=vid, aliases=aliases, ecosystem=eco, package=name,
              purl=purl, published=published, modified=modified,
-             severity=sev, source=source)
+             severity=sev, source=source, ranges=ranges_json)
 
 
 # ---------- 1. OSV bulk exports ----------
@@ -406,6 +429,7 @@ schema = {
     "vuln_id": pl.Utf8, "aliases": pl.Utf8, "ecosystem": pl.Utf8,
     "package": pl.Utf8, "purl": pl.Utf8, "published": pl.Utf8,
     "modified": pl.Utf8, "severity": pl.Utf8, "source": pl.Utf8,
+    "ranges": pl.Utf8,
 }
 df = pl.DataFrame(COLS, schema=schema)
 # Free the columnar lists before write so the parquet allocator has room.

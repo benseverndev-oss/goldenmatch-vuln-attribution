@@ -37,8 +37,12 @@ that ran the same pipeline shape on blockchain data.
 | KEV clusters in github-reviewed | 120 (7.5%) |
 | KEV clusters with known ransomware use | 321 |
 | High-EPSS (p95+) clusters invisible to package scanners | **14,093** |
+| Range-bearing rows in 8 language ecosystems | **329,196** |
+| Multi-source advisory-package groups (≥2 sources publish ranges) | **32,746** |
+| Cross-source `fixed`-version disagreements | **1** |
+| Sample SBOM (20 components) — `AFFECTED` verdicts | **19** components / **212** vuln-rows |
 
-Five defensible findings surface in the data:
+Six defensible findings surface in the data:
 
 ### 1. 88% of actively-exploited vulns are invisible to package scanners
 
@@ -138,14 +142,64 @@ KEV drill-down: [`output/kev_clusters.json`](./output/kev_clusters.json).
 Famous-vuln reconciliation: [`output/famous_vulns.json`](./output/famous_vulns.json).
 Top ID-disagreement clusters: [`output/top_disagreement.json`](./output/top_disagreement.json).
 
+### 6. The pipeline now answers "am I affected at version X?"
+
+The previous five findings live at the cluster level. `check_affected.py`
+closes the gap to operational use by taking a list of PURLs (or a
+CycloneDX SBOM) and producing a per-component verdict against every
+matching advisory:
+
+- `AFFECTED` — installed version falls inside the advisory's range
+- `NOT_AFFECTED` — installed version is outside every range
+- `UNKNOWN` — range is `type=GIT`, the version string is unparseable,
+  or there's a deliberate gap in the data
+
+Version comparison uses [`univers`](https://github.com/aboutcode-org/univers)
+(the same library `vulnerablecode` and `osv-scanner` use), restricted to
+the 8 language ecosystems with mature comparison semantics: **PyPI, npm,
+Maven, Go, crates.io, RubyGems, NuGet, Packagist**. Distros and
+system-software ranges are deliberately out of scope — see
+[`docs/design/version-range-reconciliation.md`](./docs/design/version-range-reconciliation.md).
+
+A bundled synthetic SBOM at [`examples/sample_sbom.json`](./examples/sample_sbom.json)
+(20 deliberately old pins across all 8 ecosystems) demonstrates the
+end-to-end output:
+
+| Sample SBOM result | Count |
+|---|---|
+| Components in scope | 20 |
+| Components verdict = AFFECTED | 19 |
+| Components verdict = NOT_AFFECTED | 1 |
+| Vuln-rows evaluated total | 525 |
+| Vuln-rows verdict = AFFECTED | 212 |
+| Vuln-rows verdict = NOT_AFFECTED | 300 |
+| Vuln-rows verdict = UNKNOWN | 13 |
+
+Per-component evidence (e.g. `[osv-Maven] >=2.13.0,<2.15.0 contains 2.14.0`
+for Log4Shell on `log4j-core@2.14.0`) lives in
+[`output/sample_sbom_report.json`](./output/sample_sbom_report.json).
+
+A separate sweep, `analyze_ranges.py`, asks the cluster-level version of
+the question: when two sources both ship a `fixed` event for the same
+(vuln, package), do they agree? Of **32,746 multi-source groups**, only
+**1** has a non-trivially different fix-version set across sources
+(`GHSA-WQC8-X2PR-7JQH` / `restrictedpython` on PyPI: osv-PyPI lists
+fixes in 5.3 *and* 6.1, ghsa-reviewed lists only 5.3). Cross-source fix
+agreement is essentially total — which, given that many ecosystem
+feeds redistribute GHSA, is the answer you'd hope to see, and a useful
+data-quality sanity check on the corpus. Full drill-down:
+[`output/range_disagreement.json`](./output/range_disagreement.json).
+
 ## How it works
 
 1. **Fetch** — eight sources as zip / json / csv.gz archives
    (`fetch_public_data.py`). OSV bulk (33 ecosystems), GHSA, PyPA,
    RustSec, Go vulndb, EPSS, CISA KEV, CVE Project bulk.
-2. **Extract** — every source projected to a 9-column schema
+2. **Extract** — every source projected to a 10-column schema
    (`extract_records.py`) and written to a single zstd parquet (~6.1 M
-   rows, ~200 MB).
+   rows). The `ranges` column carries the OSV `affected[].ranges` JSON
+   for 8 language ecosystems so `check_affected.py` can answer
+   per-version questions without rereading the source archives.
 3. **Check** — GoldenCheck profiles the parquet and writes a DQ health
    grade + per-column nulls/types/outliers (`dq_check.py`).
 4. **Normalize** — GoldenFlow strips + uppercases `vuln_id` and
@@ -156,9 +210,15 @@ Top ID-disagreement clusters: [`output/top_disagreement.json`](./output/top_disa
 6. **Analyze** — KEV exploitation gap, EPSS distribution, per-source
    coverage, ecosystem asymmetry, famous-vuln lookups, top-disagreement
    clusters (also in `analyze.py`).
+7. **Range analysis** — cross-source `fixed`-version agreement check
+   (`analyze_ranges.py`, lower memory than `analyze.py`).
+8. **Per-component matching** *(user-invoked)* — `check_affected.py`
+   takes a PURL list / CycloneDX SBOM and emits per-component
+   AFFECTED / NOT_AFFECTED / UNKNOWN verdicts using `univers`.
 
-GoldenPipe stitches stages 1–6 into a single run with per-stage status
-reporting (`run_pipeline.py`). At ~850k clusters the analysis fits in
+GoldenPipe stitches stages 1–7 into a single run with per-stage status
+reporting (`run_pipeline.py`). Stage 8 is user-invoked because it needs
+an SBOM input. At ~850k clusters the analysis fits in
 ~3 GB on a laptop; the full extract is heavier and is intended for the
 GitHub Actions runner.
 
@@ -202,6 +262,8 @@ Each stage is also independently runnable:
 .\.venv\Scripts\python.exe dq_check.py            # goldencheck scan
 .\.venv\Scripts\python.exe normalize.py           # goldenflow transforms
 .\.venv\Scripts\python.exe analyze.py             # goldenmatch.build_clusters + reports
+.\.venv\Scripts\python.exe analyze_ranges.py      # cross-source fixed-version agreement
+.\.venv\Scripts\python.exe check_affected.py --sbom examples/sample_sbom.json
 ```
 
 Outputs land in `output/`:
@@ -210,6 +272,9 @@ Outputs land in `output/`:
 - `dq_report.json` — GoldenCheck health grade + findings
 - `normalize_manifest.json` — GoldenFlow transforms applied
 - `famous_vulns.json`, `top_disagreement.json` — drill-down samples
+- `range_disagreement.json` — cross-source `fixed`-version agreement check
+- `sample_sbom_report.json` — verdicts for `examples/sample_sbom.json`
+  (only when `check_affected.py` has been run)
 
 ## Scripts
 
@@ -221,6 +286,8 @@ Outputs land in `output/`:
 | `dq_check.py` | GoldenCheck profile + findings → `output/dq_report.json` |
 | `normalize.py` | GoldenFlow strip + uppercase → `data/records_normalized.parquet` |
 | `analyze.py` | GoldenMatch `build_clusters` + headline findings + famous-vuln lookup |
+| `analyze_ranges.py` | Cross-source `fixed`-version agreement sweep over the `ranges` column |
+| `check_affected.py` | Per-PURL / CycloneDX SBOM matcher → `AFFECTED` / `NOT_AFFECTED` / `UNKNOWN` (uses `univers`) |
 | `run_pipeline.py` | GoldenPipe orchestrator over all of the above |
 
 ## Data sources
@@ -250,10 +317,13 @@ All sources are permissively licensed and redistributable. No API keys required.
 - **Row counts ≠ vuln counts per source.** A single advisory affecting
   three packages emits three rows. The `source_coverage` in
   `output/report.json` correctly uses distinct canonical-cluster counts.
-- **No version-range normalization.** The ER pipeline joins on the
-  `(vuln_id, alias)` graph, not on affected versions. Good for "which
-  databases know about this vuln"; not sufficient for "is my installed
-  version affected."
+- **~~No version-range normalization.~~** *Fixed for the 8 language
+  ecosystems above.* `extract_records.py` now emits a `ranges` column
+  carrying the OSV `affected[].ranges` JSON, and `check_affected.py`
+  consumes a PURL list / CycloneDX SBOM to produce per-component
+  AFFECTED / NOT_AFFECTED / UNKNOWN verdicts. Distros (Debian, Ubuntu,
+  Alpine, RPM-based) remain out of scope — their version-comparison
+  semantics are a separate, harder problem.
 - **The top-disagreement list is dominated by Bitnami container fanout.**
   Legitimate ER finding (same vuln duplicated across container variants)
   but visually less dramatic than a pure cross-database disagreement.

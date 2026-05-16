@@ -83,6 +83,11 @@ analyze_stage = _stage_from_script(
     "analyze.py",
     ["output/report.json", "output/famous_vulns.json", "output/top_disagreement.json"],
 )
+analyze_ranges_stage = _stage_from_script(
+    "analyze_ranges",
+    "analyze_ranges.py",
+    ["output/range_disagreement.json"],
+)
 
 STAGES = {
     "fetch": fetch_stage,
@@ -90,6 +95,7 @@ STAGES = {
     "check": check_stage,
     "normalize": normalize_stage,
     "analyze": analyze_stage,
+    "analyze_ranges": analyze_ranges_stage,
 }
 
 
@@ -106,7 +112,7 @@ def main() -> int:
         stage_names.append("fetch")
     if not args.skip_extract:
         stage_names.append("extract")
-    stage_names += ["check", "normalize", "analyze"]
+    stage_names += ["check", "normalize", "analyze", "analyze_ranges"]
 
     stage_specs: list[StageSpec | str] = [StageSpec(use=name) for name in stage_names]
     config = PipelineConfig(pipeline="vuln-reconciliation", stages=stage_specs)

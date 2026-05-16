@@ -2,32 +2,32 @@
   "goldenflow_version": "1.1.6",
   "input": "records.parquet",
   "output": "records_normalized.parquet",
-  "rows_in": 6126895,
-  "rows_out": 6126895,
+  "rows_in": 6099272,
+  "rows_out": 6099272,
   "transforms": [
     {
       "column": "vuln_id",
       "transform": "strip",
       "affected_rows": 0,
-      "total_rows": 6126895
+      "total_rows": 6099272
     },
     {
       "column": "vuln_id",
       "transform": "uppercase",
-      "affected_rows": 1692703,
-      "total_rows": 6126895
+      "affected_rows": 1680559,
+      "total_rows": 6099272
     },
     {
       "column": "aliases",
       "transform": "strip",
       "affected_rows": 12,
-      "total_rows": 6126895
+      "total_rows": 6099272
     },
     {
       "column": "aliases",
       "transform": "uppercase",
-      "affected_rows": 83700,
-      "total_rows": 6126895
+      "affected_rows": 82778,
+      "total_rows": 6099272
     }
   ],
   "errors": []

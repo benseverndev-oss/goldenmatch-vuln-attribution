@@ -407,3 +407,6 @@ for name, cve in famous.items():
     encoding="utf-8",
 )
 print(f"Wrote {OUT / 'famous_vulns.json'}")
+
+# Range-disagreement analysis lives in analyze_ranges.py (standalone) so it
+# can run with less RAM than the full cluster build needs.
