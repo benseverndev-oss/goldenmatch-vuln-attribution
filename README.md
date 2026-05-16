@@ -38,13 +38,34 @@ that ran the same pipeline shape on blockchain data.
 | KEV clusters with known ransomware use | 321 |
 | High-EPSS (p95+) clusters invisible to package scanners | **14,093** |
 | Range-bearing rows in 8 language ecosystems | **329,196** |
-| Multi-source advisory-package groups (≥2 sources publish ranges) | **32,746** |
-| Cross-source `fixed`-version disagreements | **1** |
 | Sample SBOM (20 components) — `AFFECTED` verdicts | **19** components / **212** vuln-rows |
 | Median CVE → first ecosystem advisory | **0 days** (p95: **5.5 yr**) |
 | Median CVE → CISA KEV listing | **322 days** (p95: **9.5 yr**) |
+| **Independent-source fix-version agreement (GHSA-reviewed × PyPA)** | **70.5%** (13.0% true contradiction) |
+| **All CVEs that are package-representable** | **25,352 / 337,526 = 7.5%** |
+| **KEV CVEs that are package-representable** | **117 / 1,592 = 7.4%** |
+| **KEV-with-ransomware CVEs that are package-representable** | **14 / 321 = 4.4%** |
 
-Seven defensible findings surface in the data:
+## Core thesis
+
+**Identity fragmentation and remediation fragmentation are both real.** An
+earlier version of this README claimed remediation data converges across
+sources (only 1 fix-version disagreement in 32,746 multi-source groups).
+That was a redistribution-mirror artifact. Once joined on the CVE alias
+and restricted to source pairs that don't share an upstream feed
+(GHSA-reviewed × PyPA), agreement drops to **70.5%**, with **13% true
+contradiction** and 16% completeness-asymmetry — see finding #8.
+
+**Most CVEs aren't expressible in package-scanner semantics at all.**
+"Package-representable" means: at least one alias-graph row in
+PyPI/npm/Maven/Go/crates.io/RubyGems/NuGet/Packagist carries a version
+range. Only **7.5% of all CVEs** in the corpus meet that bar. KEV
+matches the global rate (7.4%); KEV-with-ransomware drops to **4.4%**.
+The remaining ~92% — appliances, firmware, kernels, browsers, service
+configs — live in a fundamentally different vulnerability universe than
+package-version intelligence can describe. See finding #9.
+
+Nine defensible findings surface in the data:
 
 ### 1. 88% of actively-exploited vulns are invisible to package scanners
 
@@ -181,16 +202,14 @@ Per-component evidence (e.g. `[osv-Maven] >=2.13.0,<2.15.0 contains 2.14.0`
 for Log4Shell on `log4j-core@2.14.0`) lives in
 [`output/sample_sbom_report.json`](./output/sample_sbom_report.json).
 
-A separate sweep, `analyze_ranges.py`, asks the cluster-level version of
-the question: when two sources both ship a `fixed` event for the same
-(vuln, package), do they agree? Of **32,746 multi-source groups**, only
-**1** has a non-trivially different fix-version set across sources
-(`GHSA-WQC8-X2PR-7JQH` / `restrictedpython` on PyPI: osv-PyPI lists
-fixes in 5.3 *and* 6.1, ghsa-reviewed lists only 5.3). Cross-source fix
-agreement is essentially total — which, given that many ecosystem
-feeds redistribute GHSA, is the answer you'd hope to see, and a useful
-data-quality sanity check on the corpus. Full drill-down:
-[`output/range_disagreement.json`](./output/range_disagreement.json).
+A first sweep (`analyze_ranges.py`) joined sources by `vuln_id` and
+reported only 1 fix-version disagreement in 32,746 multi-source groups.
+That was misleading: most of those groups are OSV's per-ecosystem
+buckets redistributing GHSA verbatim, so the result was measuring
+redistribution fidelity rather than independent agreement. Finding #8
+redoes this analysis correctly. The raw sweep output still lives at
+[`output/range_disagreement.json`](./output/range_disagreement.json)
+for reference.
 
 ### 7. How long does it take a CVE to land in each source?
 
@@ -237,6 +256,92 @@ Per-ecosystem CVE-to-first-record medians, the fastest first:
 | NuGet | 796 | 7 days | 1,861 days |
 
 Full distribution histograms: [`output/timing_lag.json`](./output/timing_lag.json).
+
+### 8. Independent sources disagree on the fix in ~30% of cases
+
+`analyze_independence.py` redoes the cross-source fix-version test, but
+joins on the **CVE alias** instead of the source-local `vuln_id` (which
+is essential — PyPA uses `PYSEC-*`, GHSA uses `GHSA-*`, so a direct
+`vuln_id` join finds zero overlap between them). It also classifies
+each source as `INDEPENDENT` (GHSA-reviewed, PyPA, RustSec, Go vulndb,
+CVE Project, CISA KEV) or `MIRROR` (everything beginning `osv-`, plus
+`ghsa-unreviewed` and `epss`), and runs the comparison only on pairs
+that don't share an upstream feed.
+
+In the current corpus, the only INDEPENDENT × INDEPENDENT pair with
+range overlap is **`ghsa-reviewed` × `pypa`** — both publish fix
+events for the same Python CVEs, neither redistributes the other.
+
+| `ghsa-reviewed` × `pypa` on PyPI | Count | % |
+|---|---|---|
+| (CVE, ecosystem, package) groups where both publish a fix | 2,652 | 100% |
+| Both fix-version sets equal | 1,869 | **70.5%** |
+| Disagreement: one set ⊂ the other (completeness asymmetry) | 438 | 16.5% |
+| Disagreement: neither subset (true contradiction) | **345** | **13.0%** |
+| Asymmetric: one source has fix events, the other has only `introduced` | 91 | 3.4% |
+
+Concrete contradiction examples:
+
+| CVE | Package | GHSA-reviewed says fixed in | PyPA says fixed in |
+|---|---|---|---|
+| CVE-2021-32297 | `lief` | `0.11.0` | `0.11.5` |
+| CVE-2024-34528 | `wordops` | `3.21.0` | `3.21.3` |
+
+For comparison, the MIRROR controls — pairs where one side redistributes
+the other — show what genuine redistribution agreement looks like:
+
+| Mirror pair | Both have fixes | Agreement |
+|---|---|---|
+| `ghsa-reviewed` × `osv-Maven` | 6,307 | 6,306 (**99.98%**) |
+| `ghsa-reviewed` × `osv-Packagist` | 4,681 | 4,681 (**100%**) |
+| `ghsa-reviewed` × `osv-npm` | 3,857 | 3,855 (**99.95%**) |
+| `ghsa-reviewed` × `osv-PyPI` | 5,033 | 4,568 (**90.8%**) ← osv-PyPI aggregates GHSA + PyPA |
+| `ghsa-reviewed` × `osv-Go` | 3,254 | 3,006 (**92.4%**) ← osv-Go aggregates GHSA + Go vulndb |
+
+The mirror buckets where OSV is a pure GHSA passthrough (Maven, npm,
+Packagist, NuGet) sit at near-100% agreement. The buckets where OSV
+aggregates a second independent feed (PyPI pulls in PyPA, Go pulls in
+Go vulndb) sit at 90–92%, consistent with the 70% independent-pair
+agreement once you account for the partial GHSA mirroring.
+
+Full breakdown: [`output/independence.json`](./output/independence.json).
+
+### 9. Only 7.5% of CVEs are package-representable
+
+`analyze_representability.py` formalizes what the earlier KEV/EPSS
+findings hint at. **A CVE is *package-representable* iff at least one
+of its alias-graph records carries a version range in one of the 8 v1
+language ecosystems** (PyPI, npm, Maven, Go, crates.io, RubyGems,
+NuGet, Packagist). Everything else is *operational/system*: its
+affectedness can't be expressed as a (package, version-range) pair in
+these feeds. Think Exchange, Cisco IOS, F5 BIG-IP, Fortinet, VMware
+ESXi, browsers, kernels, firmware.
+
+| Population | Total CVEs | Representable | Rate |
+|---|---|---|---|
+| **All CVEs in corpus** | 337,526 | 25,352 | **7.51%** |
+| KEV (any CISA-listed) | 1,592 | 117 | **7.35%** |
+| KEV with known ransomware use | 321 | 14 | **4.36%** |
+| EPSS p95+ (top 5% likely-exploit) | 16,306 | 1,378 | **8.45%** |
+| EPSS p99+ (top 1%) | 3,264 | 514 | **15.75%** |
+| KEV ∩ EPSS p95+ | 1,112 | 108 | 9.71% |
+| KEV − EPSS p95+ (KEV the model missed) | 480 | 9 | **1.87%** |
+| EPSS p95+ − KEV (predicted, not yet exploited) | 15,194 | 1,270 | 8.36% |
+
+Two read-outs:
+
+- **KEV's representability rate matches the global corpus rate** (7.4%
+  vs 7.5%). The intuition that KEV is "the exploitable subset, so
+  package-scanner relevant" doesn't hold — KEV is a *system-software*
+  catalog more than a package-vuln catalog.
+- **The slice CISA flags with known ransomware use is *less*
+  representable** (4.4%, n=321) than the global rate. The 14
+  representable ransomware-tagged CVEs are real package vulns — log4j,
+  jQuery, etc. — but they're the exception. The 307 non-representable
+  ones are appliances and operating systems.
+
+Full breakdown including KEV-by-year:
+[`output/representability.json`](./output/representability.json).
 
 ## How it works
 
@@ -329,6 +434,8 @@ Each stage is also independently runnable:
 .\.venv\Scripts\python.exe analyze.py             # goldenmatch.build_clusters + reports
 .\.venv\Scripts\python.exe analyze_ranges.py      # cross-source fixed-version agreement
 .\.venv\Scripts\python.exe analyze_timing.py      # CVE -> source first-seen lag distributions
+.\.venv\Scripts\python.exe analyze_independence.py    # de-overlap fix-version agreement
+.\.venv\Scripts\python.exe analyze_representability.py  # representability by KEV/EPSS slice
 .\.venv\Scripts\python.exe check_affected.py --sbom examples/sample_sbom.json
 ```
 
@@ -340,6 +447,8 @@ Outputs land in `output/`:
 - `famous_vulns.json`, `top_disagreement.json` — drill-down samples
 - `range_disagreement.json` — cross-source `fixed`-version agreement check
 - `timing_lag.json` — CVE → first-seen-per-source lag distributions
+- `independence.json` — INDEPENDENT vs MIRROR fix-version agreement breakdown
+- `representability.json` — package-representability by population
 - `sample_sbom_report.json` — verdicts for `examples/sample_sbom.json`
   (only when `check_affected.py` has been run)
 
@@ -355,6 +464,8 @@ Outputs land in `output/`:
 | `analyze.py` | GoldenMatch `build_clusters` + headline findings + famous-vuln lookup |
 | `analyze_ranges.py` | Cross-source `fixed`-version agreement sweep over the `ranges` column |
 | `analyze_timing.py` | CVE → source-first-seen lag distributions (incl. KEV / per-ecosystem) |
+| `analyze_independence.py` | De-overlap fix-version agreement test (INDEPENDENT vs MIRROR source pairs) |
+| `analyze_representability.py` | Representability rates by population (all / KEV / KEV-ransomware / EPSS) |
 | `check_affected.py` | Per-PURL / CycloneDX SBOM matcher → `AFFECTED` / `NOT_AFFECTED` / `UNKNOWN` (uses `univers`) |
 | `sync_cloud.py` | Pull the latest cloud-built parquet + JSONs to `data/` and `output/` (release or `gh` mode) |
 | `run_pipeline.py` | GoldenPipe orchestrator over all of the above |

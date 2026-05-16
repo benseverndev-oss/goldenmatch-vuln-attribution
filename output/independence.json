@@ -1,0 +1,1511 @@
+{
+  "source_classification": {
+    "INDEPENDENT": [
+      "cisa-kev",
+      "cve-project",
+      "ghsa-reviewed",
+      "go-vulndb",
+      "pypa",
+      "rustsec"
+    ],
+    "MIRROR_prefixes": [
+      "osv-"
+    ],
+    "MIRROR_exact": [
+      "epss",
+      "ghsa-unreviewed"
+    ]
+  },
+  "independent_pairs": {
+    "ghsa-reviewed_vs_pypa": {
+      "n_groups_both_publish_range": 2822,
+      "n_groups_both_have_fixes": 2652,
+      "n_agreement": 1869,
+      "n_disagreement": 783,
+      "n_disagreement_subset_only": 438,
+      "n_disagreement_contradiction": 345,
+      "agreement_rate": 0.7048,
+      "contradiction_rate": 0.1301,
+      "n_asymmetric_a_has_fix_b_doesnt": 43,
+      "n_asymmetric_b_has_fix_a_doesnt": 48,
+      "examples_disagreement": [
+        {
+          "cve_id": "CVE-2021-32297",
+          "ecosystem": "PyPI",
+          "package": "lief",
+          "sub_class": "contradiction",
+          "ghsa-reviewed": [
+            "0.11.0"
+          ],
+          "pypa": [
+            "0.11.5"
+          ]
+        },
+        {
+          "cve_id": "CVE-2018-7750",
+          "ecosystem": "PyPI",
+          "package": "paramiko",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "1.17.6",
+            "1.18.5",
+            "2.0.8",
+            "2.1.5",
+            "2.2.3",
+            "2.3.2",
+            "2.4.1"
+          ],
+          "pypa": [
+            "1.17.6",
+            "1.18.5",
+            "2.0.8",
+            "2.1.5",
+            "2.2.3",
+            "2.3.2"
+          ]
+        },
+        {
+          "cve_id": "CVE-2022-21726",
+          "ecosystem": "PyPI",
+          "package": "tensorflow-cpu",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.5.3",
+            "2.6.3",
+            "2.7.1"
+          ],
+          "pypa": [
+            "2.5.3",
+            "2.6.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2022-21726",
+          "ecosystem": "PyPI",
+          "package": "tensorflow-gpu",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.5.3",
+            "2.6.3",
+            "2.7.1"
+          ],
+          "pypa": [
+            "2.5.3",
+            "2.6.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2024-34528",
+          "ecosystem": "PyPI",
+          "package": "wordops",
+          "sub_class": "contradiction",
+          "ghsa-reviewed": [
+            "3.21.0"
+          ],
+          "pypa": [
+            "3.21.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2022-23591",
+          "ecosystem": "PyPI",
+          "package": "tensorflow-cpu",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.5.3",
+            "2.6.3",
+            "2.7.1"
+          ],
+          "pypa": [
+            "2.5.3",
+            "2.6.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2022-23591",
+          "ecosystem": "PyPI",
+          "package": "tensorflow-gpu",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.5.3",
+            "2.6.3",
+            "2.7.1"
+          ],
+          "pypa": [
+            "2.5.3",
+            "2.6.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2022-23584",
+          "ecosystem": "PyPI",
+          "package": "tensorflow-cpu",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.5.3",
+            "2.6.3",
+            "2.7.1"
+          ],
+          "pypa": [
+            "2.5.3",
+            "2.6.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2022-23584",
+          "ecosystem": "PyPI",
+          "package": "tensorflow-gpu",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.5.3",
+            "2.6.3",
+            "2.7.1"
+          ],
+          "pypa": [
+            "2.5.3",
+            "2.6.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2023-39508",
+          "ecosystem": "PyPI",
+          "package": "apache-airflow",
+          "sub_class": "contradiction",
+          "ghsa-reviewed": [
+            "2.6.0b1"
+          ],
+          "pypa": [
+            "2.6.0"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-37673",
+          "ecosystem": "PyPI",
+          "package": "tensorflow",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.3.4",
+            "2.4.3",
+            "2.5.1"
+          ],
+          "pypa": [
+            "2.3.4",
+            "2.4.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-37673",
+          "ecosystem": "PyPI",
+          "package": "tensorflow-cpu",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.3.4",
+            "2.4.3",
+            "2.5.1"
+          ],
+          "pypa": [
+            "2.3.4",
+            "2.4.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-37673",
+          "ecosystem": "PyPI",
+          "package": "tensorflow-gpu",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.3.4",
+            "2.4.3",
+            "2.5.1"
+          ],
+          "pypa": [
+            "2.3.4",
+            "2.4.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-37644",
+          "ecosystem": "PyPI",
+          "package": "tensorflow",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.3.4",
+            "2.4.3",
+            "2.5.1"
+          ],
+          "pypa": [
+            "2.3.4",
+            "2.4.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-37644",
+          "ecosystem": "PyPI",
+          "package": "tensorflow-cpu",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.3.4",
+            "2.4.3",
+            "2.5.1"
+          ],
+          "pypa": [
+            "2.3.4",
+            "2.4.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-37644",
+          "ecosystem": "PyPI",
+          "package": "tensorflow-gpu",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.3.4",
+            "2.4.3",
+            "2.5.1"
+          ],
+          "pypa": [
+            "2.3.4",
+            "2.4.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-37691",
+          "ecosystem": "PyPI",
+          "package": "tensorflow",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.3.4",
+            "2.4.3",
+            "2.5.1"
+          ],
+          "pypa": [
+            "2.3.4",
+            "2.4.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-37691",
+          "ecosystem": "PyPI",
+          "package": "tensorflow-cpu",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.3.4",
+            "2.4.3",
+            "2.5.1"
+          ],
+          "pypa": [
+            "2.3.4",
+            "2.4.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-37691",
+          "ecosystem": "PyPI",
+          "package": "tensorflow-gpu",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.3.4",
+            "2.4.3",
+            "2.5.1"
+          ],
+          "pypa": [
+            "2.3.4",
+            "2.4.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2022-0697",
+          "ecosystem": "PyPI",
+          "package": "archivy",
+          "sub_class": "contradiction",
+          "ghsa-reviewed": [
+            "1.7.1"
+          ],
+          "pypa": [
+            "1.7.0"
+          ]
+        },
+        {
+          "cve_id": "CVE-2020-25592",
+          "ecosystem": "PyPI",
+          "package": "salt",
+          "sub_class": "contradiction",
+          "ghsa-reviewed": [
+            "2015.8.13",
+            "2016.11.10",
+            "2016.3.8",
+            "2017.7.8",
+            "2018.3.5",
+            "2019.2.7",
+            "3000.5",
+            "3001.3",
+            "3002.1"
+          ],
+          "pypa": [
+            "2015.8.10",
+            "2015.8.13",
+            "2016.11.10",
+            "2016.11.3",
+            "2016.11.6",
+            "2016.3.4",
+            "2016.3.6",
+            "2016.3.8",
+            "2017.7.4",
+            "2017.7.8",
+            "2018.3.5",
+            "2019.2.5",
+            "3000.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-29536",
+          "ecosystem": "PyPI",
+          "package": "tensorflow",
+          "sub_class": "contradiction",
+          "ghsa-reviewed": [
+            "2.1.4",
+            "2.2.3",
+            "2.3.3",
+            "2.4.2"
+          ],
+          "pypa": [
+            "2.2.0rc0",
+            "2.3.0rc0",
+            "2.3.4",
+            "2.4.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-29536",
+          "ecosystem": "PyPI",
+          "package": "tensorflow-cpu",
+          "sub_class": "contradiction",
+          "ghsa-reviewed": [
+            "2.1.4",
+            "2.2.3",
+            "2.3.3",
+            "2.4.2"
+          ],
+          "pypa": [
+            "2.2.0rc0",
+            "2.3.0rc0",
+            "2.3.4",
+            "2.4.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-29536",
+          "ecosystem": "PyPI",
+          "package": "tensorflow-gpu",
+          "sub_class": "contradiction",
+          "ghsa-reviewed": [
+            "2.1.4",
+            "2.2.3",
+            "2.3.3",
+            "2.4.2"
+          ],
+          "pypa": [
+            "2.2.0rc0",
+            "2.3.0rc0",
+            "2.3.4",
+            "2.4.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2019-19687",
+          "ecosystem": "PyPI",
+          "package": "keystone",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "15.0.1",
+            "16.0.1"
+          ],
+          "pypa": [
+            "16.0.1"
+          ]
+        }
+      ],
+      "examples_asymmetric": [
+        {
+          "cve_id": "CVE-2015-7529",
+          "ecosystem": "PyPI",
+          "package": "sosreport",
+          "direction": "ghsa-reviewed has fix, pypa introduced-only",
+          "ghsa-reviewed_fixes": [
+            "3.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2012-2654",
+          "ecosystem": "PyPI",
+          "package": "nova",
+          "direction": "ghsa-reviewed has fix, pypa introduced-only",
+          "ghsa-reviewed_fixes": [
+            "12.0.0a0"
+          ]
+        },
+        {
+          "cve_id": "CVE-2023-39363",
+          "ecosystem": "PyPI",
+          "package": "vyper",
+          "direction": "ghsa-reviewed has fix, pypa introduced-only",
+          "ghsa-reviewed_fixes": [
+            "0.3.1"
+          ]
+        },
+        {
+          "cve_id": "CVE-2015-5217",
+          "ecosystem": "PyPI",
+          "package": "ipsilon",
+          "direction": "ghsa-reviewed has fix, pypa introduced-only",
+          "ghsa-reviewed_fixes": [
+            "1.2.0"
+          ]
+        },
+        {
+          "cve_id": "CVE-2012-4573",
+          "ecosystem": "PyPI",
+          "package": "glance",
+          "direction": "ghsa-reviewed has fix, pypa introduced-only",
+          "ghsa-reviewed_fixes": [
+            "11.0.0a0"
+          ]
+        },
+        {
+          "cve_id": "CVE-2023-40570",
+          "ecosystem": "PyPI",
+          "package": "datasette",
+          "direction": "ghsa-reviewed has fix, pypa introduced-only",
+          "ghsa-reviewed_fixes": [
+            "1.0a4"
+          ]
+        },
+        {
+          "cve_id": "CVE-2013-2100",
+          "ecosystem": "PyPI",
+          "package": "portage",
+          "direction": "ghsa-reviewed has fix, pypa introduced-only",
+          "ghsa-reviewed_fixes": [
+            "2.1.12.2"
+          ]
+        },
+        {
+          "cve_id": "CVE-2020-29367",
+          "ecosystem": "PyPI",
+          "package": "blosc2",
+          "direction": "ghsa-reviewed has fix, pypa introduced-only",
+          "ghsa-reviewed_fixes": [
+            "0.1.7"
+          ]
+        },
+        {
+          "cve_id": "CVE-2023-48052",
+          "ecosystem": "PyPI",
+          "package": "httpie",
+          "direction": "ghsa-reviewed has fix, pypa introduced-only",
+          "ghsa-reviewed_fixes": [
+            "3.2.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2015-5301",
+          "ecosystem": "PyPI",
+          "package": "ipsilon",
+          "direction": "ghsa-reviewed has fix, pypa introduced-only",
+          "ghsa-reviewed_fixes": [
+            "1.0.2",
+            "1.2.0"
+          ]
+        }
+      ],
+      "n_total_pair_coverage": 2822
+    }
+  },
+  "mirror_control_pairs": {
+    "ghsa-reviewed_vs_osv-Maven": {
+      "n_groups_both_publish_range": 7617,
+      "n_groups_both_have_fixes": 6307,
+      "n_agreement": 6306,
+      "n_disagreement": 1,
+      "n_disagreement_subset_only": 1,
+      "n_disagreement_contradiction": 0,
+      "agreement_rate": 0.9998,
+      "contradiction_rate": 0.0,
+      "n_asymmetric_a_has_fix_b_doesnt": 0,
+      "n_asymmetric_b_has_fix_a_doesnt": 0,
+      "examples_disagreement": [
+        {
+          "cve_id": "CVE-2024-1597",
+          "ecosystem": "Maven",
+          "package": "org.postgresql:postgresql",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "42.2.28",
+            "42.3.9",
+            "42.4.4",
+            "42.5.5",
+            "42.6.1",
+            "42.7.2"
+          ],
+          "osv-Maven": [
+            "42.2.28",
+            "42.2.8",
+            "42.3.9",
+            "42.4.4",
+            "42.5.5",
+            "42.6.1",
+            "42.7.2"
+          ]
+        }
+      ],
+      "examples_asymmetric": [],
+      "n_total_pair_coverage": 7617
+    },
+    "ghsa-reviewed_vs_osv-PyPI": {
+      "n_groups_both_publish_range": 5592,
+      "n_groups_both_have_fixes": 5033,
+      "n_agreement": 4568,
+      "n_disagreement": 465,
+      "n_disagreement_subset_only": 465,
+      "n_disagreement_contradiction": 0,
+      "agreement_rate": 0.9076,
+      "contradiction_rate": 0.0,
+      "n_asymmetric_a_has_fix_b_doesnt": 0,
+      "n_asymmetric_b_has_fix_a_doesnt": 48,
+      "examples_disagreement": [
+        {
+          "cve_id": "CVE-2021-32297",
+          "ecosystem": "PyPI",
+          "package": "lief",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "0.11.0"
+          ],
+          "osv-PyPI": [
+            "0.11.0",
+            "0.11.5"
+          ]
+        },
+        {
+          "cve_id": "CVE-2024-34528",
+          "ecosystem": "PyPI",
+          "package": "wordops",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "3.21.0"
+          ],
+          "osv-PyPI": [
+            "3.21.0",
+            "3.21.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2023-39508",
+          "ecosystem": "PyPI",
+          "package": "apache-airflow",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.6.0b1"
+          ],
+          "osv-PyPI": [
+            "2.6.0",
+            "2.6.0b1"
+          ]
+        },
+        {
+          "cve_id": "CVE-2022-0697",
+          "ecosystem": "PyPI",
+          "package": "archivy",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "1.7.1"
+          ],
+          "osv-PyPI": [
+            "1.7.0",
+            "1.7.1"
+          ]
+        },
+        {
+          "cve_id": "CVE-2020-25592",
+          "ecosystem": "PyPI",
+          "package": "salt",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2015.8.13",
+            "2016.11.10",
+            "2016.3.8",
+            "2017.7.8",
+            "2018.3.5",
+            "2019.2.7",
+            "3000.5",
+            "3001.3",
+            "3002.1"
+          ],
+          "osv-PyPI": [
+            "2015.8.10",
+            "2015.8.13",
+            "2016.11.10",
+            "2016.11.3",
+            "2016.11.6",
+            "2016.3.4",
+            "2016.3.6",
+            "2016.3.8",
+            "2017.7.4",
+            "2017.7.8",
+            "2018.3.5",
+            "2019.2.5",
+            "2019.2.7",
+            "3000.3",
+            "3000.5",
+            "3001.3",
+            "3002.1"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-29536",
+          "ecosystem": "PyPI",
+          "package": "tensorflow",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.1.4",
+            "2.2.3",
+            "2.3.3",
+            "2.4.2"
+          ],
+          "osv-PyPI": [
+            "2.1.4",
+            "2.2.0rc0",
+            "2.2.3",
+            "2.3.0rc0",
+            "2.3.3",
+            "2.3.4",
+            "2.4.2",
+            "2.4.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-29536",
+          "ecosystem": "PyPI",
+          "package": "tensorflow-cpu",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.1.4",
+            "2.2.3",
+            "2.3.3",
+            "2.4.2"
+          ],
+          "osv-PyPI": [
+            "2.1.4",
+            "2.2.0rc0",
+            "2.2.3",
+            "2.3.0rc0",
+            "2.3.3",
+            "2.3.4",
+            "2.4.2",
+            "2.4.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-29536",
+          "ecosystem": "PyPI",
+          "package": "tensorflow-gpu",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.1.4",
+            "2.2.3",
+            "2.3.3",
+            "2.4.2"
+          ],
+          "osv-PyPI": [
+            "2.1.4",
+            "2.2.0rc0",
+            "2.2.3",
+            "2.3.0rc0",
+            "2.3.3",
+            "2.3.4",
+            "2.4.2",
+            "2.4.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-41198",
+          "ecosystem": "PyPI",
+          "package": "tensorflow",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.4.4",
+            "2.5.2",
+            "2.6.1"
+          ],
+          "osv-PyPI": [
+            "2.4.4",
+            "2.5.2",
+            "2.6.1",
+            "2.7.0"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-41198",
+          "ecosystem": "PyPI",
+          "package": "tensorflow-cpu",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.4.4",
+            "2.5.2",
+            "2.6.1"
+          ],
+          "osv-PyPI": [
+            "2.4.4",
+            "2.5.2",
+            "2.6.1",
+            "2.7.0"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-41198",
+          "ecosystem": "PyPI",
+          "package": "tensorflow-gpu",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.4.4",
+            "2.5.2",
+            "2.6.1"
+          ],
+          "osv-PyPI": [
+            "2.4.4",
+            "2.5.2",
+            "2.6.1",
+            "2.7.0"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-3583",
+          "ecosystem": "PyPI",
+          "package": "ansible",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.10.11rc1",
+            "2.11.2rc1",
+            "2.9.23rc1"
+          ],
+          "osv-PyPI": [
+            "2.10.11rc1",
+            "2.11.2rc1",
+            "2.9.23",
+            "2.9.23rc1"
+          ]
+        },
+        {
+          "cve_id": "CVE-2006-5878",
+          "ecosystem": "PyPI",
+          "package": "trac",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "0.10.1"
+          ],
+          "osv-PyPI": [
+            "0.10.1",
+            "0.11"
+          ]
+        },
+        {
+          "cve_id": "CVE-2024-22419",
+          "ecosystem": "PyPI",
+          "package": "vyper",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "0.4.0"
+          ],
+          "osv-PyPI": [
+            "0.4.0",
+            "0.4.0b1"
+          ]
+        },
+        {
+          "cve_id": "CVE-2023-39662",
+          "ecosystem": "PyPI",
+          "package": "llama-index",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "0.9.14"
+          ],
+          "osv-PyPI": [
+            "0.7.14",
+            "0.9.14"
+          ]
+        },
+        {
+          "cve_id": "CVE-2023-22946",
+          "ecosystem": "PyPI",
+          "package": "pyspark",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "3.3.2"
+          ],
+          "osv-PyPI": [
+            "3.3.2",
+            "3.4.0"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-41226",
+          "ecosystem": "PyPI",
+          "package": "tensorflow",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.4.4",
+            "2.5.2",
+            "2.6.1"
+          ],
+          "osv-PyPI": [
+            "2.4.4",
+            "2.5.2",
+            "2.6.1",
+            "2.7.0"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-41226",
+          "ecosystem": "PyPI",
+          "package": "tensorflow-cpu",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.4.4",
+            "2.5.2",
+            "2.6.1"
+          ],
+          "osv-PyPI": [
+            "2.4.4",
+            "2.5.2",
+            "2.6.1",
+            "2.7.0"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-41226",
+          "ecosystem": "PyPI",
+          "package": "tensorflow-gpu",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.4.4",
+            "2.5.2",
+            "2.6.1"
+          ],
+          "osv-PyPI": [
+            "2.4.4",
+            "2.5.2",
+            "2.6.1",
+            "2.7.0"
+          ]
+        },
+        {
+          "cve_id": "CVE-2019-7548",
+          "ecosystem": "PyPI",
+          "package": "sqlalchemy",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "1.2.19"
+          ],
+          "osv-PyPI": [
+            "1.2.18",
+            "1.2.19"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-29533",
+          "ecosystem": "PyPI",
+          "package": "tensorflow",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.1.4",
+            "2.2.3",
+            "2.3.3",
+            "2.4.2"
+          ],
+          "osv-PyPI": [
+            "2.1.4",
+            "2.2.0rc0",
+            "2.2.3",
+            "2.3.0rc0",
+            "2.3.3",
+            "2.3.4",
+            "2.4.2",
+            "2.4.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-29533",
+          "ecosystem": "PyPI",
+          "package": "tensorflow-cpu",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.1.4",
+            "2.2.3",
+            "2.3.3",
+            "2.4.2"
+          ],
+          "osv-PyPI": [
+            "2.1.4",
+            "2.2.0rc0",
+            "2.2.3",
+            "2.3.0rc0",
+            "2.3.3",
+            "2.3.4",
+            "2.4.2",
+            "2.4.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-29533",
+          "ecosystem": "PyPI",
+          "package": "tensorflow-gpu",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.1.4",
+            "2.2.3",
+            "2.3.3",
+            "2.4.2"
+          ],
+          "osv-PyPI": [
+            "2.1.4",
+            "2.2.0rc0",
+            "2.2.3",
+            "2.3.0rc0",
+            "2.3.3",
+            "2.3.4",
+            "2.4.2",
+            "2.4.3"
+          ]
+        },
+        {
+          "cve_id": "CVE-2012-3458",
+          "ecosystem": "PyPI",
+          "package": "beaker",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "1.6.4"
+          ],
+          "osv-PyPI": [
+            "1.6.4",
+            "1.6.5.post1"
+          ]
+        },
+        {
+          "cve_id": "CVE-2020-17490",
+          "ecosystem": "PyPI",
+          "package": "salt",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2015.8.13",
+            "2016.11.10",
+            "2016.3.8",
+            "2017.7.8",
+            "2018.3.5",
+            "2019.2.6",
+            "3000.4",
+            "3001.2",
+            "3002.1"
+          ],
+          "osv-PyPI": [
+            "2015.8.10",
+            "2015.8.13",
+            "2016.11.10",
+            "2016.11.3",
+            "2016.11.6",
+            "2016.3.4",
+            "2016.3.6",
+            "2016.3.8",
+            "2017.7.4",
+            "2017.7.8",
+            "2018.3.5",
+            "2019.2.5",
+            "2019.2.6",
+            "3000.3",
+            "3000.4",
+            "3001.2",
+            "3002.1"
+          ]
+        }
+      ],
+      "examples_asymmetric": [],
+      "n_total_pair_coverage": 5592
+    },
+    "ghsa-reviewed_vs_osv-Packagist": {
+      "n_groups_both_publish_range": 5560,
+      "n_groups_both_have_fixes": 4681,
+      "n_agreement": 4681,
+      "n_disagreement": 0,
+      "n_disagreement_subset_only": 0,
+      "n_disagreement_contradiction": 0,
+      "agreement_rate": 1.0,
+      "contradiction_rate": 0.0,
+      "n_asymmetric_a_has_fix_b_doesnt": 0,
+      "n_asymmetric_b_has_fix_a_doesnt": 0,
+      "examples_disagreement": [],
+      "examples_asymmetric": [],
+      "n_total_pair_coverage": 5560
+    },
+    "ghsa-reviewed_vs_osv-npm": {
+      "n_groups_both_publish_range": 4828,
+      "n_groups_both_have_fixes": 3857,
+      "n_agreement": 3855,
+      "n_disagreement": 2,
+      "n_disagreement_subset_only": 2,
+      "n_disagreement_contradiction": 0,
+      "agreement_rate": 0.9995,
+      "contradiction_rate": 0.0,
+      "n_asymmetric_a_has_fix_b_doesnt": 0,
+      "n_asymmetric_b_has_fix_a_doesnt": 0,
+      "examples_disagreement": [
+        {
+          "cve_id": "CVE-2026-3125",
+          "ecosystem": "npm",
+          "package": "@opennextjs/cloudflare",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "1.17.1"
+          ],
+          "osv-npm": [
+            "1.17.1",
+            "1.3.0"
+          ]
+        },
+        {
+          "cve_id": "CVE-2025-6087",
+          "ecosystem": "npm",
+          "package": "@opennextjs/cloudflare",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "1.3.0"
+          ],
+          "osv-npm": [
+            "1.17.1",
+            "1.3.0"
+          ]
+        }
+      ],
+      "examples_asymmetric": [],
+      "n_total_pair_coverage": 4828
+    },
+    "ghsa-reviewed_vs_osv-Go": {
+      "n_groups_both_publish_range": 3708,
+      "n_groups_both_have_fixes": 3254,
+      "n_agreement": 3006,
+      "n_disagreement": 248,
+      "n_disagreement_subset_only": 248,
+      "n_disagreement_contradiction": 0,
+      "agreement_rate": 0.9238,
+      "contradiction_rate": 0.0,
+      "n_asymmetric_a_has_fix_b_doesnt": 0,
+      "n_asymmetric_b_has_fix_a_doesnt": 9,
+      "examples_disagreement": [
+        {
+          "cve_id": "CVE-2024-35255",
+          "ecosystem": "Go",
+          "package": "github.com/azure/azure-sdk-for-go/sdk/azidentity",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "1.6.0-beta.4.0.20240610221955-50774cd97099"
+          ],
+          "osv-Go": [
+            "1.6.0",
+            "1.6.0-beta.4.0.20240610221955-50774cd97099"
+          ]
+        },
+        {
+          "cve_id": "CVE-2023-28840",
+          "ecosystem": "Go",
+          "package": "github.com/docker/docker",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "20.10.24",
+            "23.0.3"
+          ],
+          "osv-Go": [
+            "20.10.24",
+            "20.10.24+incompatible",
+            "23.0.3",
+            "23.0.3+incompatible"
+          ]
+        },
+        {
+          "cve_id": "CVE-2026-26233",
+          "ecosystem": "Go",
+          "package": "github.com/mattermost/mattermost-server",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "10.11.12",
+            "11.2.4",
+            "11.3.2",
+            "11.4.1"
+          ],
+          "osv-Go": [
+            "10.11.12",
+            "10.11.12+incompatible",
+            "11.2.4",
+            "11.2.4+incompatible",
+            "11.3.2",
+            "11.3.2+incompatible",
+            "11.4.1",
+            "11.4.1+incompatible"
+          ]
+        },
+        {
+          "cve_id": "CVE-2025-27936",
+          "ecosystem": "Go",
+          "package": "github.com/mattermost/mattermost/server/v8",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "10.5.2",
+            "8.0.0-20250314142426-c049748b8863"
+          ],
+          "osv-Go": [
+            "10.5.2",
+            "8.0.0-20250218121836-2b5275d87136",
+            "8.0.0-20250314142426-c049748b8863"
+          ]
+        },
+        {
+          "cve_id": "CVE-2016-11079",
+          "ecosystem": "Go",
+          "package": "github.com/mattermost/mattermost-server",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "3.0.0"
+          ],
+          "osv-Go": [
+            "3.0.0",
+            "3.0.0+incompatible"
+          ]
+        },
+        {
+          "cve_id": "CVE-2024-36621",
+          "ecosystem": "Go",
+          "package": "github.com/moby/moby",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "26.0.0"
+          ],
+          "osv-Go": [
+            "26.0.0",
+            "26.0.0+incompatible"
+          ]
+        },
+        {
+          "cve_id": "CVE-2022-24769",
+          "ecosystem": "Go",
+          "package": "github.com/moby/moby",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "20.10.14"
+          ],
+          "osv-Go": [
+            "20.10.14",
+            "20.10.14+incompatible"
+          ]
+        },
+        {
+          "cve_id": "CVE-2022-24769",
+          "ecosystem": "Go",
+          "package": "github.com/docker/docker",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "20.10.14"
+          ],
+          "osv-Go": [
+            "20.10.14",
+            "20.10.14+incompatible"
+          ]
+        },
+        {
+          "cve_id": "CVE-2025-64437",
+          "ecosystem": "Go",
+          "package": "kubevirt.io/kubevirt",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "1.5.3",
+            "1.6.1"
+          ],
+          "osv-Go": [
+            "1.5.3",
+            "1.6.0-beta.0.0.20250801202148-3ce9f41c54d0",
+            "1.6.1"
+          ]
+        },
+        {
+          "cve_id": "CVE-2026-25783",
+          "ecosystem": "Go",
+          "package": "github.com/mattermost/mattermost-server",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "10.11.11",
+            "11.2.3",
+            "11.3.1",
+            "5.3.2-0.20260129181235-1346cf529aef"
+          ],
+          "osv-Go": [
+            "10.11.11",
+            "10.11.11+incompatible",
+            "11.2.3",
+            "11.2.3+incompatible",
+            "11.3.1",
+            "11.3.1+incompatible",
+            "5.3.2-0.20260129181235-1346cf529aef"
+          ]
+        },
+        {
+          "cve_id": "CVE-2026-20796",
+          "ecosystem": "Go",
+          "package": "github.com/mattermost/mattermost-server",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "10.11.10"
+          ],
+          "osv-Go": [
+            "10.11.10",
+            "10.11.10+incompatible"
+          ]
+        },
+        {
+          "cve_id": "CVE-2025-32093",
+          "ecosystem": "Go",
+          "package": "github.com/mattermost/mattermost-server",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "10.4.4",
+            "10.5.2",
+            "9.11.10"
+          ],
+          "osv-Go": [
+            "10.4.4",
+            "10.4.4+incompatible",
+            "10.5.2",
+            "10.5.2+incompatible",
+            "9.11.10",
+            "9.11.10+incompatible"
+          ]
+        },
+        {
+          "cve_id": "CVE-2020-8559",
+          "ecosystem": "Go",
+          "package": "k8s.io/apimachinery",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "0.16.13",
+            "0.17.9",
+            "0.18.7"
+          ],
+          "osv-Go": [
+            "0.16.13",
+            "0.17.9",
+            "0.18.7",
+            "0.18.7-rc.0"
+          ]
+        },
+        {
+          "cve_id": "CVE-2020-13788",
+          "ecosystem": "Go",
+          "package": "github.com/goharbor/harbor",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.0.1"
+          ],
+          "osv-Go": [
+            "2.0.1",
+            "2.0.1+incompatible"
+          ]
+        },
+        {
+          "cve_id": "CVE-2023-28841",
+          "ecosystem": "Go",
+          "package": "github.com/docker/docker",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "20.10.24",
+            "23.0.3"
+          ],
+          "osv-Go": [
+            "20.10.24",
+            "20.10.24+incompatible",
+            "23.0.3",
+            "23.0.3+incompatible"
+          ]
+        },
+        {
+          "cve_id": "CVE-2017-18908",
+          "ecosystem": "Go",
+          "package": "github.com/mattermost/mattermost-server",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "3.10.1",
+            "3.9.1-rc1"
+          ],
+          "osv-Go": [
+            "3.10.1",
+            "3.10.1+incompatible",
+            "3.9.1-rc1",
+            "3.9.1-rc1+incompatible"
+          ]
+        },
+        {
+          "cve_id": "CVE-2026-2456",
+          "ecosystem": "Go",
+          "package": "github.com/mattermost/mattermost-server",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "10.11.11",
+            "11.2.3",
+            "11.3.1",
+            "5.3.2-0.20260127165411-fe3052073dc6"
+          ],
+          "osv-Go": [
+            "10.11.11",
+            "10.11.11+incompatible",
+            "11.2.3",
+            "11.2.3+incompatible",
+            "11.3.1",
+            "11.3.1+incompatible",
+            "5.3.2-0.20260127165411-fe3052073dc6"
+          ]
+        },
+        {
+          "cve_id": "CVE-2017-18887",
+          "ecosystem": "Go",
+          "package": "github.com/mattermost/mattermost-server",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "4.1.2",
+            "4.2.1",
+            "4.3.0"
+          ],
+          "osv-Go": [
+            "4.1.2",
+            "4.1.2+incompatible",
+            "4.2.1",
+            "4.2.1+incompatible",
+            "4.3.0",
+            "4.3.0+incompatible"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-25736",
+          "ecosystem": "Go",
+          "package": "k8s.io/kubernetes",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "1.21"
+          ],
+          "osv-Go": [
+            "1.21",
+            "1.21.0"
+          ]
+        },
+        {
+          "cve_id": "CVE-2016-11076",
+          "ecosystem": "Go",
+          "package": "github.com/mattermost/mattermost-server",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "3.0.0"
+          ],
+          "osv-Go": [
+            "3.0.0",
+            "3.0.0+incompatible"
+          ]
+        },
+        {
+          "cve_id": "CVE-2025-64432",
+          "ecosystem": "Go",
+          "package": "kubevirt.io/kubevirt",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "1.5.3",
+            "1.6.1",
+            "1.7.0-rc.0"
+          ],
+          "osv-Go": [
+            "1.5.3",
+            "1.6.0-beta.0.0.20250730135146-231dc69723f3",
+            "1.6.1",
+            "1.7.0-rc.0"
+          ]
+        },
+        {
+          "cve_id": "CVE-2025-64715",
+          "ecosystem": "Go",
+          "package": "github.com/cilium/cilium",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "1.16.17",
+            "1.18.4"
+          ],
+          "osv-Go": [
+            "1.16.17",
+            "1.17.10",
+            "1.18.4"
+          ]
+        },
+        {
+          "cve_id": "CVE-2020-29662",
+          "ecosystem": "Go",
+          "package": "github.com/goharbor/harbor",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "2.0.5",
+            "2.1.2"
+          ],
+          "osv-Go": [
+            "2.0.5",
+            "2.0.5+incompatible",
+            "2.1.2",
+            "2.1.2+incompatible"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-41091",
+          "ecosystem": "Go",
+          "package": "github.com/moby/moby",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "20.10.9"
+          ],
+          "osv-Go": [
+            "20.10.9",
+            "20.10.9+incompatible"
+          ]
+        },
+        {
+          "cve_id": "CVE-2021-41091",
+          "ecosystem": "Go",
+          "package": "github.com/docker/docker",
+          "sub_class": "subset_only",
+          "ghsa-reviewed": [
+            "20.10.9"
+          ],
+          "osv-Go": [
+            "20.10.9",
+            "20.10.9+incompatible"
+          ]
+        }
+      ],
+      "examples_asymmetric": [],
+      "n_total_pair_coverage": 3708
+    },
+    "ghsa-reviewed_vs_osv-NuGet": {
+      "n_groups_both_publish_range": 3296,
+      "n_groups_both_have_fixes": 3192,
+      "n_agreement": 3192,
+      "n_disagreement": 0,
+      "n_disagreement_subset_only": 0,
+      "n_disagreement_contradiction": 0,
+      "agreement_rate": 1.0,
+      "contradiction_rate": 0.0,
+      "n_asymmetric_a_has_fix_b_doesnt": 0,
+      "n_asymmetric_b_has_fix_a_doesnt": 0,
+      "examples_disagreement": [],
+      "examples_asymmetric": [],
+      "n_total_pair_coverage": 3296
+    }
+  },
+  "summary_line": "ghsa-reviewed_vs_pypa: agreement 1869/2652 (70.48%)"
+}

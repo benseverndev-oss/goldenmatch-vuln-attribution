@@ -1,0 +1,183 @@
+{
+  "definition": "A CVE is package-representable iff at least one row whose vuln_id or aliases includes that CVE carries a non-empty `ranges` field for one of the 8 v1 language ecosystems (PyPI, npm, Maven, Go, crates.io, RubyGems, NuGet, Packagist). Everything else is operational/system: not expressible in package coordinates by these feeds.",
+  "totals": {
+    "all_cves_in_corpus": 337526,
+    "representable_cves": 25352,
+    "kev_cves": 1592,
+    "kev_ransomware_cves": 321,
+    "epss_p95_cves": 16306,
+    "epss_p99_cves": 3264
+  },
+  "representability_by_population": {
+    "all_cves": {
+      "total": 337526,
+      "representable": 25352,
+      "non_representable": 312174,
+      "representability_rate": 0.0751
+    },
+    "kev": {
+      "total": 1592,
+      "representable": 117,
+      "non_representable": 1475,
+      "representability_rate": 0.0735
+    },
+    "kev_ransomware": {
+      "total": 321,
+      "representable": 14,
+      "non_representable": 307,
+      "representability_rate": 0.0436
+    },
+    "epss_p95": {
+      "total": 16306,
+      "representable": 1378,
+      "non_representable": 14928,
+      "representability_rate": 0.0845
+    },
+    "epss_p99": {
+      "total": 3264,
+      "representable": 514,
+      "non_representable": 2750,
+      "representability_rate": 0.1575
+    },
+    "kev_and_epss_p95": {
+      "total": 1112,
+      "representable": 108,
+      "non_representable": 1004,
+      "representability_rate": 0.0971
+    },
+    "kev_not_epss_p95": {
+      "total": 480,
+      "representable": 9,
+      "non_representable": 471,
+      "representability_rate": 0.0187
+    },
+    "epss_p95_not_kev": {
+      "total": 15194,
+      "representable": 1270,
+      "non_representable": 13924,
+      "representability_rate": 0.0836
+    }
+  },
+  "kev_by_year": {
+    "2002": {
+      "total": 1,
+      "representable": 0,
+      "representability_rate": 0.0
+    },
+    "2004": {
+      "total": 2,
+      "representable": 0,
+      "representability_rate": 0.0
+    },
+    "2005": {
+      "total": 1,
+      "representable": 0,
+      "representability_rate": 0.0
+    },
+    "2006": {
+      "total": 2,
+      "representable": 1,
+      "representability_rate": 0.5
+    },
+    "2007": {
+      "total": 3,
+      "representable": 0,
+      "representability_rate": 0.0
+    },
+    "2008": {
+      "total": 4,
+      "representable": 0,
+      "representability_rate": 0.0
+    },
+    "2009": {
+      "total": 13,
+      "representable": 0,
+      "representability_rate": 0.0
+    },
+    "2010": {
+      "total": 21,
+      "representable": 0,
+      "representability_rate": 0.0
+    },
+    "2011": {
+      "total": 9,
+      "representable": 0,
+      "representability_rate": 0.0
+    },
+    "2012": {
+      "total": 22,
+      "representable": 1,
+      "representability_rate": 0.0455
+    },
+    "2013": {
+      "total": 38,
+      "representable": 1,
+      "representability_rate": 0.0263
+    },
+    "2014": {
+      "total": 34,
+      "representable": 2,
+      "representability_rate": 0.0588
+    },
+    "2015": {
+      "total": 44,
+      "representable": 2,
+      "representability_rate": 0.0455
+    },
+    "2016": {
+      "total": 59,
+      "representable": 7,
+      "representability_rate": 0.1186
+    },
+    "2017": {
+      "total": 86,
+      "representable": 9,
+      "representability_rate": 0.1047
+    },
+    "2018": {
+      "total": 89,
+      "representable": 10,
+      "representability_rate": 0.1124
+    },
+    "2019": {
+      "total": 118,
+      "representable": 8,
+      "representability_rate": 0.0678
+    },
+    "2020": {
+      "total": 146,
+      "representable": 22,
+      "representability_rate": 0.1507
+    },
+    "2021": {
+      "total": 213,
+      "representable": 9,
+      "representability_rate": 0.0423
+    },
+    "2022": {
+      "total": 130,
+      "representable": 9,
+      "representability_rate": 0.0692
+    },
+    "2023": {
+      "total": 163,
+      "representable": 10,
+      "representability_rate": 0.0613
+    },
+    "2024": {
+      "total": 163,
+      "representable": 6,
+      "representability_rate": 0.0368
+    },
+    "2025": {
+      "total": 180,
+      "representable": 17,
+      "representability_rate": 0.0944
+    },
+    "2026": {
+      "total": 51,
+      "representable": 3,
+      "representability_rate": 0.0588
+    }
+  }
+}

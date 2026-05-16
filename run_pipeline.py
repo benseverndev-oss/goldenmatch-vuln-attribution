@@ -93,6 +93,16 @@ analyze_timing_stage = _stage_from_script(
     "analyze_timing.py",
     ["output/timing_lag.json"],
 )
+analyze_independence_stage = _stage_from_script(
+    "analyze_independence",
+    "analyze_independence.py",
+    ["output/independence.json"],
+)
+analyze_representability_stage = _stage_from_script(
+    "analyze_representability",
+    "analyze_representability.py",
+    ["output/representability.json"],
+)
 
 STAGES = {
     "fetch": fetch_stage,
@@ -102,6 +112,8 @@ STAGES = {
     "analyze": analyze_stage,
     "analyze_ranges": analyze_ranges_stage,
     "analyze_timing": analyze_timing_stage,
+    "analyze_independence": analyze_independence_stage,
+    "analyze_representability": analyze_representability_stage,
 }
 
 
@@ -118,7 +130,11 @@ def main() -> int:
         stage_names.append("fetch")
     if not args.skip_extract:
         stage_names.append("extract")
-    stage_names += ["check", "normalize", "analyze", "analyze_ranges", "analyze_timing"]
+    stage_names += [
+        "check", "normalize", "analyze",
+        "analyze_ranges", "analyze_timing",
+        "analyze_independence", "analyze_representability",
+    ]
 
     stage_specs: list[StageSpec | str] = [StageSpec(use=name) for name in stage_names]
     config = PipelineConfig(pipeline="vuln-reconciliation", stages=stage_specs)

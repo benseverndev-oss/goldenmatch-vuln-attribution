@@ -46,6 +46,8 @@ RELEASE_ASSETS = [
     ("top_disagreement.json", OUT_DIR),
     ("range_disagreement.json", OUT_DIR),
     ("timing_lag.json", OUT_DIR),
+    ("independence.json", OUT_DIR),
+    ("representability.json", OUT_DIR),
     ("sample_sbom_report.json", OUT_DIR),
     ("dq_report.json", OUT_DIR),
 ]
