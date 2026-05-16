@@ -45,6 +45,7 @@ RELEASE_ASSETS = [
     ("famous_vulns.json", OUT_DIR),
     ("top_disagreement.json", OUT_DIR),
     ("range_disagreement.json", OUT_DIR),
+    ("timing_lag.json", OUT_DIR),
     ("sample_sbom_report.json", OUT_DIR),
     ("dq_report.json", OUT_DIR),
 ]

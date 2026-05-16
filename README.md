@@ -41,8 +41,10 @@ that ran the same pipeline shape on blockchain data.
 | Multi-source advisory-package groups (≥2 sources publish ranges) | **32,746** |
 | Cross-source `fixed`-version disagreements | **1** |
 | Sample SBOM (20 components) — `AFFECTED` verdicts | **19** components / **212** vuln-rows |
+| Median CVE → first ecosystem advisory | **0 days** (p95: **5.5 yr**) |
+| Median CVE → CISA KEV listing | **322 days** (p95: **9.5 yr**) |
 
-Six defensible findings surface in the data:
+Seven defensible findings surface in the data:
 
 ### 1. 88% of actively-exploited vulns are invisible to package scanners
 
@@ -190,6 +192,52 @@ feeds redistribute GHSA, is the answer you'd hope to see, and a useful
 data-quality sanity check on the corpus. Full drill-down:
 [`output/range_disagreement.json`](./output/range_disagreement.json).
 
+### 7. How long does it take a CVE to land in each source?
+
+`analyze_timing.py` joins every CVE that appears in the corpus (via
+`vuln_id` or in an `aliases` field) against the earliest `published`
+timestamp per source-category. For the **333,777 CVEs** with at least
+one record:
+
+| Pair (source A → source B first-seen) | n | Median lag | p95 lag |
+|---|---|---|---|
+| CVE Project → first **OSV ecosystem** entry | 25,099 | **0 days** | **1,998 days** (5.5 yr) |
+| CVE Project → **GHSA-reviewed** | 24,988 | **1 day**  | **2,414 days** (6.6 yr) |
+| CVE Project → **CISA KEV** | 1,592 | **322 days** | **3,487 days** (9.5 yr) |
+| **GHSA-reviewed → OSV ecosystem** | 24,892 | **0 days** | **0 days** |
+
+Two findings stand out:
+
+- **Half of CVEs land in an ecosystem feed the same day they're
+  published, but the slow tail is years.** 43% of CVE-Project ↔ OSV-eco
+  pairs land on day 0; the bottom 5% take 5+ years.
+- **KEV is a *very* lagging signal.** Half of KEV-listed CVEs sit on
+  the catalog 11 months after their CVE date, and the p95 is **9.5
+  years**. 770 of the 1,592 KEV CVEs (48%) were added more than a year
+  after CVE publication; **293 (18%) were added more than 5 years
+  later**. Treating KEV as a real-time "what's exploitable today"
+  signal underestimates how much of attacker activity is on old vulns
+  CISA only recently surfaced.
+- **`GHSA-reviewed → OSV-ecosystem` p95 is 0 days**, confirming that
+  OSV's per-ecosystem buckets largely re-distribute GHSA same-day. This
+  is the "cross-source agreement" finding from #6 stated explicitly:
+  most multi-source rows are the same data wearing different labels.
+
+Per-ecosystem CVE-to-first-record medians, the fastest first:
+
+| Ecosystem | n CVEs | Median lag | p95 lag |
+|---|---|---|---|
+| crates.io | 789 | **-3 days** *(Rust advisories often predate CVE assignment)* | 1 day |
+| npm | 4,227 | 0 days | 679 days |
+| PyPI | 4,458 | 0 days | 905 days |
+| Go | 3,271 | 0 days | 1,030 days |
+| Maven | 6,181 | 2 days | 2,931 days |
+| Packagist | 4,833 | 1 day | 2,908 days |
+| RubyGems | 918 | 4 days | 3,057 days |
+| NuGet | 796 | 7 days | 1,861 days |
+
+Full distribution histograms: [`output/timing_lag.json`](./output/timing_lag.json).
+
 ## How it works
 
 1. **Fetch** — eight sources as zip / json / csv.gz archives
@@ -280,6 +328,7 @@ Each stage is also independently runnable:
 .\.venv\Scripts\python.exe normalize.py           # goldenflow transforms
 .\.venv\Scripts\python.exe analyze.py             # goldenmatch.build_clusters + reports
 .\.venv\Scripts\python.exe analyze_ranges.py      # cross-source fixed-version agreement
+.\.venv\Scripts\python.exe analyze_timing.py      # CVE -> source first-seen lag distributions
 .\.venv\Scripts\python.exe check_affected.py --sbom examples/sample_sbom.json
 ```
 
@@ -290,6 +339,7 @@ Outputs land in `output/`:
 - `normalize_manifest.json` — GoldenFlow transforms applied
 - `famous_vulns.json`, `top_disagreement.json` — drill-down samples
 - `range_disagreement.json` — cross-source `fixed`-version agreement check
+- `timing_lag.json` — CVE → first-seen-per-source lag distributions
 - `sample_sbom_report.json` — verdicts for `examples/sample_sbom.json`
   (only when `check_affected.py` has been run)
 
@@ -304,6 +354,7 @@ Outputs land in `output/`:
 | `normalize.py` | GoldenFlow strip + uppercase → `data/records_normalized.parquet` |
 | `analyze.py` | GoldenMatch `build_clusters` + headline findings + famous-vuln lookup |
 | `analyze_ranges.py` | Cross-source `fixed`-version agreement sweep over the `ranges` column |
+| `analyze_timing.py` | CVE → source-first-seen lag distributions (incl. KEV / per-ecosystem) |
 | `check_affected.py` | Per-PURL / CycloneDX SBOM matcher → `AFFECTED` / `NOT_AFFECTED` / `UNKNOWN` (uses `univers`) |
 | `sync_cloud.py` | Pull the latest cloud-built parquet + JSONs to `data/` and `output/` (release or `gh` mode) |
 | `run_pipeline.py` | GoldenPipe orchestrator over all of the above |
