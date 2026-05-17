@@ -1,0 +1,321 @@
+{
+  "definitions": {
+    "PURE_MIRROR": "OSV per-ecosystem bucket whose upstream is GHSA only (osv-Maven, osv-npm, osv-Packagist, osv-NuGet). Disagreement here is OSV-redistribution fidelity, not source-of-truth divergence.",
+    "MIXED_MIRROR": "OSV per-ecosystem bucket whose upstream is GHSA + one independent feed (osv-PyPI = GHSA + PyPA; osv-Go = GHSA + Go vulndb). Disagreement is partially fidelity, partially upstream divergence.",
+    "INDEPENDENT": "Two sources with no shared upstream (ghsa-reviewed x pypa). Disagreement is independent-source divergence on the fix.",
+    "any_disagreement": "Fix-version sets are not equal (sets may overlap, be subset, or be disjoint).",
+    "contradiction": "Sub-class of any_disagreement where neither set is a subset of the other (true conflict on the boundary version)."
+  },
+  "per_class": {
+    "PURE_MIRROR": {
+      "members": [
+        "ghsa-reviewed_vs_osv-Maven",
+        "ghsa-reviewed_vs_osv-Packagist",
+        "ghsa-reviewed_vs_osv-npm",
+        "ghsa-reviewed_vs_osv-NuGet"
+      ],
+      "n_groups_both_have_fixes": 18037,
+      "n_disagreement": 3,
+      "n_contradiction": 0,
+      "disagreement_rate": 0.00016632477684759106,
+      "disagreement_ci95": [
+        5.6567009457882166e-05,
+        0.0004889429570898449
+      ],
+      "contradiction_rate": 0.0,
+      "contradiction_ci95": [
+        1.3552527156068805e-20,
+        0.0002129312443359411
+      ]
+    },
+    "MIXED_MIRROR": {
+      "members": [
+        "ghsa-reviewed_vs_osv-PyPI",
+        "ghsa-reviewed_vs_osv-Go"
+      ],
+      "n_groups_both_have_fixes": 8287,
+      "n_disagreement": 713,
+      "n_contradiction": 0,
+      "disagreement_rate": 0.08603837335585858,
+      "disagreement_ci95": [
+        0.08019099688493474,
+        0.09226935782363037
+      ],
+      "contradiction_rate": 0.0,
+      "contradiction_ci95": [
+        0.0,
+        0.00046333762860791
+      ]
+    },
+    "INDEPENDENT": {
+      "members": [
+        "ghsa-reviewed_vs_pypa"
+      ],
+      "n_groups_both_have_fixes": 2652,
+      "n_disagreement": 783,
+      "n_contradiction": 345,
+      "disagreement_rate": 0.29524886877828055,
+      "disagreement_ci95": [
+        0.2781941128447345,
+        0.31289593645277514
+      ],
+      "contradiction_rate": 0.13009049773755657,
+      "contradiction_ci95": [
+        0.11782034428964425,
+        0.1434307392478457
+      ]
+    }
+  },
+  "per_pair": {
+    "ghsa-reviewed_vs_pypa": {
+      "class": "INDEPENDENT",
+      "n_groups_both_have_fixes": 2652,
+      "n_disagreement": 783,
+      "n_contradiction": 345,
+      "n_subset_only": 438,
+      "disagreement_rate": 0.29524886877828055,
+      "disagreement_ci95": [
+        0.2781941128447345,
+        0.31289593645277514
+      ],
+      "contradiction_rate": 0.13009049773755657,
+      "contradiction_ci95": [
+        0.11782034428964425,
+        0.1434307392478457
+      ]
+    },
+    "ghsa-reviewed_vs_osv-Maven": {
+      "class": "PURE_MIRROR",
+      "n_groups_both_have_fixes": 6307,
+      "n_disagreement": 1,
+      "n_contradiction": 0,
+      "n_subset_only": 1,
+      "disagreement_rate": 0.00015855398763278897,
+      "disagreement_ci95": [
+        2.7989220416851078e-05,
+        0.0008976335921368519
+      ],
+      "contradiction_rate": 0.0,
+      "contradiction_ci95": [
+        0.0,
+        0.0006087078634062182
+      ]
+    },
+    "ghsa-reviewed_vs_osv-PyPI": {
+      "class": "MIXED_MIRROR",
+      "n_groups_both_have_fixes": 5033,
+      "n_disagreement": 465,
+      "n_contradiction": 0,
+      "n_subset_only": 465,
+      "disagreement_rate": 0.09239022451818,
+      "disagreement_ci95": [
+        0.08469797520900718,
+        0.10070421909379701
+      ],
+      "contradiction_rate": 0.0,
+      "contradiction_ci95": [
+        0.0,
+        0.0007626721730474218
+      ]
+    },
+    "ghsa-reviewed_vs_osv-Packagist": {
+      "class": "PURE_MIRROR",
+      "n_groups_both_have_fixes": 4681,
+      "n_disagreement": 0,
+      "n_contradiction": 0,
+      "n_subset_only": 0,
+      "disagreement_rate": 0.0,
+      "disagreement_ci95": [
+        0.0,
+        0.0008199762690925997
+      ],
+      "contradiction_rate": 0.0,
+      "contradiction_ci95": [
+        0.0,
+        0.0008199762690925997
+      ]
+    },
+    "ghsa-reviewed_vs_osv-npm": {
+      "class": "PURE_MIRROR",
+      "n_groups_both_have_fixes": 3857,
+      "n_disagreement": 2,
+      "n_contradiction": 0,
+      "n_subset_only": 2,
+      "disagreement_rate": 0.0005185377236193933,
+      "disagreement_ci95": [
+        0.00014221326638619574,
+        0.0018888099974101176
+      ],
+      "contradiction_rate": 0.0,
+      "contradiction_ci95": [
+        1.0842021724855044e-19,
+        0.0009949796855599218
+      ]
+    },
+    "ghsa-reviewed_vs_osv-Go": {
+      "class": "MIXED_MIRROR",
+      "n_groups_both_have_fixes": 3254,
+      "n_disagreement": 248,
+      "n_contradiction": 0,
+      "n_subset_only": 248,
+      "disagreement_rate": 0.0762138905961893,
+      "disagreement_ci95": [
+        0.06758848574014618,
+        0.08583870374673315
+      ],
+      "contradiction_rate": 0.0,
+      "contradiction_ci95": [
+        0.0,
+        0.0011791423460135765
+      ]
+    },
+    "ghsa-reviewed_vs_osv-NuGet": {
+      "class": "PURE_MIRROR",
+      "n_groups_both_have_fixes": 3192,
+      "n_disagreement": 0,
+      "n_contradiction": 0,
+      "n_subset_only": 0,
+      "disagreement_rate": 0.0,
+      "disagreement_ci95": [
+        0.0,
+        0.0012020179568330877
+      ],
+      "contradiction_rate": 0.0,
+      "contradiction_ci95": [
+        0.0,
+        0.0012020179568330877
+      ]
+    }
+  },
+  "tests": {
+    "any_disagreement__INDEPENDENT_vs_PURE_MIRROR": {
+      "comparison": "INDEPENDENT vs PURE_MIRROR",
+      "outcome": "n_disagreement",
+      "table": {
+        "INDEPENDENT": {
+          "yes": 783,
+          "no": 1869
+        },
+        "PURE_MIRROR": {
+          "yes": 3,
+          "no": 18034
+        }
+      },
+      "chi_square": {
+        "chi2_yates": 5500.3012,
+        "p_value": 0.0,
+        "df": 1,
+        "expected_min": 100.75
+      },
+      "relative_risk": {
+        "rr": 1775.1346153846155,
+        "p_group_a": 0.29524886877828055,
+        "p_group_c": 0.00016632477684759106
+      }
+    },
+    "any_disagreement__INDEPENDENT_vs_MIXED_MIRROR": {
+      "comparison": "INDEPENDENT vs MIXED_MIRROR",
+      "outcome": "n_disagreement",
+      "table": {
+        "INDEPENDENT": {
+          "yes": 783,
+          "no": 1869
+        },
+        "MIXED_MIRROR": {
+          "yes": 713,
+          "no": 7574
+        }
+      },
+      "chi_square": {
+        "chi2_yates": 743.0875,
+        "p_value": 1.2777162276112574e-163,
+        "df": 1,
+        "expected_min": 362.68
+      },
+      "relative_risk": {
+        "rr": 3.431595197146719,
+        "p_group_a": 0.29524886877828055,
+        "p_group_c": 0.08603837335585858
+      }
+    },
+    "any_disagreement__MIXED_MIRROR_vs_PURE_MIRROR": {
+      "comparison": "MIXED_MIRROR vs PURE_MIRROR",
+      "outcome": "n_disagreement",
+      "table": {
+        "MIXED_MIRROR": {
+          "yes": 713,
+          "no": 7574
+        },
+        "PURE_MIRROR": {
+          "yes": 3,
+          "no": 18034
+        }
+      },
+      "chi_square": {
+        "chi2_yates": 1579.2008,
+        "p_value": 0.0,
+        "df": 1,
+        "expected_min": 225.4
+      },
+      "relative_risk": {
+        "rr": 517.291380073207,
+        "p_group_a": 0.08603837335585858,
+        "p_group_c": 0.00016632477684759106
+      }
+    },
+    "contradiction__INDEPENDENT_vs_PURE_MIRROR": {
+      "comparison": "INDEPENDENT vs PURE_MIRROR",
+      "outcome": "n_contradiction",
+      "table": {
+        "INDEPENDENT": {
+          "yes": 345,
+          "no": 2307
+        },
+        "PURE_MIRROR": {
+          "yes": 0,
+          "no": 18037
+        }
+      },
+      "chi_square": {
+        "chi2_yates": 2378.307,
+        "p_value": 0.0,
+        "df": 1,
+        "expected_min": 44.22
+      },
+      "relative_risk": {
+        "rr_lower_bound": 610.950723287528,
+        "p_group_a": 0.13009049773755657,
+        "p_group_c": 0.0,
+        "p_group_c_wilson_upper_95": 0.0002129312443359411,
+        "note": "c=0; RR reported as a lower bound via Wilson upper-95 on group C"
+      }
+    },
+    "contradiction__INDEPENDENT_vs_MIXED_MIRROR": {
+      "comparison": "INDEPENDENT vs MIXED_MIRROR",
+      "outcome": "n_contradiction",
+      "table": {
+        "INDEPENDENT": {
+          "yes": 345,
+          "no": 2307
+        },
+        "MIXED_MIRROR": {
+          "yes": 0,
+          "no": 8287
+        }
+      },
+      "chi_square": {
+        "chi2_yates": 1108.9126,
+        "p_value": 3.817658997022092e-243,
+        "df": 1,
+        "expected_min": 83.64
+      },
+      "relative_risk": {
+        "rr_lower_bound": 280.76825559886265,
+        "p_group_a": 0.13009049773755657,
+        "p_group_c": 0.0,
+        "p_group_c_wilson_upper_95": 0.00046333762860791,
+        "note": "c=0; RR reported as a lower bound via Wilson upper-95 on group C"
+      }
+    }
+  }
+}

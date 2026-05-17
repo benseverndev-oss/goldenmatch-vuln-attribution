@@ -83,6 +83,9 @@ jobs:
       - name: Actionability (representable AND has published fix event)
         run: python -u analyze_actionability.py
 
+      - name: Convergence-inversion statistical test
+        run: python -u analyze_convergence_inversion.py
+
       - name: Sample-SBOM check (end-to-end demo of check_affected)
         run: python -u check_affected.py --sbom examples/sample_sbom.json --out output/sample_sbom_report.json
 
@@ -142,6 +145,7 @@ jobs:
             echo "- \`representability.json\` -- package-representability rates by KEV / EPSS slice"
             echo "- \`representability_taxonomy.json\` -- 5-bucket source-presence taxonomy cross-tabbed against KEV / EPSS / ransomware"
             echo "- \`actionability.json\` -- representable CVEs that ship a concrete \`fixed\` event"
+            echo "- \`convergence_inversion.json\` -- Wilson CIs + chi-square tests on mirror-vs-independent disagreement rates"
             echo "- \`review_worksheets.zip\` -- 6 CSV worksheets for manual qualitative validation (KEV blind spots, contradictions, orphans, etc.)"
             echo "- \`sample_sbom_report.json\` -- verdicts for examples/sample_sbom.json"
             echo "- \`dq_report.json\` -- goldencheck DQ findings"
@@ -157,6 +161,7 @@ jobs:
              output/top_disagreement.json output/range_disagreement.json \
              output/timing_lag.json output/independence.json output/representability.json \
              output/representability_taxonomy.json output/actionability.json \
+             output/convergence_inversion.json \
              output/sample_sbom_report.json output/dq_report.json "$stage/"
 
           # Delete and recreate the tag so the release always points at the

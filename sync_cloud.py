@@ -51,6 +51,7 @@ RELEASE_ASSETS = [
     ("representability.json", OUT_DIR),
     ("representability_taxonomy.json", OUT_DIR),
     ("actionability.json", OUT_DIR),
+    ("convergence_inversion.json", OUT_DIR),
     ("review_worksheets.zip", OUT_DIR),
     ("sample_sbom_report.json", OUT_DIR),
     ("dq_report.json", OUT_DIR),

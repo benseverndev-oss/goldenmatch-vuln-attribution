@@ -22,6 +22,79 @@ Project archive.
 Companion repo to the [wallet-attribution demo](https://github.com/benzsevern/goldenmatch-wallet-attribution)
 that ran the same pipeline shape on blockchain data.
 
+## Key results
+
+Three claims do most of the work in this repo. Each is reproducible
+from one `python sync_cloud.py`.
+
+### A. The "cross-source agreement" most consumers trust is a mirror artifact
+
+Take every `(CVE, ecosystem, package)` tuple where two sources both
+publish a `fixed`-version event. Group those tuples by what kind of
+source-pair they came from:
+
+| Source pair class | n cells | Any disagreement | True contradiction |
+|---|---|---|---|
+| **Pure mirror** (e.g. `ghsa-reviewed × osv-Maven`; OSV is a GHSA passthrough) | 18,037 | **0.017%** (CI 0.006–0.049%) | **0** |
+| **Mixed mirror** (e.g. `ghsa-reviewed × osv-PyPI`; OSV pulls GHSA + PyPA) | 8,287 | **8.60%** (CI 8.02–9.23%) | **0** |
+| **Independent** (`ghsa-reviewed × pypa`; no shared upstream) | 2,652 | **29.5%** (CI 27.8–31.3%) | **13.0%** (345 cases) |
+
+Chi-square of independent-vs-pure-mirror on any-disagreement:
+**χ² = 5,500, p ≈ 0**, **relative risk = 1,775×**. On true
+contradiction the mirror cell is zero, so the relative risk is bounded
+below by the Wilson upper-95 of the zero-event rate: **RR ≥ 611×**.
+
+Cross-source fix-version contradiction is **statistically absent**
+from mirror pairs (0 events across 26,324 cells) and present at
+**13%** rate when sources are fully independent. The conventional
+wisdom that "the public OSS vuln databases agree on remediation" is
+overwhelmingly measuring redistribution fidelity, not source-of-truth
+convergence. Test code: `analyze_convergence_inversion.py`. Result:
+[`output/convergence_inversion.json`](./output/convergence_inversion.json).
+Methodology: [`docs/methodology.md`](./docs/methodology.md).
+
+### B. Only 7.5% of CVEs are package-representable, and KEV-with-ransomware is *less* representable than baseline
+
+Define a CVE as **package-representable** iff at least one of its
+alias-graph rows carries a version range in one of the 8 v1 language
+ecosystems (PyPI, npm, Maven, Go, crates.io, RubyGems, NuGet, Packagist).
+
+| Population | Total CVEs | Representable | Rate |
+|---|---|---|---|
+| All CVEs in corpus | 337,526 | 25,352 | **7.51%** |
+| KEV (any CISA-listed) | 1,592 | 117 | **7.35%** |
+| **KEV with known ransomware use** | **321** | **14** | **4.36%** |
+| EPSS p99+ (top 1% likely-exploit) | 3,264 | 514 | 15.75% |
+| KEV − EPSS p95+ (KEV the model missed) | 480 | 9 | **1.87%** |
+
+The intuition that KEV is "the exploitable subset, so a
+package-scanner-relevant subset" doesn't hold. KEV's
+package-representability rate matches the global corpus rate. The
+ransomware-tagged slice is **less** representable than baseline (4.4%
+vs 7.5%). The KEV cases EPSS *also missed* — i.e. the bugs that nobody
+predicted but attackers used anyway — are 1.87% representable. Code:
+`analyze_representability.py`. Result:
+[`output/representability.json`](./output/representability.json).
+
+### C. The pipeline answers "am I affected at version X?" with three-state honesty
+
+`check_affected.py` takes a PURL list or a CycloneDX SBOM and emits
+per-component `AFFECTED` / `NOT_AFFECTED` / `UNKNOWN` verdicts using
+`univers` for ecosystem-correct version comparison. Result on the
+bundled sample SBOM (20 components, 8 ecosystems):
+
+| Outcome | Components | Vuln-rows |
+|---|---|---|
+| AFFECTED | 19 | 212 |
+| NOT_AFFECTED | 1 | 300 |
+| UNKNOWN | 0 | 13 |
+
+Per-row evidence (`>=2.13.0,<2.15.0 contains 2.14.0` for Log4Shell on
+`log4j-core@2.14.0`) is in
+[`output/sample_sbom_report.json`](./output/sample_sbom_report.json).
+
+---
+
 ## Headline findings
 
 | Metric | Value |
@@ -49,6 +122,9 @@ that ran the same pipeline shape on blockchain data.
 | **Raw NVD passthrough mirror share** | **88.2%** of CVE corpus |
 | **Representable AND has published fix (actionable)** | **21,535 / 337,516 = 6.4%** |
 | Actionable-given-representable | **84.9%** |
+| **Cross-source contradiction in pure-mirror pairs** (26,324 cells) | **0** (CI 95% upper 0.014%) |
+| **Cross-source contradiction in independent pair** (`ghsa-reviewed × pypa`, 2,652 cells) | **345 (13.0%)** |
+| Relative risk of any-disagreement (independent vs pure-mirror) | **1,775×** (χ²=5,500, p≈0) |
 
 ## Operational definitions
 
@@ -445,6 +521,8 @@ Go vulndb) sit at 90–92%, consistent with the 70% independent-pair
 agreement once you account for the partial GHSA mirroring.
 
 Full breakdown: [`output/independence.json`](./output/independence.json).
+**Statistical test on the inversion** (Wilson CIs + χ² across the
+three pair classes): [`output/convergence_inversion.json`](./output/convergence_inversion.json).
 **Methodology**: every step of the join, comparison, and source
 classification is spelled out in
 [`docs/methodology.md`](./docs/methodology.md), including known
@@ -702,6 +780,7 @@ Outputs land in `output/`:
 - `representability.json` — package-representability by population
 - `representability_taxonomy.json` — 5-bucket source-presence breakdown
 - `actionability.json` — representable AND has a published fix
+- `convergence_inversion.json` — Wilson CIs + χ² for Key result A
 - `review/*.csv` (also bundled as `review_worksheets.zip` in the release) — sampled rows for manual qualitative validation
 - `sample_sbom_report.json` — verdicts for `examples/sample_sbom.json`
   (only when `check_affected.py` has been run)
@@ -722,6 +801,7 @@ Outputs land in `output/`:
 | `analyze_representability.py` | Representability rates by population (all / KEV / KEV-ransomware / EPSS) |
 | `analyze_representability_taxonomy.py` | 5-bucket source-presence taxonomy cross-tabbed against KEV / EPSS / ransomware |
 | `analyze_actionability.py` | Representable CVEs that ship a concrete `fixed` event (gap = repr but not actionable) |
+| `analyze_convergence_inversion.py` | Wilson CIs + χ² test on mirror-vs-independent disagreement rates (Key result A) |
 | `sample_for_review.py` | Random CVE samples per bucket, pre-filled with description / KEV / EPSS / sources for manual qualitative validation |
 | `compute_agreement.py` | Raw agreement + Cohen's κ + Fleiss' κ + confusion matrices across ≥2 filled review CSVs |
 | `label_baseline_stats.py` | Per-worksheet label distribution + auto-bucket alignment for the Claude-baseline `__claude.csv` files |
