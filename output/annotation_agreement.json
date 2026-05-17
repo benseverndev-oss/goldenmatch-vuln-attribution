@@ -1,0 +1,183 @@
+{
+  "representability_type": {
+    "raters": [
+      "claude",
+      "openai"
+    ],
+    "labels_per_rater": {
+      "claude": 156,
+      "openai": 156
+    },
+    "pairwise_cohen_kappa": {
+      "claude_vs_openai": {
+        "n": 156,
+        "agree": 114,
+        "raw_agreement": 0.7308,
+        "kappa": 0.648
+      }
+    },
+    "fleiss_kappa": {
+      "n_raters": 2,
+      "n_subjects": 0,
+      "kappa": null,
+      "note": "Fleiss requires >=3 raters; use cohen_kappa for pairs."
+    },
+    "confusion_vs_majority": {
+      "claude": {
+        "n": 156,
+        "agree_with_majority": 156,
+        "agree_with_majority_rate": 1.0,
+        "confusion_majority_to_rater": {
+          "BINARY": {
+            "BINARY": 36
+          },
+          "SERVICE": {
+            "SERVICE": 38
+          },
+          "PACKAGE": {
+            "PACKAGE": 47
+          },
+          "APPLIANCE": {
+            "APPLIANCE": 22
+          },
+          "CLOUD": {
+            "CLOUD": 1
+          },
+          "RUNTIME_CONFIG": {
+            "RUNTIME_CONFIG": 3
+          },
+          "OTHER": {
+            "OTHER": 9
+          }
+        }
+      },
+      "openai": {
+        "n": 156,
+        "agree_with_majority": 114,
+        "agree_with_majority_rate": 0.7308,
+        "confusion_majority_to_rater": {
+          "BINARY": {
+            "PACKAGE": 6,
+            "BINARY": 28,
+            "RUNTIME_CONFIG": 1,
+            "SERVICE": 1
+          },
+          "SERVICE": {
+            "SERVICE": 26,
+            "PACKAGE": 9,
+            "APPLIANCE": 1,
+            "RUNTIME_CONFIG": 1,
+            "CLOUD": 1
+          },
+          "PACKAGE": {
+            "OTHER": 1,
+            "SERVICE": 3,
+            "PACKAGE": 40,
+            "BINARY": 3
+          },
+          "APPLIANCE": {
+            "SERVICE": 11,
+            "OTHER": 1,
+            "APPLIANCE": 10
+          },
+          "CLOUD": {
+            "CLOUD": 1
+          },
+          "RUNTIME_CONFIG": {
+            "BINARY": 1,
+            "SERVICE": 2
+          },
+          "OTHER": {
+            "OTHER": 9
+          }
+        }
+      }
+    }
+  },
+  "scanner_modality": {
+    "raters": [
+      "claude",
+      "openai"
+    ],
+    "labels_per_rater": {
+      "claude": 156,
+      "openai": 156
+    },
+    "pairwise_cohen_kappa": {
+      "claude_vs_openai": {
+        "n": 156,
+        "agree": 127,
+        "raw_agreement": 0.8141,
+        "kappa": 0.7373
+      }
+    },
+    "fleiss_kappa": {
+      "n_raters": 2,
+      "n_subjects": 0,
+      "kappa": null,
+      "note": "Fleiss requires >=3 raters; use cohen_kappa for pairs."
+    },
+    "confusion_vs_majority": {
+      "claude": {
+        "n": 156,
+        "agree_with_majority": 156,
+        "agree_with_majority_rate": 1.0,
+        "confusion_majority_to_rater": {
+          "HOST": {
+            "HOST": 37
+          },
+          "NETWORK": {
+            "NETWORK": 60
+          },
+          "SBOM": {
+            "SBOM": 47
+          },
+          "CSPM": {
+            "CSPM": 1
+          },
+          "RUNTIME": {
+            "RUNTIME": 2
+          },
+          "NONE": {
+            "NONE": 9
+          }
+        }
+      },
+      "openai": {
+        "n": 156,
+        "agree_with_majority": 127,
+        "agree_with_majority_rate": 0.8141,
+        "confusion_majority_to_rater": {
+          "HOST": {
+            "SBOM": 6,
+            "HOST": 29,
+            "RUNTIME": 1,
+            "NETWORK": 1
+          },
+          "NETWORK": {
+            "NETWORK": 48,
+            "SBOM": 9,
+            "NONE": 1,
+            "RUNTIME": 1,
+            "CSPM": 1
+          },
+          "SBOM": {
+            "NONE": 1,
+            "NETWORK": 3,
+            "SBOM": 40,
+            "HOST": 3
+          },
+          "CSPM": {
+            "CSPM": 1
+          },
+          "RUNTIME": {
+            "NETWORK": 2
+          },
+          "NONE": {
+            "NONE": 9
+          }
+        }
+      }
+    }
+  }
+}

@@ -141,10 +141,50 @@ with the per-worksheet distribution. Headlines on the n=30 sample:
 | **overall (158 rows)** | 158 | PACKAGE=49, SERVICE=38, BINARY=36, APPLIANCE=22 | **38/38 (100%)** on the rows where the bucket has a clear expectation |
 
 The `OTHER` rows are the genuinely unlabellable fraction — mostly
-`ghsa-unreviewed`-only orphans without published descriptions. A
-second rater agreeing with even half of the non-`OTHER` 149 rows
-gives the protocol meaningful κ; agreeing on 80%+ would close
-ChatGPT's reliability loop.
+`ghsa-unreviewed`-only orphans without published descriptions.
+
+### Cross-model inter-rater κ (Claude vs GPT-4o-mini)
+
+[`label_with_openai.py`](./label_with_openai.py) runs the same
+annotation protocol against OpenAI's `gpt-4o-mini` and writes
+`<bucket>__openai.csv`. Running
+`compute_agreement.py output/review/*__claude.csv output/review/*__openai.csv`
+on all 156 cross-rater labels produces:
+
+| Column | Raw agreement | Cohen's κ | Landis & Koch band |
+|---|---|---|---|
+| `representability_type` | 73.1% (114/156) | **0.648** | substantial (0.61–0.8) |
+| `scanner_modality` | 81.4% (127/156) | **0.737** | substantial (0.61–0.8) |
+
+Both fall in the **substantial agreement** band on two different model
+families applying the protocol independently. This isn't human inter-
+rater reliability — it's cross-model κ — but the methodological point
+is the same: if the protocol leaves substantial room for different
+agents to converge after reading the same rules and seeing the same
+CVE descriptions, then the protocol is doing the constraining rather
+than reflecting either model's idiosyncrasies.
+
+The 42 representability disagreements concentrate on two documented
+edge-case lines, not random noise:
+
+| Claude → OpenAI | n | Pattern |
+|---|---|---|
+| `APPLIANCE` → `SERVICE` | 11 | vendor-managed software (Ivanti EPMM, GoAnywhere, etc.) — both readings of the protocol |
+| `SERVICE` → `PACKAGE` | 9 | self-hosted server that also ships as a Maven/Packagist artifact — OpenAI applies "earliest in list" more aggressively |
+| `BINARY` → `PACKAGE` | 6 | similar; kernel-adjacent or distro-package items with Maven/Go aliases |
+| smaller cells | 16 | mix of `RUNTIME_CONFIG`/`SERVICE`/`APPLIANCE` boundary cases |
+
+These are the boundary cases the protocol explicitly calls out as
+ambiguous (see `docs/annotation-protocol.md` § "Edge-case decisions").
+That the disagreement is concentrated there, not scattered across the
+matrix, suggests the protocol is working on the easy cases and the
+remaining gap is real ambiguity in the taxonomy — which is the next
+thing to tighten if you wanted to push κ higher.
+
+Reproducible from the release: `python sync_cloud.py` then
+`OPENAI_API_KEY=sk-... python label_with_openai.py` then
+`python compute_agreement.py output/review/*__*.csv`. Full breakdown:
+[`output/annotation_agreement.json`](./output/annotation_agreement.json).
 
 ## Core thesis
 
@@ -685,6 +725,7 @@ Outputs land in `output/`:
 | `sample_for_review.py` | Random CVE samples per bucket, pre-filled with description / KEV / EPSS / sources for manual qualitative validation |
 | `compute_agreement.py` | Raw agreement + Cohen's κ + Fleiss' κ + confusion matrices across ≥2 filled review CSVs |
 | `label_baseline_stats.py` | Per-worksheet label distribution + auto-bucket alignment for the Claude-baseline `__claude.csv` files |
+| `label_with_openai.py` | Independent second-rater pass via OpenAI's API (default model: `gpt-4o-mini`, ~$0.05 for all 158 rows) |
 | `check_affected.py` | Per-PURL / CycloneDX SBOM matcher → `AFFECTED` / `NOT_AFFECTED` / `UNKNOWN` (uses `univers`) |
 | `sync_cloud.py` | Pull the latest cloud-built parquet + JSONs to `data/` and `output/` (release or `gh` mode) |
 | `run_pipeline.py` | GoldenPipe orchestrator over all of the above |

@@ -254,7 +254,15 @@ def main() -> int:
     report: dict[str, dict] = {}
     for target in targets:
         print(f"\n=== {target} ===")
-        rater_labels = {parse_rater_id(p): load_labels(p, target) for p in args.files}
+        # Multiple files per rater (e.g. one CSV per worksheet) accumulate
+        # into a single CVE -> label map per rater. A dict comprehension
+        # would silently drop all but the last file per rater id.
+        rater_labels: dict[str, dict[str, str]] = {}
+        for p in args.files:
+            rid = parse_rater_id(p)
+            if rid not in rater_labels:
+                rater_labels[rid] = {}
+            rater_labels[rid].update(load_labels(p, target))
         if all(len(v) == 0 for v in rater_labels.values()):
             print(f"  (no labels present in column `{target}` -- skipping)")
             report[target] = {"note": "no labels present"}
