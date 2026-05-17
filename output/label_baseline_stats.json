@@ -1,0 +1,146 @@
+{
+  "cve_only": {
+    "n_rows": 30,
+    "representability_distribution": {
+      "BINARY": 8,
+      "SERVICE": 13,
+      "PACKAGE": 5,
+      "APPLIANCE": 2,
+      "CLOUD": 1,
+      "RUNTIME_CONFIG": 1
+    },
+    "scanner_modality_distribution": {
+      "HOST": 9,
+      "NETWORK": 15,
+      "SBOM": 5,
+      "CSPM": 1
+    },
+    "bucket_alignment": {
+      "n_with_expectation": 0,
+      "n_agree": 0,
+      "rate": null,
+      "disagreements": []
+    },
+    "other_or_none_rate": 0.0
+  },
+  "independent_contradictions": {
+    "n_rows": 8,
+    "representability_distribution": {
+      "PACKAGE": 8
+    },
+    "scanner_modality_distribution": {
+      "SBOM": 8
+    },
+    "bucket_alignment": {
+      "n_with_expectation": 8,
+      "n_agree": 8,
+      "rate": 1.0,
+      "disagreements": []
+    },
+    "other_or_none_rate": 0.0
+  },
+  "kev_blind_spots": {
+    "n_rows": 30,
+    "representability_distribution": {
+      "SERVICE": 5,
+      "BINARY": 14,
+      "RUNTIME_CONFIG": 1,
+      "APPLIANCE": 10
+    },
+    "scanner_modality_distribution": {
+      "NETWORK": 15,
+      "HOST": 14,
+      "RUNTIME": 1
+    },
+    "bucket_alignment": {
+      "n_with_expectation": 0,
+      "n_agree": 0,
+      "rate": null,
+      "disagreements": []
+    },
+    "other_or_none_rate": 0.0
+  },
+  "kev_representable": {
+    "n_rows": 30,
+    "representability_distribution": {
+      "PACKAGE": 30
+    },
+    "scanner_modality_distribution": {
+      "SBOM": 30
+    },
+    "bucket_alignment": {
+      "n_with_expectation": 30,
+      "n_agree": 30,
+      "rate": 1.0,
+      "disagreements": []
+    },
+    "other_or_none_rate": 0.0
+  },
+  "orphan_single_source": {
+    "n_rows": 30,
+    "representability_distribution": {
+      "BINARY": 6,
+      "SERVICE": 7,
+      "OTHER": 9,
+      "PACKAGE": 5,
+      "APPLIANCE": 3
+    },
+    "scanner_modality_distribution": {
+      "HOST": 6,
+      "NETWORK": 10,
+      "NONE": 9,
+      "SBOM": 5
+    },
+    "bucket_alignment": {
+      "n_with_expectation": 0,
+      "n_agree": 0,
+      "rate": null,
+      "disagreements": []
+    },
+    "other_or_none_rate": 0.3
+  },
+  "unreviewed_mirror": {
+    "n_rows": 30,
+    "representability_distribution": {
+      "APPLIANCE": 7,
+      "PACKAGE": 1,
+      "SERVICE": 13,
+      "BINARY": 8,
+      "RUNTIME_CONFIG": 1
+    },
+    "scanner_modality_distribution": {
+      "NETWORK": 20,
+      "SBOM": 1,
+      "HOST": 8,
+      "RUNTIME": 1
+    },
+    "bucket_alignment": {
+      "n_with_expectation": 0,
+      "n_agree": 0,
+      "rate": null,
+      "disagreements": []
+    },
+    "other_or_none_rate": 0.0
+  },
+  "_overall": {
+    "n_rows": 158,
+    "representability_distribution": {
+      "BINARY": 36,
+      "SERVICE": 38,
+      "PACKAGE": 49,
+      "APPLIANCE": 22,
+      "CLOUD": 1,
+      "RUNTIME_CONFIG": 3,
+      "OTHER": 9
+    },
+    "scanner_modality_distribution": {
+      "HOST": 37,
+      "NETWORK": 60,
+      "SBOM": 49,
+      "CSPM": 1,
+      "RUNTIME": 2,
+      "NONE": 9
+    },
+    "bucket_alignment_rate": 1.0
+  }
+}

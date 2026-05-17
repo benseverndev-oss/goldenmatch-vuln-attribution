@@ -117,6 +117,35 @@ confusion matrices vs the rater majority. No external dependencies;
 the kappa math is implemented directly in ~50 lines so it's
 reviewable.
 
+### Claude-baseline labels (single-rater, AI-applied)
+
+The `<bucket>__claude.csv` files in `output/review/` are an
+AI-applied baseline labelling pass against the protocol's closed
+enums. Useful as a starting point and as a way to surface what the
+protocol does on real CVE descriptions; **not a substitute** for
+independent human rating, since the same author who wrote the
+protocol also produced these labels.
+
+[`label_baseline_stats.py`](./label_baseline_stats.py) produces
+[`output/label_baseline_stats.json`](./output/label_baseline_stats.json),
+with the per-worksheet distribution. Headlines on the n=30 sample:
+
+| Worksheet | n | Top categories | Auto-bucket alignment |
+|---|---|---|---|
+| `kev_representable` | 30 | PACKAGE=30 | 30/30 (100%) |
+| `independent_contradictions` | 8 | PACKAGE=8 | 8/8 (100%) |
+| `kev_blind_spots` | 30 | BINARY=14, APPLIANCE=10, SERVICE=5 | (no expectation) |
+| `unreviewed_mirror` | 30 | SERVICE=13, BINARY=8, APPLIANCE=7 | (no expectation) |
+| `cve_only` | 30 | SERVICE=13, BINARY=8, PACKAGE=5 | (no expectation) |
+| `orphan_single_source` | 30 | OTHER=9, SERVICE=7, BINARY=6 | (no expectation) |
+| **overall (158 rows)** | 158 | PACKAGE=49, SERVICE=38, BINARY=36, APPLIANCE=22 | **38/38 (100%)** on the rows where the bucket has a clear expectation |
+
+The `OTHER` rows are the genuinely unlabellable fraction — mostly
+`ghsa-unreviewed`-only orphans without published descriptions. A
+second rater agreeing with even half of the non-`OTHER` 149 rows
+gives the protocol meaningful κ; agreeing on 80%+ would close
+ChatGPT's reliability loop.
+
 ## Core thesis
 
 **Identity fragmentation and remediation fragmentation are both real.** An
@@ -655,6 +684,7 @@ Outputs land in `output/`:
 | `analyze_actionability.py` | Representable CVEs that ship a concrete `fixed` event (gap = repr but not actionable) |
 | `sample_for_review.py` | Random CVE samples per bucket, pre-filled with description / KEV / EPSS / sources for manual qualitative validation |
 | `compute_agreement.py` | Raw agreement + Cohen's κ + Fleiss' κ + confusion matrices across ≥2 filled review CSVs |
+| `label_baseline_stats.py` | Per-worksheet label distribution + auto-bucket alignment for the Claude-baseline `__claude.csv` files |
 | `check_affected.py` | Per-PURL / CycloneDX SBOM matcher → `AFFECTED` / `NOT_AFFECTED` / `UNKNOWN` (uses `univers`) |
 | `sync_cloud.py` | Pull the latest cloud-built parquet + JSONs to `data/` and `output/` (release or `gh` mode) |
 | `run_pipeline.py` | GoldenPipe orchestrator over all of the above |
