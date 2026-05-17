@@ -76,6 +76,55 @@ REVIEW_COLUMNS = [
     "manual_label", "representability_type", "scanner_modality", "notes",
 ]
 
+# Closed enums per docs/annotation-protocol.md. Update both places together.
+REPRESENTABILITY_TYPES = (
+    "PACKAGE", "BINARY", "RUNTIME_CONFIG", "SERVICE", "APPLIANCE",
+    "CLOUD", "OTHER",
+)
+SCANNER_MODALITIES = (
+    "SBOM", "HOST", "NETWORK", "RUNTIME", "CSPM", "NONE",
+)
+CATEGORY_CHEATSHEET = f"""# Annotation cheat sheet
+
+Full rules: `docs/annotation-protocol.md`. This file is the spreadsheet-side
+quick reference -- keep open next to your CSV.
+
+## representability_type (pick one)
+
+  PACKAGE         vuln in a language-ecosystem package (PyPI/npm/Maven/...)
+  BINARY          vuln in an installed binary / distro package / OS binary
+  RUNTIME_CONFIG  exists only when a specific runtime config is in place
+  SERVICE         daemon vuln where network exposure is part of exploitability
+  APPLIANCE       vendor appliance (Cisco / Fortinet / F5 / VMware / etc.)
+  CLOUD           cloud-account / managed-service misconfiguration
+  OTHER           none of the above (explain in `notes`)
+
+If two fit, pick the one EARLIEST in this list.
+
+## scanner_modality (pick one)
+
+  SBOM     OSV-Scanner / Trivy / Grype / Dependabot
+  HOST     host scanner / Lynis / CIS / Tenable host plug-ins
+  NETWORK  nmap / Nessus / OpenVAS / Greenbone
+  RUNTIME  Falco / runtime EDR / container-runtime scanner
+  CSPM     Wiz / Prisma / AWS Config / Azure Defender
+  NONE     no scanner class can decide it
+
+## common pairings
+
+  PACKAGE        -> SBOM
+  BINARY         -> HOST
+  RUNTIME_CONFIG -> RUNTIME (or HOST for static configs)
+  SERVICE        -> NETWORK
+  APPLIANCE      -> NETWORK (or out-of-band asset inventory)
+  CLOUD          -> CSPM
+  OTHER          -> usually NONE
+
+Allowed values are also encoded as the first data row of every CSV
+(the row starting with `_VALID_VALUES:`). Treat that row as a header
+extension, not as data.
+"""
+
 
 def cves_in(s: str) -> list[str]:
     out = []
@@ -256,10 +305,27 @@ def main() -> int:
             "notes": "",
         }
 
+    hint_row = {
+        "cve_id": "_VALID_VALUES:",
+        "bucket": "(skip this row; treat as header extension)",
+        "kev": "Y or N",
+        "kev_ransomware": "Y or N",
+        "epss_percentile": "0.0000-1.0000",
+        "sources": "(pre-filled)",
+        "vendor_product": "(pre-filled)",
+        "description": "(pre-filled)",
+        "top_aliases": "(pre-filled)",
+        "manual_label": "(free text)",
+        "representability_type": " | ".join(REPRESENTABILITY_TYPES),
+        "scanner_modality": " | ".join(SCANNER_MODALITIES),
+        "notes": "(free text)",
+    }
+
     def write_worksheet(path: Path, rows: list[dict]) -> None:
         with path.open("w", newline="", encoding="utf-8") as f:
             w = csv.DictWriter(f, fieldnames=REVIEW_COLUMNS)
             w.writeheader()
+            w.writerow(hint_row)
             for r in rows:
                 w.writerow(r)
         print(f"  wrote {path.relative_to(ROOT)}  ({len(rows)} rows)")
@@ -332,6 +398,11 @@ def main() -> int:
 
     if zf is not None:
         zf.close()
+
+    cheatsheet_path = OUT_DIR / "_categories.md"
+    cheatsheet_path.write_text(CATEGORY_CHEATSHEET, encoding="utf-8")
+    print(f"  wrote {cheatsheet_path.relative_to(ROOT)}")
+
     print(f"\nDone. CSVs in {OUT_DIR.relative_to(ROOT)}.")
     print("Reviewer fills: manual_label, representability_type, scanner_modality, notes.")
     return 0

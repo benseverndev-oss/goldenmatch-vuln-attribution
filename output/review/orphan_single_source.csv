@@ -1,4 +1,5 @@
 cve_id,bucket,kev,kev_ransomware,epss_percentile,sources,vendor_product,description,top_aliases,manual_label,representability_type,scanner_modality,notes
+_VALID_VALUES:,(skip this row; treat as header extension),Y or N,Y or N,0.0000-1.0000,(pre-filled),(pre-filled),(pre-filled),(pre-filled),(free text),PACKAGE | BINARY | RUNTIME_CONFIG | SERVICE | APPLIANCE | CLOUD | OTHER,SBOM | HOST | NETWORK | RUNTIME | CSPM | NONE,(free text)
 CVE-2026-40562,CVE_ONLY,N,N,,cve-project,KAZEBURO:Gazelle,"Gazelle versions through 0.49 for Perl allows HTTP Request Smuggling via Improper Header Precedence.
 
 Gazelle incorrectly prioritizes ""Content-Length"" over ""Transfer-Encoding: chunked"" when both headers are present in an HTTP request. Per RFC 7230 3.3.3, Transfer-Encoding must take precedence.

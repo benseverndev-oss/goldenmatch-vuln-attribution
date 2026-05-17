@@ -96,6 +96,27 @@ Worksheets (bundled as `review_worksheets.zip` in the release):
 `python sync_cloud.py` extracts the zip into `output/review/` so the
 CSVs land ready to open in a spreadsheet.
 
+The two reliability-critical columns each take **closed enums**:
+
+- `representability_type`: `PACKAGE` / `BINARY` / `RUNTIME_CONFIG` /
+  `SERVICE` / `APPLIANCE` / `CLOUD` / `OTHER`
+- `scanner_modality`: `SBOM` / `HOST` / `NETWORK` / `RUNTIME` /
+  `CSPM` / `NONE`
+
+Full per-category definitions + locked edge-case decisions are in
+[`docs/annotation-protocol.md`](./docs/annotation-protocol.md). Every
+worksheet ships with a `_VALID_VALUES:` hint row as the first data
+row, plus a per-folder `_categories.md` cheat sheet, so labellers
+don't drift away from the taxonomy.
+
+When two or more reviewers have labelled the same worksheet (filename
+convention: `<bucket>__<rater>.csv`, e.g. `kev_blind_spots__alice.csv`),
+[`compute_agreement.py`](./compute_agreement.py) computes raw
+agreement, pairwise Cohen's κ, Fleiss' κ (≥3 raters), and per-rater
+confusion matrices vs the rater majority. No external dependencies;
+the kappa math is implemented directly in ~50 lines so it's
+reviewable.
+
 ## Core thesis
 
 **Identity fragmentation and remediation fragmentation are both real.** An
@@ -633,6 +654,7 @@ Outputs land in `output/`:
 | `analyze_representability_taxonomy.py` | 5-bucket source-presence taxonomy cross-tabbed against KEV / EPSS / ransomware |
 | `analyze_actionability.py` | Representable CVEs that ship a concrete `fixed` event (gap = repr but not actionable) |
 | `sample_for_review.py` | Random CVE samples per bucket, pre-filled with description / KEV / EPSS / sources for manual qualitative validation |
+| `compute_agreement.py` | Raw agreement + Cohen's κ + Fleiss' κ + confusion matrices across ≥2 filled review CSVs |
 | `check_affected.py` | Per-PURL / CycloneDX SBOM matcher → `AFFECTED` / `NOT_AFFECTED` / `UNKNOWN` (uses `univers`) |
 | `sync_cloud.py` | Pull the latest cloud-built parquet + JSONs to `data/` and `output/` (release or `gh` mode) |
 | `run_pipeline.py` | GoldenPipe orchestrator over all of the above |
