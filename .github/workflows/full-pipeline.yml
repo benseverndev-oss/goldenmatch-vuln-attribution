@@ -86,6 +86,9 @@ jobs:
       - name: Sample-SBOM check (end-to-end demo of check_affected)
         run: python -u check_affected.py --sbom examples/sample_sbom.json --out output/sample_sbom_report.json
 
+      - name: Review worksheets (sampling CSVs for manual qualitative validation)
+        run: python -u sample_for_review.py --n 100
+
       - name: Summarize outputs
         run: |
           ls -la output/
@@ -139,6 +142,7 @@ jobs:
             echo "- \`representability.json\` -- package-representability rates by KEV / EPSS slice"
             echo "- \`representability_taxonomy.json\` -- 5-bucket source-presence taxonomy cross-tabbed against KEV / EPSS / ransomware"
             echo "- \`actionability.json\` -- representable CVEs that ship a concrete \`fixed\` event"
+            echo "- \`review_worksheets.zip\` -- 6 CSV worksheets for manual qualitative validation (KEV blind spots, contradictions, orphans, etc.)"
             echo "- \`sample_sbom_report.json\` -- verdicts for examples/sample_sbom.json"
             echo "- \`dq_report.json\` -- goldencheck DQ findings"
           } > "$NOTES_FILE"
@@ -146,6 +150,9 @@ jobs:
           # Stage assets in a flat directory so filenames in the release are clean.
           stage="$(mktemp -d)"
           cp data/records_normalized.parquet "$stage/"
+          # Bundle the review worksheets as a single zip so people can
+          # download a starter pack with one curl rather than 6.
+          (cd output && zip -q -r "$stage/review_worksheets.zip" review/)
           cp output/report.json output/kev_clusters.json output/famous_vulns.json \
              output/top_disagreement.json output/range_disagreement.json \
              output/timing_lag.json output/independence.json output/representability.json \

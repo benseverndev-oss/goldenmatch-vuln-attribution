@@ -67,6 +67,29 @@ The four constructs the analyses operate on are defined in
 Each is implemented by a named script (linked from the definitions
 doc) and reproducible from the `latest` GitHub release.
 
+### Manual qualitative validation worksheets
+
+`sample_for_review.py` emits six CSVs (~100 rows each) sampled from
+the structural buckets for manual labelling. Each row is pre-filled
+with the CVE description (pulled from `cvelistV5.zip`), KEV /
+ransomware flags, EPSS percentile, source list, and vendor:product.
+Empty columns for the reviewer: `manual_label`,
+`representability_type`, `scanner_modality`, `notes`.
+
+Worksheets (bundled as `review_worksheets.zip` in the release):
+
+| File | What it samples |
+|---|---|
+| `kev_blind_spots.csv` | KEV CVEs that are not package-representable |
+| `kev_representable.csv` | KEV CVEs that are package-representable (control) |
+| `independent_contradictions.csv` | `(CVE, package)` cases where `ghsa-reviewed` and `pypa` disagree on the fix-version set |
+| `unreviewed_mirror.csv` | The dominant 88.2% bucket — CVE-Project passthroughs |
+| `cve_only.csv` | CVEs no advisory feed (curated or mirror) covers |
+| `orphan_single_source.csv` | CVEs that appear in exactly one source |
+
+`python sync_cloud.py` extracts the zip into `output/review/` so the
+CSVs land ready to open in a spreadsheet.
+
 ## Core thesis
 
 **Identity fragmentation and remediation fragmentation are both real.** An
@@ -561,6 +584,7 @@ Each stage is also independently runnable:
 .\.venv\Scripts\python.exe analyze_representability.py  # representability by KEV/EPSS slice
 .\.venv\Scripts\python.exe analyze_representability_taxonomy.py  # 5-bucket source-presence taxonomy
 .\.venv\Scripts\python.exe analyze_actionability.py   # representable AND fix published
+.\.venv\Scripts\python.exe sample_for_review.py --n 100  # CSVs for manual qualitative validation
 .\.venv\Scripts\python.exe check_affected.py --sbom examples/sample_sbom.json
 ```
 
@@ -576,6 +600,7 @@ Outputs land in `output/`:
 - `representability.json` — package-representability by population
 - `representability_taxonomy.json` — 5-bucket source-presence breakdown
 - `actionability.json` — representable AND has a published fix
+- `review/*.csv` (also bundled as `review_worksheets.zip` in the release) — sampled rows for manual qualitative validation
 - `sample_sbom_report.json` — verdicts for `examples/sample_sbom.json`
   (only when `check_affected.py` has been run)
 
@@ -595,6 +620,7 @@ Outputs land in `output/`:
 | `analyze_representability.py` | Representability rates by population (all / KEV / KEV-ransomware / EPSS) |
 | `analyze_representability_taxonomy.py` | 5-bucket source-presence taxonomy cross-tabbed against KEV / EPSS / ransomware |
 | `analyze_actionability.py` | Representable CVEs that ship a concrete `fixed` event (gap = repr but not actionable) |
+| `sample_for_review.py` | Random CVE samples per bucket, pre-filled with description / KEV / EPSS / sources for manual qualitative validation |
 | `check_affected.py` | Per-PURL / CycloneDX SBOM matcher → `AFFECTED` / `NOT_AFFECTED` / `UNKNOWN` (uses `univers`) |
 | `sync_cloud.py` | Pull the latest cloud-built parquet + JSONs to `data/` and `output/` (release or `gh` mode) |
 | `run_pipeline.py` | GoldenPipe orchestrator over all of the above |

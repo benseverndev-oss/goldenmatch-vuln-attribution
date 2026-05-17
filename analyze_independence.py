@@ -150,7 +150,7 @@ def pair_compare(
                 else:
                     sub_class = "contradiction"
                     n_disagreement_contradiction += 1
-                if len(examples_disagreement) < 25:
+                if len(examples_disagreement) < 200:
                     examples_disagreement.append(
                         {
                             "cve_id": key[0],

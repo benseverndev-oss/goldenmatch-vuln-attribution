@@ -113,6 +113,11 @@ analyze_actionability_stage = _stage_from_script(
     "analyze_actionability.py",
     ["output/actionability.json"],
 )
+sample_for_review_stage = _stage_from_script(
+    "sample_for_review",
+    "sample_for_review.py",
+    ["output/review/*.csv"],
+)
 
 STAGES = {
     "fetch": fetch_stage,
@@ -126,6 +131,7 @@ STAGES = {
     "analyze_representability": analyze_representability_stage,
     "analyze_representability_taxonomy": analyze_representability_taxonomy_stage,
     "analyze_actionability": analyze_actionability_stage,
+    "sample_for_review": sample_for_review_stage,
 }
 
 
@@ -147,6 +153,7 @@ def main() -> int:
         "analyze_ranges", "analyze_timing",
         "analyze_independence", "analyze_representability",
         "analyze_representability_taxonomy", "analyze_actionability",
+        "sample_for_review",
     ]
 
     stage_specs: list[StageSpec | str] = [StageSpec(use=name) for name in stage_names]

@@ -27,6 +27,7 @@ import shutil
 import subprocess
 import sys
 import urllib.request
+import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -50,6 +51,7 @@ RELEASE_ASSETS = [
     ("representability.json", OUT_DIR),
     ("representability_taxonomy.json", OUT_DIR),
     ("actionability.json", OUT_DIR),
+    ("review_worksheets.zip", OUT_DIR),
     ("sample_sbom_report.json", OUT_DIR),
     ("dq_report.json", OUT_DIR),
 ]
@@ -71,6 +73,14 @@ def fetch_release(repo: str, tag: str) -> int:
             return 1
         size_mb = dst.stat().st_size / (1024 * 1024)
         print(f"   wrote {dst.relative_to(ROOT)} ({size_mb:.1f} MB)")
+    # Auto-extract the review worksheets zip so the CSVs land in
+    # output/review/, ready for a spreadsheet.
+    wsz = OUT_DIR / "review_worksheets.zip"
+    if wsz.exists():
+        with zipfile.ZipFile(wsz) as zf:
+            zf.extractall(OUT_DIR)
+        print(f"   extracted review_worksheets.zip -> {OUT_DIR / 'review'}")
+
     print("\nDone. The parquet is now in data/, the JSONs in output/.")
     return 0
 
