@@ -52,11 +52,13 @@ that ran the same pipeline shape on blockchain data.
 
 ## Operational definitions
 
-The four constructs the analyses operate on are defined in
-[`docs/definitions.md`](./docs/definitions.md), in increasing strictness:
+The five constructs the analyses operate on are defined in
+[`docs/definitions.md`](./docs/definitions.md), foundation-first then
+strictness-ordered:
 
-1. **Identity fragmentation** — cluster size > 1 across the
-   `(vuln_id, alias)` graph
+0. **Canonical vulnerability cluster** — connected component in the
+   `(vuln_id, alias)` graph; the unit every other construct ratios against
+1. **Identity fragmentation** — cluster size > 1
 2. **Representability** — at least one alias-graph row carries a range
    in the 8 v1 language ecosystems
 3. **Actionability** — representable *and* at least one source ships a
@@ -65,7 +67,11 @@ The four constructs the analyses operate on are defined in
    `fixed` events) on the same `(CVE, ecosystem, package)`
 
 Each is implemented by a named script (linked from the definitions
-doc) and reproducible from the `latest` GitHub release.
+doc) and reproducible from the `latest` GitHub release. The
+convergence test in finding #8 is load-bearing, so its full
+procedure — joins, set comparison, edge cases, and known
+limitations — lives in
+[`docs/methodology.md`](./docs/methodology.md).
 
 ### Manual qualitative validation worksheets
 
@@ -349,6 +355,12 @@ Go vulndb) sit at 90–92%, consistent with the 70% independent-pair
 agreement once you account for the partial GHSA mirroring.
 
 Full breakdown: [`output/independence.json`](./output/independence.json).
+**Methodology**: every step of the join, comparison, and source
+classification is spelled out in
+[`docs/methodology.md`](./docs/methodology.md), including known
+limitations (notably: byte-exact string comparison without semver
+normalization, which makes the 13% contradiction rate an upper
+bound).
 
 ### 9. Only 7.5% of CVEs are package-representable
 

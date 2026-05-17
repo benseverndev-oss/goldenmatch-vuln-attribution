@@ -6,8 +6,55 @@ four constructs the analyses operate on, each with: a definition, the
 script that implements it, the columns it consumes from the parquet,
 and a worked example.
 
-The order below is signal-richest first. Each construct logically
-implies the ones above it.
+The order below is foundation first, then signal-richest. Each
+construct logically implies the ones above it.
+
+---
+
+## 0. Canonical vulnerability cluster
+
+> **A canonical vulnerability cluster is a connected component in the
+> bipartite graph of `(vuln_id, alias)` pairs across all sources,
+> after stripping and uppercasing both fields.**
+
+Concretely: every advisory record contributes its `vuln_id` as a node
+and every entry in its `aliases` field as a node, with an edge between
+`vuln_id` and each alias (weight 1.0; exact ID match). Union-find over
+those edges collapses the union of source-specific identifier spaces
+(`CVE-*`, `GHSA-*`, `PYSEC-*`, `GO-*`, `RUSTSEC-*`, distro-specific
+IDs, KEV CVEs, EPSS CVEs, …) into one canonical cluster per
+real-world vulnerability.
+
+Cluster size = number of distinct identifiers in the component. A
+cluster of size 1 is an *orphan* — only one source has ever referenced
+that ID and it has no published aliases.
+
+| | |
+|---|---|
+| **Implementing script** | [`analyze.py`](../analyze.py) (calls `goldenmatch.build_clusters`) |
+| **Input columns** | `vuln_id`, `aliases` (after `normalize.py` runs `strip` + `uppercase`) |
+| **Output** | `member_to_root`, `cluster_info` in-memory; per-cluster aggregates in [`output/report.json`](../output/report.json) |
+
+Cluster count is the principal denominator the rest of the constructs
+ratio against. For the current corpus: **6.1M records → 1.18M unique
+identifiers → 847,475 canonical clusters → 358,170 multi-ID
+clusters**.
+
+### Worked example — Log4Shell cluster
+
+```
+                 CVE-2021-44228
+                  /     |    \
+                 /      |     \
+   GHSA-JFH8-C2JP-5V3Q  |  (no PYSEC: not a Python vuln)
+        |               |
+   (Maven records pointing at 5 log4j-derivative packages)
+```
+
+Cluster root: `CVE-2021-44228` (lowest lexicographic root after
+canonicalization). Cluster size: 2 (CVE + GHSA) + the 5 Maven package
+nodes via the inverse package lookup — see `cluster_info` in
+[`output/famous_vulns.json`](../output/famous_vulns.json).
 
 ---
 
@@ -16,9 +63,9 @@ implies the ones above it.
 > **A canonical vulnerability is identity-fragmented when more than one
 > identifier maps to it across the union of public sources.**
 
-A cluster of size > 1 in the union-find graph of `(vuln_id, alias)`
-pairs is identity-fragmented. The whole 6.1M-rows → 847k-clusters →
-358k-multi-ID reduction is a measurement of fragmentation at scale.
+A canonical vulnerability cluster (definition 0) of size > 1 is
+identity-fragmented. The whole 6.1M-rows → 847k-clusters → 358k-multi-
+ID reduction is a measurement of fragmentation at scale.
 
 | | |
 |---|---|
@@ -158,9 +205,21 @@ representability claim: of the **25,352** package-representable CVEs,
 
 ---
 
-## How the four relate
+### Methodology note
+
+Independence categorization, package-name normalization, set-equality
+semantics, edge-case handling for OSV `events` arrays, and known
+limitations of the comparison are documented in
+[`docs/methodology.md`](./methodology.md). The remediation-convergence
+result in finding #8 is the load-bearing claim that doc backs up.
+
+---
+
+## How the five relate
 
 ```
+canonical_cluster
+    --(union-find on (vuln_id, alias) graph)-->
 identity_fragmentation
     --(many fragments collapse into one cluster)-->
 representability
@@ -171,9 +230,10 @@ remediation_convergence
     --(adds: independent sources agree on the fix version)-->
 ```
 
-Each construct is a stricter condition than the previous one. A
-canonical vuln can be identity-fragmented but not representable
-(KEV's appliance entries); representable but not remediation-
-convergent (CVE-2021-32297 on `lief`); and so on. The repo's main
-empirical contribution is putting numbers on every cell of that
-hierarchy at corpus scale.
+Each construct except the cluster is a stricter condition than the
+previous one. A canonical vuln can be identity-fragmented but not
+representable (KEV's appliance entries); representable but not
+actionable (no `fixed` event published yet); actionable but not
+remediation-convergent (CVE-2021-32297 on `lief` — see finding #8).
+The repo's main empirical contribution is putting numbers on every
+cell of that hierarchy at corpus scale.
